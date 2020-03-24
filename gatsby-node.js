@@ -1,28 +1,26 @@
 const fs = require("fs");
+const mkdirp = require("mkdirp");
+const { typeDefs } = require("./type-defs.js");
 
 // 1. make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
-  const contentPath = options.contentPath || "data";
-
-  if (!fs.existsSync(contentPath)) {
-    reporter.info(`creating the ${contentPath} directory`);
-    fs.mkdirSync(contentPath);
+  const contentPath = options.contentPath || "content";
+  const pagesPath = `${contentPath}/pages`;
+  if (!fs.existsSync(pagesPath)) {
+    reporter.info(`creating the ${pagesPath} directory`);
+    mkdirp.sync(pagesPath);
+  }
+  const settingsPath = `${contentPath}/settings`;
+  if (!fs.existsSync(settingsPath)) {
+    reporter.info(`creating the ${settingsPath} directory`);
+    mkdirp.sync(settingsPath);
   }
 };
 
 // 2. define the event type
-exports.sourceNodes = ({ actions }) => {
-  actions.createTypes(`
-        type Event implements Node @dontInfer {
-          id: ID!
-          name: String!
-          location: String!
-          startDate: Date! @dateformat @proxy(from: "start_date")
-          endDate: Date! @dateformat @proxy(from: "end_date")
-          url: String!
-          slug: String!
-      }
-  `);
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(typeDefs);
 };
 
 // 3 define resolvers for any custom fields (slug)
@@ -40,25 +38,25 @@ exports.createResolvers = ({ createResolvers }, options) => {
   };
 
   createResolvers({
-    Event: {
+    PagesYaml: {
       slug: {
-        resolve: source => slugify(source.name)
+        resolve: source => slugify(source.title)
       }
     }
   });
 };
 
-// 4. query for events and create pages
+// 4. query for pages and create pages
 exports.createPages = async ({ actions, graphql, reporter }, options) => {
   const basePath = options.basePath || "/";
   actions.createPage({
     path: basePath,
-    component: require.resolve("./src/templates/events.js")
+    component: require.resolve("./src/templates/frontpage.js")
   });
 
   const result = await graphql(`
     query {
-      allEvent(sort: { fields: startDate, order: ASC }) {
+      allPagesYaml(sort: { fields: title, order: ASC }) {
         nodes {
           id
           slug
@@ -68,20 +66,21 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   `);
 
   if (result.errors) {
-    reporter.panic("error loading events", reporter.errors);
+    reporter.panic("error loading pages", reporter.errors);
     return;
   }
 
-  const events = result.data.allEvent.nodes;
+  const pages = result.data.allPagesYaml.nodes;
 
-  events.forEach(event => {
-    const { slug } = event;
+  console.log("result.data: ", JSON.stringify(result.data));
 
+  pages.forEach(page => {
+    const { slug } = page;
     actions.createPage({
       path: slug,
-      component: require.resolve("./src/templates/event.js"),
+      component: require.resolve("./src/templates/page.js"),
       context: {
-        eventID: event.id
+        pageID: page.id
       }
     });
   });
