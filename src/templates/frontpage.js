@@ -27,6 +27,7 @@ const FrontPage = props => {
     mainContent,
     component,
     backgroundVideo,
+    backgroundVideoCaptions,
     title
   } = props.data.frontpageYaml;
   const { header, subhead, backgroundColor } = mainContent;
@@ -57,6 +58,12 @@ const FrontPage = props => {
             ></div>
             <video playsInline autoPlay="autoplay" muted="muted" loop="loop">
               <source src={videoUrl} type="video/mp4" />
+              <track
+                default
+                kind="captions"
+                srclang="en"
+                src={backgroundVideoCaptions}
+              />
             </video>
           </>
         )}
