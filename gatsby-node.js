@@ -56,12 +56,13 @@ exports.createResolvers = ({ createResolvers }, options) => {
 // 4. query for pages and create pages
 exports.createPages = async ({ actions, graphql, reporter }, options) => {
   const basePath = options.basePath || "/";
+
   actions.createPage({
     path: basePath,
     component: require.resolve("./src/templates/frontpage.js")
   });
 
-  const result = await graphql(`
+  const allPages = await graphql(`
     query {
       allPagesYaml(sort: { fields: title, order: ASC }) {
         nodes {
@@ -72,15 +73,12 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
     }
   `);
 
-  if (result.errors) {
+  if (allPages.errors) {
     reporter.panic("error loading pages", reporter.errors);
     return;
   }
 
-  const pages = result.data.allPagesYaml.nodes;
-
-  console.log("result.data: ", JSON.stringify(result.data));
-
+  const pages = allPages.data.allPagesYaml.nodes;
   pages.forEach(page => {
     const { slug } = page;
     actions.createPage({
