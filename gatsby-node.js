@@ -4,12 +4,19 @@ const { typeDefs } = require("./type-defs.js");
 
 // 1. make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
+  // Create content directory if they don't exist
   const contentPath = options.contentPath || "content";
   const pagesPath = `${contentPath}/pages`;
   if (!fs.existsSync(pagesPath)) {
     reporter.info(`creating the ${pagesPath} directory`);
     mkdirp.sync(pagesPath);
   }
+  const imgPath = `${contentPath}/img`;
+  if (!fs.existsSync(imgPath)) {
+    reporter.info(`creating the ${imgPath} directory`);
+    mkdirp.sync(imgPath);
+  }
+
   const settingsPath = `${contentPath}/settings`;
   if (!fs.existsSync(settingsPath)) {
     reporter.info(`creating the ${settingsPath} directory`);
