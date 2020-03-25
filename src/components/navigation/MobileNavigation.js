@@ -180,8 +180,8 @@ const MobileNavigation = ({ menuData, settings }) => {
     })
 
     .map((item, index) => {
-      const title = item.node.navigation.title;
-      const urlPath = item.node.urlPath;
+      const { title } = item.node.navigation;
+      const urlPath = item.node.slug;
       return (
         <MobileNavItem
           ref={li => (myElements[index + 1] = li)}
