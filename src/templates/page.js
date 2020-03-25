@@ -21,9 +21,9 @@ const Page = React.memo(props => {
     component,
     mainContent,
     backgroundImage,
+    backgroundVideo,
     coverVideo,
     coverVideoCaptions,
-    backgroundVideo,
     backgroundVideoCaptions,
     title
   } = props.data.pagesYaml;
@@ -141,6 +141,43 @@ export const query = graphql`
     pagesYaml(id: { eq: $pageID }) {
       title
       slug
+      coverImage {
+        publicURL
+
+        childImageSharp {
+          fluid(quality: 70, maxWidth: 1400) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+
+          resolutions(quality: 60) {
+            aspectRatio
+            width
+            height
+            src
+          }
+        }
+      }
+
+      coverVideo {
+        publicURL
+      }
+
+      backgroundImage {
+        publicURL
+        childImageSharp {
+          resolutions(quality: 60) {
+            aspectRatio
+            width
+            height
+            src
+          }
+        }
+      }
+
+      backgroundVideo {
+        publicURL
+      }
+
       mainContent {
         header
         color {

@@ -45,6 +45,17 @@ type FooterItem implements Node @dontInfer {
 }
 
 """
+FrontPage
+"""
+type FrontpageYaml implements Node @dontInfer {
+  id: ID!
+  title: String
+  backgroundVideo: File @fileByAbsolutePath(path: "content/img")
+  mainContent: MainContent!
+  component: [Component]
+}
+
+"""
 Page
 """
 type PagesYaml implements Node @dontInfer {
@@ -53,9 +64,11 @@ type PagesYaml implements Node @dontInfer {
   title: String!
   slug: String!
   coverImage: File @fileByAbsolutePath(path: "content/img")
+  coverVideo: File @fileByAbsolutePath(path: "content/img")
+  backgroundVideo: File @fileByAbsolutePath(path: "content/img")
   backgroundImage: File @fileByAbsolutePath(path: "content/img")
   navigation: Navigation
-  mainContent: mainContent!
+  mainContent: MainContent!
   component: [Component]
 }
 
@@ -71,8 +84,9 @@ type Navigation implements Node @dontInfer {
 """
 Main Content
 """
-type mainContent implements Node @dontInfer {
+type MainContent implements Node @dontInfer {
   header: String!
+  subhead: String
   color: color!
 }
 

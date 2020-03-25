@@ -29,6 +29,15 @@ module.exports = ({
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        path: `${contentPath}/frontpage`,
+        options: {
+          typeName: "Frontpage"
+        }
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         path: `${settingsPath}/meta`,
         options: {
           typeName: "Meta"
