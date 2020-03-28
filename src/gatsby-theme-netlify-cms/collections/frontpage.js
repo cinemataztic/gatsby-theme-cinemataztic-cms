@@ -10,10 +10,12 @@ import {
   multipleImages
 } from "../cmsComponents";
 
+console.log("process.env: ", process.env);
+
 export default {
   name: "Frontpage",
   label: "Frontpage",
-  create: true,
+  create: false,
   folder: "content/frontpage",
   identifier_field: "urlPath",
   slug: "{{slug}}",
