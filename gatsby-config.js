@@ -1,10 +1,4 @@
-var path = require("path");
-
-module.exports = ({
-  contentPath = "data",
-  settingsPath = "settings"
-  /* basePath = "/" */
-}) => ({
+module.exports = ({ contentPath = "data", settingsPath = "settings" }) => ({
   plugins: [
     {
       resolve: "gatsby-source-filesystem",
@@ -14,7 +8,6 @@ module.exports = ({
       }
     },
     `gatsby-schema-field-absolute-path`,
-    `gatsby-theme-ui`,
     `gatsby-plugin-svgr`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -81,7 +74,9 @@ module.exports = ({
     },
     {
       resolve: "gatsby-theme-netlify-cms",
-      options: {}
+      options: {
+        contentPath
+      }
     }
   ]
 });
