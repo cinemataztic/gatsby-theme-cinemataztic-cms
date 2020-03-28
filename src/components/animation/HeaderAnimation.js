@@ -2,7 +2,7 @@
  * Created by @author @ddennis - ddennis.dk aka fantastisk.dk/works aka meresukker.dk on 28-08-2019.
  */
 
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { TimelineMax, TweenMax, Back, Expo } from "gsap";
 import Divider from "../Divider";
 import DownArrow from "../display/DownArrow";
@@ -19,6 +19,8 @@ const HeaderAnimation = props => {
     textColor = "",
     height = "85vh"
   } = props;
+
+  const [animationHasRun, setAnimationHasRun] = useState(0);
 
   let hasScrolled = false;
 
@@ -50,72 +52,86 @@ const HeaderAnimation = props => {
     );
   });
 
-  useEffect(() => {
-    myTween.set(overlayRef.current, { y: 20 });
+  const headerEntryAnimation = useCallback(() => {
+    if (!animationHasRun) {
+      myTween.set(overlayRef.current, { y: 20 });
 
-    myTween.set(dividerRef.current, { opacity: 0, y: 60 });
+      myTween.set(dividerRef.current, { opacity: 0, y: 60 });
 
-    if (featuredImageRef.current) {
-      myTween.set(featuredImageRef.current, { opacity: 0, y: 60 });
-    }
+      if (featuredImageRef.current) {
+        myTween.set(featuredImageRef.current, { opacity: 0, y: 60 });
+      }
 
-    myTween.set(subheadRef.current, { opacity: 0, skewX: 10, y: 30 });
+      myTween.set(subheadRef.current, { opacity: 0, skewX: 10, y: 30 });
 
-    myTween.to(
-      overlayRef.current,
-      1,
-      { y: 0, opacity: 1, ease: Expo.easeOut },
-      "+=.2"
-    );
-
-    myTween.staggerFromTo(
-      myElements,
-      0.6,
-      { y: 60, x: 0, scaleY: 2, opacity: 0, ease: "Expo.easeOut" },
-      { scaleY: 1, y: 0, x: 0, opacity: 1, ease: "Power3.easeInOut" },
-      0.03,
-      "-=.8"
-    );
-
-    myTween.to(
-      dividerRef.current,
-      0.5,
-      { opacity: 1, y: 0, ease: Back.easeOut.config(2) },
-      "-=.3"
-    );
-
-    myTween.to(
-      subheadRef.current,
-      0.6,
-      { y: 0, opacity: 1, skewX: 0, ease: Expo.easeOut },
-      "-=.2"
-    );
-
-    if (featuredImageRef.current) {
       myTween.to(
-        featuredImageRef.current,
-        0.6,
+        overlayRef.current,
+        1,
         { y: 0, opacity: 1, ease: Expo.easeOut },
+        "+=.2"
+      );
+
+      myTween.staggerFromTo(
+        myElements,
+        0.6,
+        { y: 60, x: 0, scaleY: 2, opacity: 0, ease: "Expo.easeOut" },
+        { scaleY: 1, y: 0, x: 0, opacity: 1, ease: "Power3.easeInOut" },
+        0.03,
+        "-=.8"
+      );
+
+      myTween.to(
+        dividerRef.current,
+        0.5,
+        { opacity: 1, y: 0, ease: Back.easeOut.config(2) },
+        "-=.3"
+      );
+
+      myTween.to(
+        subheadRef.current,
+        0.6,
+        { y: 0, opacity: 1, skewX: 0, ease: Expo.easeOut },
         "-=.2"
       );
-    }
 
-    TweenMax.set(arrowRef.current, { autoAlpha: 0, y: 0 });
+      if (featuredImageRef.current) {
+        myTween.to(
+          featuredImageRef.current,
+          0.6,
+          { y: 0, opacity: 1, ease: Expo.easeOut },
+          "-=.2"
+        );
+      }
 
-    if (window.scrollY === 0) {
-      myTween.to(arrowRef.current, 0.4, {
-        autoAlpha: 1,
-        y: 100,
-        ease: Back.easeOut.config(3)
-      });
-      myTween.to(arrowRef.current, 0.4, {
-        y: -100,
-        ease: Back.easeOut,
-        yoyo: true,
-        repeat: 3
-      });
+      TweenMax.set(arrowRef.current, { autoAlpha: 0, y: 0 });
+
+      if (window.scrollY === 0) {
+        myTween.to(arrowRef.current, 0.4, {
+          autoAlpha: 1,
+          y: 100,
+          ease: Back.easeOut.config(3)
+        });
+        myTween.to(arrowRef.current, 0.4, {
+          y: -100,
+          ease: Back.easeOut,
+          yoyo: true,
+          repeat: 3
+        });
+      }
     }
-  }, [arrowRef, dividerRef, featuredImageRef, myElements, myTween, overlayRef]);
+    setAnimationHasRun(true);
+  }, [
+    animationHasRun,
+    setAnimationHasRun,
+    arrowRef,
+    dividerRef,
+    featuredImageRef,
+    myElements,
+    myTween,
+    overlayRef
+  ]);
+
+  useEffect(() => headerEntryAnimation(), [headerEntryAnimation]);
 
   const onScrolling = value => {
     if (value < 50 && !hasScrolled && arrowRef.current) {
