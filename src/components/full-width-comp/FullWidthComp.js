@@ -33,12 +33,16 @@ const sizeToColums = size => {
 const FullWidthComp = props => {
   const myElement = useRef();
   const { fullWidthImage, title, text, size, pageLink, textAlign } = props.data;
+  console.log("pageLink", pageLink);
   const url = get(fullWidthImage, "childImageSharp.fluid.src", null);
   const fluid = get(fullWidthImage, "childImageSharp.fluid", null);
 
-  const hasLink = pageLink && pageLink.link !== "" ? true : false;
+  const hasLink =
+    pageLink && pageLink.link && pageLink.link !== "" ? true : false;
   const hasExternalLink =
-    pageLink && pageLink.externalLink !== "" ? true : false;
+    pageLink && pageLink.externalLink && pageLink.externalLink !== ""
+      ? true
+      : false;
   const textWidth = sizeToColums(size);
 
   const hasTextAlign = textAlign === "center" ? "text-center" : "";
