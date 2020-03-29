@@ -28,7 +28,7 @@
         "gatsby": "^2.13.9",
         "gatsby-image": "^2.3.0",
         "gatsby-plugin-netlify": "^2.1.35",
-        "gatsby-plugin-netlify-cms": "^4.1.43",
+        "gatsby-plugin-netlify-cms": "^4.2.1",
         "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
         "gatsby-plugin-sass": "^2.2.0",
         "gatsby-plugin-sharp": "^2.5.1",
@@ -45,7 +45,7 @@
         "hex-to-rgba": "^2.0.1",
         "lodash.get": "^4.4.2",
         "mkdirp": "^1.0.3",
-        "netlify-cms-app": "^2.11.31",
+        "netlify-cms-app": "^2.11.32",
         "netlify-cms-backend-fs": "^0.4.4",
         "node-sass": "^4.13.1",
         "nothing-mock": "^1.0.2",
@@ -54,6 +54,7 @@
         "react-player": "^1.15.2",
         "react-scroll-listen": "^0.6.2",
         "react-use-gesture": "^7.0.5",
-        "react-waypoint": "^9.0.2"
+        "react-waypoint": "^9.0.2",
+        "replace-in-file-webpack-plugin": "^1.0.6"
     }
 }

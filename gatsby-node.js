@@ -1,6 +1,8 @@
 const fs = require("fs");
 const mkdirp = require("mkdirp");
-const { typeDefs } = require("./type-defs.js");
+const { getTypeDefs } = require("./type-defs.js");
+
+/* console.log("typeDefs: ", getTypeDefs(contentPath)); */
 
 // 1. make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
@@ -25,9 +27,9 @@ exports.onPreBootstrap = ({ reporter }, options) => {
 };
 
 // 2. define the event type
-exports.createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions }, options) => {
   const { createTypes } = actions;
-  createTypes(typeDefs);
+  createTypes(getTypeDefs(options.contentPath));
 };
 
 // 3 define resolvers for any custom fields (slug)

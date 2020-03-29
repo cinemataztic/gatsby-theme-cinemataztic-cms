@@ -1,4 +1,4 @@
-exports.typeDefs = `
+exports.getTypeDefs = contentPath => `
 """
 Settings
 """
@@ -50,7 +50,7 @@ FrontPage
 type FrontpageYaml implements Node @dontInfer {
   id: ID!
   title: String
-  backgroundVideo: File @fileByAbsolutePath(path: "content/img")
+  backgroundVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   mainContent: MainContent!
   component: [Component]
 }
@@ -63,10 +63,10 @@ type PagesYaml implements Node @dontInfer {
   uuid: ID!
   title: String!
   slug: String!
-  coverImage: File @fileByAbsolutePath(path: "content/img")
-  coverVideo: File @fileByAbsolutePath(path: "content/img")
-  backgroundVideo: File @fileByAbsolutePath(path: "content/img")
-  backgroundImage: File @fileByAbsolutePath(path: "content/img")
+  coverImage: File @fileByAbsolutePath(path: "${contentPath}/media")
+  coverVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
+  backgroundVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
+  backgroundImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   navigation: Navigation
   mainContent: MainContent!
   component: [Component]
@@ -114,14 +114,14 @@ type Component implements Node @dontInfer {
   listContent: [String]
   pageLink: PageLink
   images: [MultipleItemImage]
-  fullWidthVideo: File @fileByAbsolutePath(path: "content/img")
+  fullWidthVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   largeVideoUrl: String
   autoplay: Boolean
-  textVideoImage: File @fileByAbsolutePath(path: "content/img")
-  shortTextVideo: File @fileByAbsolutePath(path: "content/img")
-  textImage: File @fileByAbsolutePath(path: "content/img")
-  fullWidthImage: File @fileByAbsolutePath(path: "content/img")
-  fullWidthVideoImage: File @fileByAbsolutePath(path: "content/img")
+  textVideoImage: File @fileByAbsolutePath(path: "${contentPath}/media")
+  shortTextVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
+  textImage: File @fileByAbsolutePath(path: "${contentPath}/media")
+  fullWidthImage: File @fileByAbsolutePath(path: "${contentPath}/media")
+  fullWidthVideoImage: File @fileByAbsolutePath(path: "${contentPath}/media")
 }
 
 """
@@ -138,7 +138,7 @@ type PageLink implements Node @dontInfer {
 MultipleItemImage
 """
 type MultipleItemImage implements Node @dontInfer {
-  multipleItemImage: File @fileByAbsolutePath(path: "content/img")
+  multipleItemImage: File @fileByAbsolutePath(path: "${contentPath}/media")
 }
 
 `;
