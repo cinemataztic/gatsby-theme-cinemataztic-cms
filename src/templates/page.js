@@ -180,6 +180,7 @@ export const query = graphql`
 
       mainContent {
         header
+        subhead
         color {
           backgroundColor
           textColor
