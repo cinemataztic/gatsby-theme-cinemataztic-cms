@@ -33,7 +33,7 @@ exports.createSchemaCustomization = ({ actions }, options) => {
 };
 
 // 3 define resolvers for any custom fields (slug)
-exports.createResolvers = ({ createResolvers }, options) => {
+exports.createResolvers = async ({ createResolvers }, options) => {
   const basePath = options.basePath || "/";
 
   // Quick-and-dirty helper to convert strings into URL-friendly slugs.
@@ -46,10 +46,30 @@ exports.createResolvers = ({ createResolvers }, options) => {
     return `/${basePath}/${slug}`.replace(/\/\/+/g, "/");
   };
 
+  const getParentPageYaml = async function(context, parentPageUuid) {
+    const parentPageYaml = await context.nodeModel.runQuery({
+      type: `PagesYaml`,
+      firstOnly: true,
+      query: { filter: { uuid: { eq: parentPageUuid } } }
+    });
+    return parentPageYaml;
+  };
+
   createResolvers({
     PagesYaml: {
       slug: {
-        resolve: source => slugify(source.title)
+        type: "String",
+        resolve: async (source, args, context, info) => {
+          let slug = slugify(source.title);
+          if (source.parentPage) {
+            const parentPageYaml = await getParentPageYaml(
+              context,
+              source.parentPage
+            );
+            slug = slugify(parentPageYaml.title) + slugify(source.title);
+          }
+          return slug;
+        }
       }
     }
   });
@@ -81,7 +101,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   }
 
   const pages = allPages.data.allPagesYaml.nodes;
-  pages.forEach(page => {
+  pages.forEach(async page => {
     const { slug } = page;
     actions.createPage({
       path: slug,

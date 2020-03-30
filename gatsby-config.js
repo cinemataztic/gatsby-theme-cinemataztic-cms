@@ -16,7 +16,6 @@ module.exports = ({
       `gatsby-plugin-svgr`,
       `gatsby-transformer-sharp`,
       `gatsby-plugin-sharp`,
-
       {
         resolve: "gatsby-source-filesystem",
         options: {
