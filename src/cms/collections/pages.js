@@ -19,7 +19,7 @@ export default {
   format: "yaml",
   create: true,
   folder: "@contentPath/pages",
-  widget: "list",
+  summary: "{{title}} / {{mainContent.subhead}}",
   fields: [
     {
       name: "uuid",
@@ -41,8 +41,7 @@ export default {
     {
       label: "Title",
       name: "title",
-      widget: "string",
-      hint: "Only shown in the cms"
+      widget: "string"
     },
 
     getImage("Cover Image", "coverImage"),
