@@ -32,7 +32,6 @@ const sizeColums = size => {
 };
 
 const TextVideo = ({ data, breakpoints, currentBreakpoint }) => {
-  console.log("TextVideo -> currentBreakpoint", currentBreakpoint);
   //
   // handle refs for animating
   //

@@ -136,10 +136,7 @@ const FeaturedList = props => {
   const nextBtn = useRef();
   const backBtn = useRef();
   const { breakpoints, currentBreakpoint } = props;
-
   const data = props.data;
-  console.log("data", data);
-
   const { listContent } = data;
   const visibleElements = getAmount(breakpoints, currentBreakpoint);
 
