@@ -61,6 +61,7 @@ Page
 type PagesYaml implements Node @dontInfer {
   id: ID!
   uuid: ID!
+  parentPage: PagesYaml @link(by: "uuid")
   title: String!
   slug: String!
   coverImage: File @fileByAbsolutePath(path: "${contentPath}/media")

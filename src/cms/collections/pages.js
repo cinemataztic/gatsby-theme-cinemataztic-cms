@@ -27,6 +27,18 @@ export default {
     },
 
     {
+      label: "Parent Page",
+      name: "parentPage",
+      widget: "relation",
+      collection: "pages",
+      default: null,
+      required: false,
+      searchFields: ["title", "slug"],
+      valueField: "uuid",
+      displayFields: ["title"]
+    },
+
+    {
       label: "Title",
       name: "title",
       widget: "string",
