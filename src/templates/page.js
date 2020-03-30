@@ -256,9 +256,11 @@ export const query = graphql`
 
         pageLink {
           btnTxt
-          link
           externalLink
-          sublink
+          page {
+            title
+            slug
+          }
         }
       }
     }

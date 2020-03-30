@@ -156,8 +156,11 @@ export const query = graphql`
         }
         pageLink {
           btnTxt
-          link
           externalLink
+          page {
+            title
+            slug
+          }
         }
       }
     }

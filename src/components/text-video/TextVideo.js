@@ -32,7 +32,7 @@ const sizeColums = size => {
 };
 
 const TextVideo = ({ data, breakpoints, currentBreakpoint }) => {
-  console.log("TextVideo -> currentBreakpoint", currentBreakpoint)
+  console.log("TextVideo -> currentBreakpoint", currentBreakpoint);
   //
   // handle refs for animating
   //
@@ -54,9 +54,11 @@ const TextVideo = ({ data, breakpoints, currentBreakpoint }) => {
     textVideoImage
   } = data;
 
-  const hasLink = pageLink && pageLink.link !== "" ? true : false;
+  const hasLink = pageLink && pageLink.page ? true : false;
   const hasExternalLink =
-    pageLink && pageLink.externalLink !== "" ? true : false;
+    pageLink && pageLink.externalLink && pageLink.externalLink !== ""
+      ? true
+      : false;
   const isMobile = breakpoints[currentBreakpoint] > breakpoints.md;
 
   const orderImage = placement && isMobile ? "order-lg-1 " : "order-0 ";
@@ -173,7 +175,7 @@ const TextVideo = ({ data, breakpoints, currentBreakpoint }) => {
               <p className="body-text" style={{ whiteSpace: "pre-wrap" }}>
                 {text}
               </p>
-              {hasLink && <Button to={pageLink}>{pageLink.btnTxt}</Button>}
+              {hasLink && <Button to={pageLink.page}>{pageLink.btnTxt}</Button>}
 
               {hasExternalLink && (
                 <ExternalLink to={pageLink.externalLink}>

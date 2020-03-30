@@ -2,8 +2,6 @@ const fs = require("fs");
 const mkdirp = require("mkdirp");
 const { getTypeDefs } = require("./type-defs.js");
 
-/* console.log("typeDefs: ", getTypeDefs(contentPath)); */
-
 // 1. make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
   // Create content directory if they don't exist

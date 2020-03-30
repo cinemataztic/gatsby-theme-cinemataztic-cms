@@ -33,12 +33,10 @@ const sizeToColums = size => {
 const FullWidthComp = props => {
   const myElement = useRef();
   const { fullWidthImage, title, text, size, pageLink, textAlign } = props.data;
-  console.log("pageLink", pageLink);
   const url = get(fullWidthImage, "childImageSharp.fluid.src", null);
   const fluid = get(fullWidthImage, "childImageSharp.fluid", null);
 
-  const hasLink =
-    pageLink && pageLink.link && pageLink.link !== "" ? true : false;
+  const hasLink = pageLink && pageLink.page ? true : false;
   const hasExternalLink =
     pageLink && pageLink.externalLink && pageLink.externalLink !== ""
       ? true
@@ -122,7 +120,7 @@ const FullWidthComp = props => {
 
                 {hasLink && (
                   <div className={`w-100 ${hasTextAlign}`}>
-                    <Button to={pageLink}>{pageLink.btnTxt}</Button>
+                    <Button to={pageLink.page}>{pageLink.btnTxt}</Button>
                   </div>
                 )}
 

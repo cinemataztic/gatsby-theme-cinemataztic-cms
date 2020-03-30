@@ -131,8 +131,7 @@ PageLink
 type PageLink implements Node @dontInfer {
   btnTxt: String
   externalLink: String
-  link: String
-  sublink: String
+  page: PagesYaml @link(by: "uuid")
 }
 
 """
