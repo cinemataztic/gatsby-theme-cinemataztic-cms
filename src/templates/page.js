@@ -192,11 +192,35 @@ export const query = graphql`
         type
         listContent {
           id
-          slug
           title
+          slug
+          backgroundImage {
+            publicURL
+            childImageSharp {
+              resolutions {
+                src
+              }
+            }
+          }
+          coverImage {
+            publicURL
+            childImageSharp {
+              resolutions {
+                src
+              }
+            }
+          }
           featuredContent {
             title
             description
+            image {
+              publicURL
+              childImageSharp {
+                resolutions {
+                  src
+                }
+              }
+            }
           }
         }
         featured

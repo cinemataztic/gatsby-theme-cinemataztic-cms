@@ -7,27 +7,33 @@ import TweenMax from "gsap";
 import { useHover } from "react-use-gesture";
 import get from "lodash.get";
 import AniWrapper from "../buttons/AniWrapper";
-import validateLink from "../../utils/linkValidate";
 import { Waypoint } from "react-waypoint";
 
 const ListItem = ({ item, index, breakpoints, currentBreakpoint }) => {
-  //console.log (" ListItem > item = " , item);
-
   const containerRef = useRef(null);
   const textRef = useRef(null);
-  const {
-    urlPath,
-    parentPage,
-    featuredContent,
-    listImage
-  } = item.node.frontmatter;
+  let { featuredContent, slug, title, coverImage, backgroundImage } = item;
+  let description = "";
+  let image = coverImage;
 
-  const title = featuredContent.title.split("@").join("\n");
-  const description = featuredContent.featuredDescription;
-  const imgUrl = get(listImage, "childImageSharp.resolutions.src", null);
+  if (backgroundImage) {
+    image = backgroundImage;
+  }
 
-  // make sure there is no unwanted slashes
-  const linkTo = validateLink(parentPage, urlPath);
+  if (featuredContent) {
+    if (featuredContent.title) {
+      title = featuredContent.title;
+    }
+    if (featuredContent.description) {
+      description = featuredContent.description;
+    }
+    if (featuredContent.image) {
+      image = featuredContent.image;
+    }
+  }
+  title = title.split("@").join("\n");
+
+  const imgUrl = get(image, "childImageSharp.resolutions.src", null);
 
   useEffect(() => {
     TweenMax.set(containerRef.current, { alpha: 0, y: 100 });
@@ -74,7 +80,7 @@ const ListItem = ({ item, index, breakpoints, currentBreakpoint }) => {
           className="w-100 ml-2 d-flex justify-content-center "
           ref={containerRef}
         >
-          <AniWrapper to={linkTo} duration={0.8} bg="#CCFF00">
+          <AniWrapper to={slug} duration={0.8} bg="#CCFF00">
             <div {...bind()} className="position-relative">
               <div
                 ref={textRef}
