@@ -68,7 +68,7 @@ const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
   }
   title = title.split("@").join("\n");
 
-  const imagePath = get(image, "childImageSharp.resolutions.src", null);
+  const imgUrl = get(image, "childImageSharp.fluid.src", null);
 
   const txtPos = getPos(index % 2);
   const colorOverlayClass = "image-overlay-" + (index % 2);
@@ -80,12 +80,9 @@ const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
       style={{ top: 0, left: 0, opacity: 0 }}
     >
       <div className="d-flex justify-content-center justify-content-md-start">
-        <div
-          className=""
-          style={{ width: 310, height: 473, background: "black" }}
-        >
+        <div className="" style={{ width: 310, height: 473 }}>
           <AniWrapper to={slug} duration={0.8} bg="#323232">
-            <div className="position-relative" style={{ background: "red" }}>
+            <div className="position-relative">
               <div
                 className="position-absolute"
                 style={{ zIndex: 10, ...txtPos }}
@@ -106,7 +103,9 @@ const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
               </div>
 
               <div
-                className={`w-100 h-100 position-absolute ${colorOverlayClass}`}
+                className={`w-100 h-100 position-absolute ${
+                  imgUrl ? colorOverlayClass : ""
+                }`}
                 style={{
                   top: 0,
                   left: 0,
@@ -120,7 +119,7 @@ const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
                 style={{
                   boxShadow: "1.878px 10px 43px 0px rgba(0, 0, 0, .5)"
                 }}
-                src={imagePath}
+                src={imgUrl}
                 alt=""
               />
             </div>
@@ -136,7 +135,10 @@ const FeaturedList = props => {
   const nextBtn = useRef();
   const backBtn = useRef();
   const { breakpoints, currentBreakpoint } = props;
+
   const data = props.data;
+  console.log("data", data);
+
   const { listContent } = data;
   const visibleElements = getAmount(breakpoints, currentBreakpoint);
 

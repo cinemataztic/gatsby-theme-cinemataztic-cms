@@ -33,11 +33,7 @@ const Page = React.memo(props => {
   const backVideoUrl = get(backgroundVideo, "publicURL", null);
 
   // BACKGROUND IMAGE
-  const backImageSrc = get(
-    backgroundImage,
-    "childImageSharp.resolutions.src",
-    null
-  );
+  const backImageSrc = get(backgroundImage, "childImageSharp.fluid.src", null);
   const backImg = getBackgroundImage(color.backgroundColor, backImageSrc);
   const textColor = color.textColor || "FFFFFF";
 
@@ -147,7 +143,6 @@ export const query = graphql`
           fluid(quality: 70, maxWidth: 1400) {
             ...GatsbyImageSharpFluid_withWebp
           }
-
           resolutions(quality: 60) {
             aspectRatio
             width
@@ -164,10 +159,7 @@ export const query = graphql`
       backgroundImage {
         publicURL
         childImageSharp {
-          resolutions(quality: 60) {
-            aspectRatio
-            width
-            height
+          fluid(maxWidth: 1920) {
             src
           }
         }
@@ -197,7 +189,7 @@ export const query = graphql`
           backgroundImage {
             publicURL
             childImageSharp {
-              resolutions {
+              fluid(maxWidth: 400) {
                 src
               }
             }
@@ -205,7 +197,7 @@ export const query = graphql`
           coverImage {
             publicURL
             childImageSharp {
-              resolutions {
+              fluid(maxWidth: 400) {
                 src
               }
             }
@@ -216,7 +208,7 @@ export const query = graphql`
             image {
               publicURL
               childImageSharp {
-                resolutions {
+                fluid(maxWidth: 400) {
                   src
                 }
               }

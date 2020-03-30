@@ -121,15 +121,14 @@ export const query = graphql`
           backgroundImage {
             publicURL
             childImageSharp {
-              resolutions {
+              fluid(maxWidth: 400) {
                 src
               }
             }
           }
           coverImage {
-            publicURL
             childImageSharp {
-              resolutions {
+              fluid(maxWidth: 400) {
                 src
               }
             }
@@ -140,7 +139,7 @@ export const query = graphql`
             image {
               publicURL
               childImageSharp {
-                resolutions {
+                fluid(maxWidth: 400) {
                   src
                 }
               }

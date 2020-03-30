@@ -33,7 +33,7 @@ const ListItem = ({ item, index, breakpoints, currentBreakpoint }) => {
   }
   title = title.split("@").join("\n");
 
-  const imgUrl = get(image, "childImageSharp.resolutions.src", null);
+  const imgUrl = get(image, "childImageSharp.fluid.src", null);
 
   useEffect(() => {
     TweenMax.set(containerRef.current, { alpha: 0, y: 100 });
@@ -77,7 +77,7 @@ const ListItem = ({ item, index, breakpoints, currentBreakpoint }) => {
     <Waypoint onEnter={onEnter}>
       <div className="col-12 col-md-6 col-lg-4 listItem w-100 mb-5 mt-5 ">
         <div
-          className="w-100 ml-2 d-flex justify-content-center "
+          className="w-100 ml-2 d-flex justify-content-center"
           ref={containerRef}
         >
           <AniWrapper to={slug} duration={0.8} bg="#CCFF00">
@@ -100,12 +100,17 @@ const ListItem = ({ item, index, breakpoints, currentBreakpoint }) => {
               </div>
 
               <div
-                className={`w-100 h-100 position-absolute ${colorOverlayClass}`}
+                className={`w-100 h-100 position-absolute ${
+                  imgUrl ? colorOverlayClass : ""
+                }`}
                 style={{ top: 0, left: 0, zIndex: 5 }}
               ></div>
               <img
                 className="img-fluid "
-                style={{ opacity: 1 }}
+                style={{
+                  opacity: 1,
+                  boxShadow: "1.878px 10px 43px 0px rgba(0, 0, 0, .5)"
+                }}
                 src={imgUrl}
                 alt=""
               />
