@@ -171,25 +171,25 @@ const featuredContent = {
     },
     {
       label: "Short Description",
-      name: "featuredDescription",
+      name: "description",
       widget: "string",
       default: "",
       required: false,
       hint: "short text to show on featured list"
+    },
+    {
+      label: "Featured Image",
+      hint: "If no image is set here, we will try images in this order: coverImage -> backgroundImage",
+      name: "image",
+      widget: "image",
+      default: "",
+      required: false,
+      media_library: {
+        config: {
+          multiple: false
+        }
+      }
     }
-
-    /*{
-			"label":        "Featured Image",
-			"name":         "featuredImage",
-			"widget":       "image",
-			"default":      "",
-			"required":     false,
-			"media_library":{
-				"config":{
-					"multiple":false
-				}
-			}
-		}*/
   ]
 };
 
@@ -492,10 +492,10 @@ export const fullWidthVideo = {
 };
 
 export const pageList = {
-  label: "Select pages which should appear in list ",
+  label: "Select pages which should appear in list...",
   name: "listContent",
   widget: "relation",
-  collection: "sub-pages",
+  collection: "pages",
   default: "",
   required: false,
   multiple: true,

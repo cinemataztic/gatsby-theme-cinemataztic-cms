@@ -15,7 +15,6 @@ import {
 const Page = React.memo(props => {
   const featuredImageRef = useRef();
   const overlayRef = useRef();
-  const pageListArr = props.data.edges;
   const {
     coverImage,
     component,
@@ -46,7 +45,7 @@ const Page = React.memo(props => {
     ? getVideoOverlay(color.backgroundColor)
     : "";
 
-  const components = componentFactory(component, pageListArr);
+  const components = componentFactory(component);
 
   return (
     <Layout meta={{ title }}>
@@ -191,7 +190,15 @@ export const query = graphql`
         text
         title
         type
-        listContent
+        listContent {
+          id
+          slug
+          title
+          featuredContent {
+            title
+            description
+          }
+        }
         featured
         size
         textAlign

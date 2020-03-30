@@ -69,9 +69,20 @@ type PagesYaml implements Node @dontInfer {
   backgroundVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   backgroundImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   navigation: Navigation
+  featuredContent: FeaturedContent
   mainContent: MainContent!
   component: [Component]
 }
+
+"""
+FeaturedContent
+"""
+type FeaturedContent implements Node @dontInfer {
+  title: String
+  description: String
+  image: File @fileByAbsolutePath(path: "${contentPath}/media")
+}
+
 
 """
 Navigation
@@ -107,12 +118,11 @@ type Component implements Node @dontInfer {
   text: String
   title: String
   type: String
-  listContent: [String]
   featured: Boolean
   size: String
   textAlign: String
   hideControls: Boolean
-  listContent: [String]
+  listContent: [PagesYaml] @link(by: "uuid")
   pageLink: PageLink
   images: [MultipleItemImage]
   fullWidthVideo: File @fileByAbsolutePath(path: "${contentPath}/media")

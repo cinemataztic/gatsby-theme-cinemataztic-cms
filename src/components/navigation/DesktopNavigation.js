@@ -52,11 +52,7 @@ const DesktopNavigation = ({ menuData }) => {
         noTitle = false;
       }
       let hidden = false;
-      if (
-        item.node &&
-        item.node.navigation &&
-        item.node.navigation.hide
-      ) {
+      if (item.node && item.node.navigation && item.node.navigation.hide) {
         hidden = item.node.navigation.hide;
       }
       return hidden || noTitle ? false : true;
@@ -67,8 +63,6 @@ const DesktopNavigation = ({ menuData }) => {
       return itemB - itemA;
     })
     .map((item, index) => {
-    console.log("DesktopNavigation -> item, index", item, index)
-      
       const title = item.node.navigation.title;
       const urlPath = item.node.slug;
       return (

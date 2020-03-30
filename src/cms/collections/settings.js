@@ -42,7 +42,6 @@ export default {
 
         getImage("Background Image", "backgroundImage"),
         getVideo("Background video", "backgroundVideo"),
-
         getMainContent(false, false),
 
         {
@@ -66,7 +65,7 @@ export default {
                   label: "Title",
                   name: "title",
                   widget: "string",
-                  default: "Header text - "
+                  default: "Pages"
                 },
                 {
                   label: "Show as Featured",
@@ -75,8 +74,6 @@ export default {
                   default: false,
                   required: false
                 },
-
-                // The list component which will populate the LIst shown on page
                 pageList
               ]
             }

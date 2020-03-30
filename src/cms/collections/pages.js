@@ -3,6 +3,7 @@ import {
   fullWidthText,
   pageList,
   fullWidthVideo,
+  featuredContent,
   getMainContent,
   getImage,
   getVideo,
@@ -49,9 +50,8 @@ export default {
     getImage("Background Image", "backgroundImage"),
     getVideo("Background video", "backgroundVideo"),
     getMainContent(false),
-
+    featuredContent,
     navigationContent,
-
     {
       label: "component-type",
       name: "componentType",

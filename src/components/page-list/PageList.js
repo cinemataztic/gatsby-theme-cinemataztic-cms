@@ -17,13 +17,11 @@ const breakpoints = {
 };
 
 const PageList = React.memo(props => {
-  //console.log (" PageList > props = " , props);
-
-  const { pageListArr, featured } = props.data;
+  const { listContent, featured } = props.data;
   const showAsFeatured = featured;
 
   // basic Error handling - so it does not blow up
-  if (!pageListArr || pageListArr.length === 0) {
+  if (!listContent || listContent.length === 0) {
     console.log(" PageList > COULD NOT FIND LIST = ", props);
     return <div>Error list could not be found</div>;
   }
@@ -47,7 +45,7 @@ const PageList = React.memo(props => {
 
               <div className="col-12 col-lg-10 mx-auto">
                 <div className="row" style={{}}>
-                  {pageListArr.map((item, index) => {
+                  {listContent.map((item, index) => {
                     return (
                       <ListItem
                         key={index}

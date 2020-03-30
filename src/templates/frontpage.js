@@ -13,15 +13,8 @@ import {
 } from "../utils/getBackgroundImage";
 
 const FrontPage = props => {
-  console.log(" FrontPage > props = ", props.data.frontpageYaml);
   const featuredImageRef = useRef();
   const overlayRef = useRef();
-
-  //
-  // If the page contains a list the content will be here.
-  // content should be an array of sub-pages
-  //
-  const { pageListArr } = props.data.frontpageYaml;
 
   const {
     mainContent,
@@ -41,7 +34,7 @@ const FrontPage = props => {
   const videoOverlay = getVideoOverlay(null);
 
   // Get all components on page
-  const components = componentFactory(component, pageListArr);
+  const components = componentFactory(component);
 
   return (
     <Layout meta={{ title }}>
@@ -121,7 +114,39 @@ export const query = graphql`
         text
         title
         type
-        listContent
+        listContent {
+          id
+          title
+          slug
+          backgroundImage {
+            publicURL
+            childImageSharp {
+              resolutions {
+                src
+              }
+            }
+          }
+          coverImage {
+            publicURL
+            childImageSharp {
+              resolutions {
+                src
+              }
+            }
+          }
+          featuredContent {
+            title
+            description
+            image {
+              publicURL
+              childImageSharp {
+                resolutions {
+                  src
+                }
+              }
+            }
+          }
+        }
         featured
         textAlign
 

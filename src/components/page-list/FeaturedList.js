@@ -10,7 +10,6 @@ import get from "lodash.get";
 import { ReactComponent as Forward } from "../../assets/forward.svg";
 import { ReactComponent as Back } from "../../assets/back.svg";
 import AniWrapper from "../buttons/AniWrapper";
-import validateLink from "../../utils/linkValidate";
 
 const getPos = index => {
   if (index === 0) {
@@ -47,14 +46,29 @@ const getAmount = (breakpoints, currentBreakpoint) => {
   return 1;
 };
 
-const FeaturedItem = React.forwardRef(({ index, frontmatter }, ref) => {
-  const { featuredContent, parentPage, urlPath, listImage } = frontmatter;
-  const linkTo = validateLink(parentPage, urlPath);
+const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
+  let { featuredContent, slug, title, coverImage, backgroundImage } = item;
+  let description = "";
+  let image = coverImage;
 
-  const title = featuredContent.title.split("@").join("\n");
-  const description = featuredContent.featuredDescription;
+  if (backgroundImage) {
+    image = backgroundImage;
+  }
 
-  const imagePath = get(listImage, "childImageSharp.resolutions.src", null);
+  if (featuredContent) {
+    if (featuredContent.title) {
+      title = featuredContent.title;
+    }
+    if (featuredContent.description) {
+      description = featuredContent.description;
+    }
+    if (featuredContent.image) {
+      image = featuredContent.image;
+    }
+  }
+  title = title.split("@").join("\n");
+
+  const imagePath = get(image, "childImageSharp.resolutions.src", null);
 
   const txtPos = getPos(index % 2);
   const colorOverlayClass = "image-overlay-" + (index % 2);
@@ -70,7 +84,7 @@ const FeaturedItem = React.forwardRef(({ index, frontmatter }, ref) => {
           className=""
           style={{ width: 310, height: 473, background: "black" }}
         >
-          <AniWrapper to={linkTo} duration={0.8} bg="#323232">
+          <AniWrapper to={slug} duration={0.8} bg="#323232">
             <div className="position-relative" style={{ background: "red" }}>
               <div
                 className="position-absolute"
@@ -124,7 +138,9 @@ const FeaturedList = props => {
   const { breakpoints, currentBreakpoint } = props;
 
   const data = props.data;
-  const fakeArr = data.pageListArr;
+  console.log("data", data);
+
+  const { listContent } = data;
   const visibleElements = getAmount(breakpoints, currentBreakpoint);
 
   const myElements = [];
@@ -316,15 +332,14 @@ const FeaturedList = props => {
             className="col-12 col-md-10 d-flex mx-auto"
             style={{ background: "red" }}
           >
-            {fakeArr.map((item, index) => {
+            {listContent.map((item, index) => {
               myElements[index] = { pos: 0, ref: null };
               const xpos = 0;
-
               return (
                 <FeaturedItem
                   ref={li => (myElements[index].ref = li)}
-                  frontmatter={item.node.frontmatter}
-                  key={item.node.id}
+                  item={item}
+                  key={item.id}
                   visibleElements={visibleElements}
                   index={index}
                   xpos={xpos}

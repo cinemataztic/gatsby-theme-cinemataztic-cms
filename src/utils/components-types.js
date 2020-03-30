@@ -10,7 +10,7 @@ import FullWidthVideo from "../components/full-width-video/FullWidthVideo";
 import MultipleImages from "../components/multiple-images-comp/MultipleImages";
 import TextVideo from "../components/text-video/TextVideo";
 
-const componentFromString = (componentData, index, pageListContent) => {
+const componentFromString = (componentData, index) => {
   const type = componentData.type;
 
   switch (type) {
@@ -39,30 +39,11 @@ const componentFromString = (componentData, index, pageListContent) => {
 
 //---------------------------------------------------------------------------------------
 
-const componentFactory = (componentsArr, pageListArr) => {
+const componentFactory = componentsArr => {
   if (!componentsArr || componentsArr.length === 0) {
-    //console.error (" componentFactory - componentsArr not defined " , componentsArr);
     return [];
   }
-
-  if (!pageListArr) {
-    //console.error (" componentFactory - pageListArr not defined " , pageListArr);
-  }
-
   return componentsArr.map((item, index) => {
-    // This is how we handle building a list
-    if (item.type === "PageList") {
-      const pageListContent = pageListArr.filter(page => {
-        const pageUrlPath = page.node.frontmatter.urlPath;
-        const exist = item.listContent.indexOf(pageUrlPath);
-        return exist === -1 ? false : true;
-      });
-
-      // We append the content to the markdownRemark query result
-      // so we dont have to inject other data into the components
-      item.pageListArr = pageListContent;
-    }
-
     return componentFromString(item, index);
   });
 };
