@@ -26,7 +26,7 @@ module.exports = ({
       {
         resolve: "gatsby-source-filesystem",
         options: {
-          path: `${contentPath}/frontpage`,
+          path: `${settingsPath}/frontpage`,
           options: {
             typeName: "Frontpage"
           }
