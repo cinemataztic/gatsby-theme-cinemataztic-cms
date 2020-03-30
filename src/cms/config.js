@@ -22,6 +22,6 @@ init({
     logo_url: cinematazticLogo,
     media_folder: "@contentPath/media",
     public_folder: "/",
-    collections: [settings, pages]
+    collections: [pages, settings]
   }
 });
