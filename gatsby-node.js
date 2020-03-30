@@ -17,7 +17,7 @@ exports.onPreBootstrap = ({ reporter }, options) => {
     mkdirp.sync(imgPath);
   }
 
-  const settingsPath = `${contentPath}/settings`;
+  const settingsPath = options.settingsPath || `settings`;
   if (!fs.existsSync(settingsPath)) {
     reporter.info(`creating the ${settingsPath} directory`);
     mkdirp.sync(settingsPath);

@@ -7,7 +7,7 @@ import AutoUuidWidgetControl from "./AutoUuidWidget/AutoUuidWidgetControl";
 
 import cinematazticLogo from "./cinemataztic_logo_300x150.png";
 
-import frontPage from "./collections/frontpage";
+import settings from "./collections/settings";
 import pages from "./collections/pages";
 
 // Register preview templates
@@ -22,6 +22,6 @@ init({
     logo_url: cinematazticLogo,
     media_folder: "@contentPath/media",
     public_folder: "/",
-    collections: [frontPage, pages]
+    collections: [settings, pages]
   }
 });

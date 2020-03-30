@@ -1,5 +1,5 @@
 module.exports = ({
-  contentPath = "data",
+  contentPath = "content",
   sitePath = null,
   settingsPath = "settings"
 }) => {
@@ -87,13 +87,18 @@ module.exports = ({
             const ReplaceInFileWebpackPlugin = require("replace-in-file-webpack-plugin");
             if (sitePath) {
               contentPath = `${sitePath}/${contentPath}`;
+              settingsPath = `${sitePath}/${settingsPath}`;
             }
+            console.log("settingsPath: ", settingsPath);
             config.plugins.push(
               new ReplaceInFileWebpackPlugin([
                 {
                   dir: config.output.path,
                   files: ["cms.js", "cms.js.map"],
-                  rules: [{ search: /@contentPath/g, replace: contentPath }]
+                  rules: [
+                    { search: /@contentPath/g, replace: contentPath },
+                    { search: /@settingsPath/g, replace: settingsPath }
+                  ]
                 }
               ])
             );
