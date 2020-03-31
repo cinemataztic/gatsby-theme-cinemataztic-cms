@@ -13,11 +13,18 @@ import pages from "./collections/pages";
 // Register preview templates
 CMS.registerWidget("uuid", AutoUuidWidgetControl);
 
+const GATSBY_LOCAL_BACKEND = process.env.GATSBY_LOCAL_BACKEND;
+const GATSBY_BACKEND_NAME = process.env.GATSBY_BACKEND_NAME;
+const GATSBY_BACKEND_REPO = process.env.GATSBY_BACKEND_REPO;
+const GATSBY_BACKEND_BRANCH = process.env.GATSBY_BACKEND_BRANCH;
+
 init({
   config: {
-    local_backend: true,
+    local_backend: GATSBY_LOCAL_BACKEND === "true",
     backend: {
-      name: "git-gateway"
+      name: GATSBY_LOCAL_BACKEND === "true" ? "local" : GATSBY_BACKEND_NAME,
+      repo: GATSBY_LOCAL_BACKEND === "true" ? "" : GATSBY_BACKEND_REPO,
+      branch: GATSBY_BACKEND_BRANCH
     },
     logo_url: cinematazticLogo,
     media_folder: "@contentPath/media",
