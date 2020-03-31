@@ -20,6 +20,9 @@ export default {
   format: "yaml",
   create: true,
   folder: "@contentPath/pages",
+  editor: {
+    preview: false
+  },
   summary: "{{title}} / {{mainContent.subhead}}",
   fields: [
     {

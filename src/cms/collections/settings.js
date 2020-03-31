@@ -18,6 +18,9 @@ export default {
   create: false,
   identifier_field: "urlPath",
   slug: "{{slug}}",
+    editor: {
+    preview: false
+  },
   files: [
     {
       name: "Frontpage",
