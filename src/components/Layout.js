@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import { graphql, StaticQuery } from "gatsby";
 import ReactBreakpoints from "react-breakpoints";
 
-import Footer from "../footer/Footer";
+import Footer from "./footer/Footer";
 
 import favicon from "../assets/icon/favicon.ico";
 import favicon32 from "../assets/icon/favicon-32x32.png";
