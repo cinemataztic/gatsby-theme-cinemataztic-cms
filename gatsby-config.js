@@ -8,7 +8,8 @@ console.log(`Using environment config: '${activeEnv}'`);
 module.exports = ({
   contentPath = "content",
   sitePath = null,
-  settingsPath = "settings"
+  settingsPath = "settings",
+  isYarnWorkspace = false
 }) => {
   return {
     plugins: [
@@ -90,7 +91,7 @@ module.exports = ({
           manualInit: false,
           enableIdentityWidget: true,
           modulePath: `${__dirname}/src/cms/config.js`,
-          customizeWebpackConfig: (config, {}) => {
+          customizeWebpackConfig: (config, { }) => {
             const ReplaceInFileWebpackPlugin = require("replace-in-file-webpack-plugin");
             if (sitePath) {
               contentPath = `${sitePath}/${contentPath}`;
