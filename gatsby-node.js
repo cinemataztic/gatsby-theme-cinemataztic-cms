@@ -1,6 +1,5 @@
-const fs = require("fs");
+const fs = require("fs-extra");
 const path = require("path");
-const ncp = require("ncp");
 const mkdirp = require("mkdirp");
 const { getTypeDefs } = require("./type-defs.js");
 
@@ -28,32 +27,32 @@ exports.onPreBootstrap = ({ reporter }, options) => {
     const hoistedPath = path.resolve(__dirname, "../node_modules/bootstrap");
     const workspacePath = path.resolve(__dirname, `../${options.sitePath}/node_modules/bootstrap`);
     if (!fs.existsSync("node_modules/bootstrap")) {
-      ncp(
+      reporter.info(`copying hoisted bootstrap package from ${hoistedPath} to ${workspacePath}`)
+      fs.copySync(
         hoistedPath,
-        workspacePath,
-        function (err) {
-          if (err) {
-            reporter.panic(`error copying hoisted bootstrap package from ${hoistedPath} to ${workspacePath}`);
-            return console.error(err);
-          }
-          reporter.info(`copied hoisted bootstrap package from ${hoistedPath} to ${workspacePath}`);
-        });
+        workspacePath)
     }
   }
 
-  // Create content directory if they don't exist
+  // Create content directories if they don't exist
   const contentPath = options.contentPath || "content";
   const pagesPath = `${contentPath}/pages`;
 
   if (!fs.existsSync(pagesPath)) {
-    reporter.info(`creating the ${pagesPath} directory`);
+    reporter.info(`creating the ${pagesPath} directory and populating with default pages.`);
     mkdirp.sync(pagesPath);
+    fs.copySync(
+      `${__dirname}/defaults/content/pages`,
+      pagesPath);
   }
 
   const mediaPath = `${contentPath}/media`;
   if (!fs.existsSync(mediaPath)) {
-    reporter.info(`creating the ${mediaPath} directory`);
+    reporter.info(`creating the ${mediaPath} directory and populating with default media content`);
     mkdirp.sync(mediaPath);
+    fs.copySync(
+      `${__dirname}/defaults/content/media`,
+      mediaPath)
   }
 
   // Check if required settings folder and files exist
