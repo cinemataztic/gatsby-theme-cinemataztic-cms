@@ -7,21 +7,56 @@ exports.onPreBootstrap = ({ reporter }, options) => {
   // Create content directory if they don't exist
   const contentPath = options.contentPath || "content";
   const pagesPath = `${contentPath}/pages`;
+
   if (!fs.existsSync(pagesPath)) {
     reporter.info(`creating the ${pagesPath} directory`);
     mkdirp.sync(pagesPath);
   }
+
   const mediaPath = `${contentPath}/media`;
   if (!fs.existsSync(mediaPath)) {
     reporter.info(`creating the ${mediaPath} directory`);
     mkdirp.sync(mediaPath);
   }
 
+  // Check if required settings folder and files exist
   const settingsPath = options.settingsPath || `settings`;
-  if (!fs.existsSync(settingsPath)) {
-    reporter.info(`creating the ${settingsPath} directory`);
-    mkdirp.sync(settingsPath);
-  }
+
+  const requiredPaths = [
+    {
+      dir: `${settingsPath}/frontpage`,
+      fileName: "index.yml"
+    },
+    {
+      dir: `${settingsPath}/footer`,
+      fileName: "index.yml"
+    },
+    {
+      dir: `${settingsPath}/meta`,
+      fileName: "index.yml"
+    },
+    {
+      dir: `${settingsPath}/frontpage`,
+      fileName: "index.yml"
+    }
+  ]
+
+  requiredPaths.forEach(path => {
+    if (!fs.existsSync(path.dir)) {
+      reporter.info(`creating the ${path.dir} directory`);
+      mkdirp.sync(path.dir);
+    }
+    if (path.fileName && !fs.existsSync(`${path.dir}/${path.fileName}`)) {
+      fs.copyFile(
+        `${__dirname}/defaults/${path.dir}/${path.fileName}`,
+        `${path.dir}/${path.fileName}`,
+        err => {
+          if (err) throw err;
+          reporter.info(`${path.dir}/${path.fileName} not found - created default.`);
+        }
+      );
+    }
+  });
 };
 
 // 2. define the event type
@@ -40,11 +75,10 @@ exports.createResolvers = async ({ createResolvers }, options) => {
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)+/g, "");
-
-    return `/${basePath}/${slug}`.replace(/\/\/+/g, "/");
+    return `/ ${basePath} / ${slug}`.replace(/\/\/+/g, "/");
   };
 
-  const getParentPageYaml = async function(context, parentPageUuid) {
+  const getParentPageYaml = async function (context, parentPageUuid) {
     const parentPageYaml = await context.nodeModel.runQuery({
       type: `PagesYaml`,
       firstOnly: true,
