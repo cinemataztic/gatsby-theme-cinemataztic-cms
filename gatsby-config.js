@@ -8,8 +8,7 @@ console.log(`Using environment config: '${activeEnv}'`);
 module.exports = ({
   contentPath = "content",
   sitePath = null,
-  settingsPath = "settings",
-  isYarnWorkspace = false
+  settingsPath = "settings"
 }) => {
   return {
     plugins: [

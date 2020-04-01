@@ -1,6 +1,6 @@
 {
     "name": "gatsby-theme-cinemataztic-cms",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "main": "index.js",
     "repository": {
         "type": "git",
@@ -29,6 +29,7 @@
         "bootstrap": "^4.4.1",
         "dotenv": "^8.2.0",
         "fs": "^0.0.1-security",
+        "fs-extra": "^9.0.0",
         "gatsby": "^2.13.9",
         "gatsby-image": "^2.3.0",
         "gatsby-plugin-netlify": "^2.1.35",
@@ -49,7 +50,6 @@
         "hex-to-rgba": "^2.0.1",
         "lodash.get": "^4.4.2",
         "mkdirp": "^1.0.3",
-        "ncp": "^2.0.0",
         "netlify-cms-app": "^2.11.32",
         "netlify-cms-backend-fs": "^0.4.4",
         "node-sass": "^4.13.1",
