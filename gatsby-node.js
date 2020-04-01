@@ -1,9 +1,46 @@
 const fs = require("fs");
+const path = require("path");
+const ncp = require("ncp");
 const mkdirp = require("mkdirp");
 const { getTypeDefs } = require("./type-defs.js");
 
 // 1. make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
+
+  // Check if this is run from a yarn workpace
+  // If yes: copy hoisted bootstrap package from ../node_modules to target workspace node_modules.
+  // Assuming options.isYarnWorkspace = true and options.sitePath = site:
+  // - cinemataztic-gatsby-cms
+  //   - gatsby-theme-cinemataztic-cms
+  //     - node_modules
+  //       - bootstrap <-- copy from here
+  //   - site
+  //     - node_modules
+  //       - bootstrap <-- to here
+  //
+  // EXAMPLE: 
+  // boostrap sass imports does not work when boostrap npm package has been hoisted to ../node_modules 
+  // (e.g.  @import "node_modules/bootstrap/scss/mixins" in gatsby-theme-cinemataztic-cms/src/components/navigation/navigation.scss)
+  //
+
+  if (options.isYarnWorkspace && options.sitePath) {
+    reporter.info(`running as yarn workspace`);
+    const hoistedPath = path.resolve(__dirname, "../node_modules/bootstrap");
+    const workspacePath = path.resolve(__dirname, `../${options.sitePath}/node_modules/bootstrap`);
+    if (!fs.existsSync("node_modules/bootstrap")) {
+      ncp(
+        hoistedPath,
+        workspacePath,
+        function (err) {
+          if (err) {
+            reporter.panic(`error copying hoisted bootstrap package from ${hoistedPath} to ${workspacePath}`);
+            return console.error(err);
+          }
+          reporter.info(`copied hoisted bootstrap package from ${hoistedPath} to ${workspacePath}`);
+        });
+    }
+  }
+
   // Create content directory if they don't exist
   const contentPath = options.contentPath || "content";
   const pagesPath = `${contentPath}/pages`;
