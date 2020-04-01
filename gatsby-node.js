@@ -1,32 +1,37 @@
 const fs = require("fs");
+const mkdirp = require("mkdirp");
+const { getTypeDefs } = require("./type-defs.js");
 
 // 1. make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
-  const contentPath = options.contentPath || "data";
+  // Create content directory if they don't exist
+  const contentPath = options.contentPath || "content";
+  const pagesPath = `${contentPath}/pages`;
+  if (!fs.existsSync(pagesPath)) {
+    reporter.info(`creating the ${pagesPath} directory`);
+    mkdirp.sync(pagesPath);
+  }
+  const imgPath = `${contentPath}/img`;
+  if (!fs.existsSync(imgPath)) {
+    reporter.info(`creating the ${imgPath} directory`);
+    mkdirp.sync(imgPath);
+  }
 
-  if (!fs.existsSync(contentPath)) {
-    reporter.info(`creating the ${contentPath} directory`);
-    fs.mkdirSync(contentPath);
+  const settingsPath = options.settingsPath || `settings`;
+  if (!fs.existsSync(settingsPath)) {
+    reporter.info(`creating the ${settingsPath} directory`);
+    mkdirp.sync(settingsPath);
   }
 };
 
 // 2. define the event type
-exports.sourceNodes = ({ actions }) => {
-  actions.createTypes(`
-        type Event implements Node @dontInfer {
-          id: ID!
-          name: String!
-          location: String!
-          startDate: Date! @dateformat @proxy(from: "start_date")
-          endDate: Date! @dateformat @proxy(from: "end_date")
-          url: String!
-          slug: String!
-      }
-  `);
+exports.createSchemaCustomization = ({ actions }, options) => {
+  const { createTypes } = actions;
+  createTypes(getTypeDefs(options.contentPath));
 };
 
 // 3 define resolvers for any custom fields (slug)
-exports.createResolvers = ({ createResolvers }, options) => {
+exports.createResolvers = async ({ createResolvers }, options) => {
   const basePath = options.basePath || "/";
 
   // Quick-and-dirty helper to convert strings into URL-friendly slugs.
@@ -39,26 +44,47 @@ exports.createResolvers = ({ createResolvers }, options) => {
     return `/${basePath}/${slug}`.replace(/\/\/+/g, "/");
   };
 
+  const getParentPageYaml = async function(context, parentPageUuid) {
+    const parentPageYaml = await context.nodeModel.runQuery({
+      type: `PagesYaml`,
+      firstOnly: true,
+      query: { filter: { uuid: { eq: parentPageUuid } } }
+    });
+    return parentPageYaml;
+  };
+
   createResolvers({
-    Event: {
+    PagesYaml: {
       slug: {
-        resolve: source => slugify(source.name)
+        type: "String",
+        resolve: async (source, args, context, info) => {
+          let slug = slugify(source.title);
+          if (source.parentPage) {
+            const parentPageYaml = await getParentPageYaml(
+              context,
+              source.parentPage
+            );
+            slug = slugify(parentPageYaml.title) + slugify(source.title);
+          }
+          return slug;
+        }
       }
     }
   });
 };
 
-// 4. query for events and create pages
+// 4. query for pages and create pages
 exports.createPages = async ({ actions, graphql, reporter }, options) => {
   const basePath = options.basePath || "/";
+
   actions.createPage({
     path: basePath,
-    component: require.resolve("./src/templates/events.js")
+    component: require.resolve("./src/templates/frontpage.js")
   });
 
-  const result = await graphql(`
+  const allPages = await graphql(`
     query {
-      allEvent(sort: { fields: startDate, order: ASC }) {
+      allPagesYaml(sort: { fields: title, order: ASC }) {
         nodes {
           id
           slug
@@ -67,21 +93,19 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
     }
   `);
 
-  if (result.errors) {
-    reporter.panic("error loading events", reporter.errors);
+  if (allPages.errors) {
+    reporter.panic("error loading pages", reporter.errors);
     return;
   }
 
-  const events = result.data.allEvent.nodes;
-
-  events.forEach(event => {
-    const { slug } = event;
-
+  const pages = allPages.data.allPagesYaml.nodes;
+  pages.forEach(async page => {
+    const { slug } = page;
     actions.createPage({
       path: slug,
-      component: require.resolve("./src/templates/event.js"),
+      component: require.resolve("./src/templates/page.js"),
       context: {
-        eventID: event.id
+        pageID: page.id
       }
     });
   });

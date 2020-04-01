@@ -30,10 +30,10 @@ const EventDate = ({ startDate, endDate }) => {
   );
 };
 
-const Event = ({ name, location, url, startDate, endDate }) => (
+const Event = ({ title, location, url, startDate, endDate }) => (
   <div>
     <h1>
-      {name} ({location})
+      {title} ({location})
     </h1>
     <p>
       <EventDate startDate={startDate} endDate={endDate} />
