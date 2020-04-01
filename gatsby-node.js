@@ -11,10 +11,10 @@ exports.onPreBootstrap = ({ reporter }, options) => {
     reporter.info(`creating the ${pagesPath} directory`);
     mkdirp.sync(pagesPath);
   }
-  const imgPath = `${contentPath}/img`;
-  if (!fs.existsSync(imgPath)) {
-    reporter.info(`creating the ${imgPath} directory`);
-    mkdirp.sync(imgPath);
+  const mediaPath = `${contentPath}/img`;
+  if (!fs.existsSync(mediaPath)) {
+    reporter.info(`creating the ${mediaPath} directory`);
+    mkdirp.sync(mediaPath);
   }
 
   const settingsPath = options.settingsPath || `settings`;
