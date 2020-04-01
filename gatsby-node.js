@@ -11,7 +11,7 @@ exports.onPreBootstrap = ({ reporter }, options) => {
     reporter.info(`creating the ${pagesPath} directory`);
     mkdirp.sync(pagesPath);
   }
-  const mediaPath = `${contentPath}/img`;
+  const mediaPath = `${contentPath}/media`;
   if (!fs.existsSync(mediaPath)) {
     reporter.info(`creating the ${mediaPath} directory`);
     mkdirp.sync(mediaPath);
