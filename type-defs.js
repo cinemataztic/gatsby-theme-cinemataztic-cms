@@ -8,6 +8,9 @@ type MetaYaml implements Node @dontInfer {
   og_description: String!
   og_type: String!
   og_image: String!
+  facebookLink: String
+  instagramLink: String
+  linkedinLink: String
 }
 
 """
@@ -19,9 +22,6 @@ type FooterYaml implements Node @dontInfer {
   headline: String
   description: String
   componentType: String
-  facebookLink: String
-  instagramLink: String
-  linkedinLink: String
   footerColumn: [FooterColumn]
 }
 

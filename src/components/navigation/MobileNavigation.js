@@ -64,13 +64,13 @@ const MobileNavItem = React.forwardRef(
   }
 );
 
-const MobileNavigation = ({ menuData, settings }) => {
+const MobileNavigation = ({ menuData, meta }) => {
   const mobileRef = useRef();
   const barOneRef = useRef();
   const barTwoRef = useRef();
   const barThreeRef = useRef();
   const logoRef = useRef();
-  const { facebookLink, instagramLink, linkedinLink } = settings.edges[0].node;
+  const { facebookLink, instagramLink, linkedinLink } = meta;
   const [menuOpen, setMenuOpen] = useState(false);
   const myElements = [];
 

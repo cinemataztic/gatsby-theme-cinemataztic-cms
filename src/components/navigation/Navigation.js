@@ -31,11 +31,13 @@ const Navigation = React.memo(() => {
               node {
                 id
                 title
-                linkedinLink
-                instagramLink
-                facebookLink
               }
             }
+          }
+          metaYaml {
+            linkedinLink
+            instagramLink
+            facebookLink
           }
         }
       `}
@@ -48,7 +50,7 @@ const Navigation = React.memo(() => {
           >
             <MobileNavigation
               menuData={menuData}
-              settings={data.allFooterYaml}
+              meta={data.metaYaml}
             />
             <DesktopNavigation menuData={menuData}></DesktopNavigation>
           </div>

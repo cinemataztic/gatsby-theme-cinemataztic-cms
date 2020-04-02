@@ -110,18 +110,25 @@ const Footer = () => {
             componentType
             description
           }
+          metaYaml {
+            linkedinLink
+            instagramLink
+            facebookLink
+          }
         }
       `}
       render={data => {
         const {
           html,
-          facebookLink,
-          instagramLink,
-          linkedinLink,
           description,
           headline,
           footerColumn
         } = data.footerYaml;
+
+        const { facebookLink,
+          instagramLink,
+          linkedinLink
+        } = data.metaYaml
 
         const content = footerColumn;
 
