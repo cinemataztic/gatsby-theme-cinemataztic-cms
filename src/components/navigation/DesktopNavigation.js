@@ -13,7 +13,7 @@ const NavItem = React.forwardRef(
     return (
       <div ref={ref} className="cine-nav-item pl-3 pr-3">
         <AniWrapper
-          to={"/" + urlPath}
+          to={urlPath}
           menuToggle={menuToggle}
           menuStatus={menuStatus}
         >
@@ -64,6 +64,7 @@ const DesktopNavigation = ({ menuData, logo, logoSmall }) => {
     .map((item, index) => {
       const title = item.node.navigation.title;
       const urlPath = item.node.slug;
+      console.log("DesktopNavigation -> urlPath", urlPath)
       return (
         <NavItem
           key={index}
