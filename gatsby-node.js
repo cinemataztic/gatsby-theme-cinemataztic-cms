@@ -64,6 +64,10 @@ exports.onPreBootstrap = ({ reporter }, options) => {
       fileName: "index.yml"
     },
     {
+      dir: `${settingsPath}/general`,
+      fileName: "index.yml"
+    },
+    {
       dir: `${settingsPath}/footer`,
       fileName: "index.yml"
     },
