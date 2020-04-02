@@ -64,7 +64,6 @@ const DesktopNavigation = ({ menuData, logo, logoSmall }) => {
     .map((item, index) => {
       const title = item.node.navigation.title;
       const urlPath = item.node.slug;
-      console.log("DesktopNavigation -> urlPath", urlPath)
       return (
         <NavItem
           key={index}

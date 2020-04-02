@@ -54,7 +54,7 @@ const FrontPage = props => {
               <track
                 default
                 kind="captions"
-                srclang="en"
+                srcLang="en"
                 src={backgroundVideoCaptions}
               />
             </video>

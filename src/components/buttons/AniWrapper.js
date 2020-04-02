@@ -14,40 +14,37 @@ const AniWrapper = (props) => {
 
 	const ani = (node, exit, exitDelay) => {
 
-		if(props.menuStatus ){
+		if (props.menuStatus) {
 			props.menuToggle(false)
-			TweenMax.to(node ,.8, {alpha:0, y:0, delay:.2  , ease:"Expo.easeOut"});
+			TweenMax.to(node, .8, { alpha: 0, y: 0, delay: .2, ease: "Expo.easeOut" });
 			return
 		}
 
 
-		TweenMax.to(node ,.8, {alpha:0, scale:.9,scrollTop: 0,  ease:"Expo.easeOut"});
+		TweenMax.to(node, .8, { alpha: 0, scale: .9, scrollTop: 0, ease: "Expo.easeOut" });
 	};
 
 
 	return (
 
-	   <TransitionLink className={classes} activeClassName={activeClassName}
+		<TransitionLink className={classes} activeClassName={activeClassName}
 
-		  exit={{
-			  length: .8,
-			  trigger: ({ exit, node }) =>{
-					console.log (" AniWrapper > click = " );
-				  	return ani(node, exit, exitDelay)
-			  }
-		  }}
+			exit={{
+				length: .8,
+				trigger: ({ exit, node }) => ani(node, exit, exitDelay)
+			}}
 
-		  entry={{
-			  delay: .5 ,
+			entry={{
+				delay: .5,
 
-		  }}
+			}}
 
-		  to={props.to}
-	   >
+			to={props.to}
+		>
 
 			{props.children}
 
-	   </TransitionLink>
+		</TransitionLink>
 	)
 
 }

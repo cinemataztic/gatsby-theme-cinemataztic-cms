@@ -1,16 +1,17 @@
 import React, { useRef } from "react";
 import { graphql } from "gatsby";
+import get from "lodash.get";
+import Img from "gatsby-image";
 
 import componentFactory from "../utils/components-types";
 import Layout from "../components/Layout";
 import HeaderAnimation from "../components/animation/HeaderAnimation";
-import get from "lodash.get";
 import "./page.scss";
-import Img from "gatsby-image";
 import {
   getBackgroundImage,
   getVideoOverlay
 } from "../utils/getBackgroundImage";
+import NextPrevLink from "../components/next-prev-link/NextPrevLink";
 
 const Page = React.memo(props => {
   const featuredImageRef = useRef();
@@ -24,7 +25,9 @@ const Page = React.memo(props => {
     coverVideo,
     coverVideoCaptions,
     backgroundVideoCaptions,
-    title
+    title,
+    previousPage,
+    nextPage
   } = props.data.pagesYaml;
   const { header, subhead, color } = mainContent;
   const headerWithSplit = header.split("@").join("\n");
@@ -62,7 +65,7 @@ const Page = React.memo(props => {
               <track
                 default
                 kind="captions"
-                srclang="en"
+                srcLang="en"
                 src={backgroundVideoCaptions || null}
               />
               Sorry, your browser does not support video.
@@ -106,7 +109,7 @@ const Page = React.memo(props => {
                 <track
                   default
                   kind="captions"
-                  srclang="en"
+                  srcLang="en"
                   src={coverVideoCaptions}
                 />
                 Sorry, your browser does not support video.
@@ -124,6 +127,12 @@ const Page = React.memo(props => {
         </div>
 
         {components}
+
+        <NextPrevLink
+          nextPage={nextPage}
+          previousPage={previousPage}
+        />
+
       </div>
     </Layout>
   );
@@ -177,6 +186,7 @@ export const query = graphql`
           textColor
         }
       }
+      
       component {
         placement
         text
@@ -286,6 +296,24 @@ export const query = graphql`
           }
         }
       }
+      
+      previousPage {
+        slug
+        title
+        mainContent {
+          header
+          subhead
+        }
+      }
+      nextPage {
+        title
+        slug
+        mainContent {
+          header
+          subhead
+        }
+      }
+
     }
   }
 `;
