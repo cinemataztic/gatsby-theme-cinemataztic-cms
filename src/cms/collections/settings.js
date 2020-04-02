@@ -130,7 +130,31 @@ export default {
           hint: "A one to two sentence description of your object"
         },
 
-        getImage("Open Graph Image", "og_image")
+        getImage("Open Graph Image", "og_image"),
+
+        {
+          label: "Facebook Link",
+          name: "facebookLink",
+          widget: "string",
+          required: false,
+          hint: "Link to your facebook page"
+        },
+
+        {
+          label: "LinkedIn Link",
+          name: "linkedinLink",
+          widget: "string",
+          required: false,
+          hint: "Link to your LinkedIn page"
+        },
+
+        {
+          label: "Instagram Link",
+          name: "instagramLink",
+          widget: "string",
+          required: false,
+          hint: "Link to your Instagram Page"
+        },
       ]
     },
     {
