@@ -67,7 +67,7 @@ export default class Player extends PureComponent {
                   tabIndex="0"
                   onKeyPress={e => e.preventDefault()}
                   onClick={this.togglePlaying}
-                  className="video-play-overlay pointer rounded-circle d-flex flex-column justify-content-center"
+                  className="video-play-overlay pointer rounded-circle d-flex flex-column justify-content-center no-outline"
                   style={{ width: 100, height: 100, background: "#323232" }}
                 >
                   <div className=" text-center align-items-center">PLAY</div>
