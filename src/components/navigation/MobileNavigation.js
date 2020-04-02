@@ -239,7 +239,7 @@ const MobileNavigation = ({ menuData, meta, logo }) => {
             tabIndex="0"
             onKeyPress={e => e.preventDefault()}
             onClick={menuClick}
-            className="d-flex flex-column justify-content-around mr-2 position-relative pointer"
+            className="d-flex flex-column justify-content-around mr-2 position-relative pointer no-outline"
             style={{ zIndex: 500, width: 30, height: 20 }}
           >
             <div

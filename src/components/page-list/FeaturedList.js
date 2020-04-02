@@ -285,6 +285,7 @@ const FeaturedList = props => {
               onKeyPress={gotoPrev}
               role="button"
               tabIndex="0"
+              className="no-outline"
             >
               <div
                 className="pointer "
@@ -311,7 +312,7 @@ const FeaturedList = props => {
               onKeyPress={gotoNext}
               role="button"
               tabIndex="0"
-              className="pointer pt-4 pb-4"
+              className="pointer pt-4 pb-4 no-outline"
             >
               <div
                 className="my-auto myElements.length"
