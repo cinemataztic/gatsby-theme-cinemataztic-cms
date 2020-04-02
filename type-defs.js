@@ -2,6 +2,14 @@ exports.getTypeDefs = contentPath => `
 """
 Settings
 """
+type GeneralYaml implements Node @dontInfer {
+  id: ID!
+  pageTitle: String!
+  favicon: File @fileByAbsolutePath(path: "${contentPath}/media")
+  logo: File @fileByAbsolutePath(path: "${contentPath}/media")
+  logoSmall: File @fileByAbsolutePath(path: "${contentPath}/media")
+}
+
 type MetaYaml implements Node @dontInfer {
   id: ID!
   og_title: String!

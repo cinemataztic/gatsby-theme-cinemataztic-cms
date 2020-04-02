@@ -42,6 +42,15 @@ module.exports = ({
       {
         resolve: "gatsby-source-filesystem",
         options: {
+          path: `${settingsPath}/general`,
+          options: {
+            typeName: "General"
+          }
+        }
+      },
+      {
+        resolve: "gatsby-source-filesystem",
+        options: {
           path: `${settingsPath}/meta`,
           options: {
             typeName: "Meta"

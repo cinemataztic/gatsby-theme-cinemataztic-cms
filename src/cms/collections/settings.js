@@ -94,11 +94,13 @@ export default {
       fields: [
         {
           label: "Page Title",
-          name: "title",
+          name: "pageTitle",
           widget: "string",
           required: true
         },
-        getImage("Favicon", "favicon")
+        getImage("Logo", "logo"),
+        getImage("Small Logo", "logoSmall"),
+        getImage("Favicon", "favicon"),
       ]
     },
     {

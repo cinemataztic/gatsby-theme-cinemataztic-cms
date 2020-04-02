@@ -4,7 +4,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import TweenMax from "gsap";
 import AniWrapper from "../buttons/AniWrapper";
-import Logo from "../display/Logo";
 
 import { ReactComponent as Instagram } from "../../assets/social/instagram.svg";
 import { ReactComponent as Facebook } from "../../assets/social/facebook.svg";
@@ -64,7 +63,7 @@ const MobileNavItem = React.forwardRef(
   }
 );
 
-const MobileNavigation = ({ menuData, meta }) => {
+const MobileNavigation = ({ menuData, meta, logo }) => {
   const mobileRef = useRef();
   const barOneRef = useRef();
   const barTwoRef = useRef();
@@ -229,7 +228,7 @@ const MobileNavigation = ({ menuData, meta }) => {
               className="w-100 position-relative"
               style={{ zIndex: 200 }}
             >
-              <Logo></Logo>
+              <img alt="" src={logo.src} />
             </div>
           </div>
         </div>

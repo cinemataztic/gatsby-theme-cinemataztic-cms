@@ -6,9 +6,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink";
 import AniWrapper from "../buttons/AniWrapper";
 import { win } from "../../utils/browserMock";
 import ScrollListener from "react-scroll-listen";
-import Logo from "../display/Logo";
 import TweenMax from "gsap";
-import { ReactComponent as LogoC } from "../../assets/new_logo.svg";
 
 const NavItem = React.forwardRef(
   ({ title, urlPath, menuToggle, menuStatus }, ref) => {
@@ -32,7 +30,8 @@ const NavItem = React.forwardRef(
   }
 );
 
-const DesktopNavigation = ({ menuData }) => {
+const DesktopNavigation = ({ menuData, logo, logoSmall }) => {
+
   const logoRef = useRef();
   const containerRef = useRef();
   const ccRef = useRef();
@@ -153,7 +152,7 @@ const DesktopNavigation = ({ menuData }) => {
                   ref={ccRef}
                   style={{ marginTop: -8, width: 40, height: 40 }}
                 >
-                  <LogoC></LogoC>
+                  <img alt="" src={logoSmall.src} />
                 </div>
               </AniLink>
             </div>
@@ -171,7 +170,7 @@ const DesktopNavigation = ({ menuData }) => {
                     className="w-100 position-absolute"
                     style={{ top: 0, left: 0 }}
                   >
-                    <Logo></Logo>
+                    <img alt="" src={logo.src} />
                   </div>
                 </div>
               </AniLink>

@@ -39,20 +39,59 @@ const Navigation = React.memo(() => {
             instagramLink
             facebookLink
           }
+          generalYaml {
+            logo {
+              publicURL
+            }
+            logoSmall {
+              publicURL
+            }
+          }
         }
       `}
       render={data => {
         const menuData = data.allPagesYaml;
+        let { logo, logoSmall } = data.generalYaml;
+        if (
+          logo.ext !== ".svg"
+          && logo.childImageSharp
+          && logo.childImageSharp.fluid
+          && logo.childImageSharp.fluid.src
+        ) {
+          logo.src = logo.childImageSharp.fluid.src
+        }
+        else {
+          logo.src = logo.publicURL
+        }
+
+        if (
+          logoSmall.ext !== ".svg"
+          && logoSmall.childImageSharp
+          && logoSmall.childImageSharp.fluid
+          && logoSmall.childImageSharp.fluid.src
+        ) {
+          logoSmall.src = logoSmall.childImageSharp.fluid.src
+        }
+        else {
+          logoSmall.src = logoSmall.publicURL
+        }
+
+
         return (
           <div
             className="container-fluid cine-navigation position-fixed w-100"
             style={{ top: 0, left: 0, zIndex: 200 }}
           >
             <MobileNavigation
+              logo={logo}
               menuData={menuData}
               meta={data.metaYaml}
             />
-            <DesktopNavigation menuData={menuData}></DesktopNavigation>
+            <DesktopNavigation
+              logo={logo}
+              logoSmall={logoSmall}
+              menuData={menuData}
+            />
           </div>
         );
       }}
