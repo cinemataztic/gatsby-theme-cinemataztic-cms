@@ -96,6 +96,24 @@ export default {
           ]
         }
       ]
+    }, {
+      label: "Next Page",
+      name: "nextPage",
+      required: false,
+      widget: "relation",
+      collection: "pages",
+      searchFields: ["title", "slug", "uuid"],
+      valueField: "uuid",
+      displayFields: ["title", "slug"]
+    }, {
+      label: "Previous Page",
+      name: "previousPage",
+      required: false,
+      widget: "relation",
+      collection: "pages",
+      searchFields: ["title", "slug", "uuid"],
+      valueField: "uuid",
+      displayFields: ["title", "slug"]
     }
   ]
 };

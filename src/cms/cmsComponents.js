@@ -251,28 +251,6 @@ const linkBtn = {
   ]
 };
 
-export const backForwardLink = {
-  label: "Next/Prev Page",
-  name: "nextPrevPage",
-  required: false,
-  widget: "object",
-  fields: [
-    {
-      label: "Select sub Page",
-      name: "sublink",
-      widget: "relation",
-      collection: "sub-pages",
-      default: null,
-      hint: "Only the first two selection will be used",
-      required: false,
-      searchFields: ["urlPath"],
-      multiple: true,
-      valueField: "urlPath",
-      displayFields: ["urlPath"]
-    }
-  ]
-};
-
 export const fullWidthText = {
   label: "Full Width Component",
   name: "FullWidthComponent",

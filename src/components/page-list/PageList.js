@@ -34,11 +34,6 @@ const PageList = React.memo(props => {
     <ReactBreakpoints breakpoints={breakpoints}>
       <Media>
         {({ breakpoints, currentBreakpoint }) => {
-          console.log(
-            " PageList > breakpoints = ",
-            breakpoints[currentBreakpoint]
-          );
-
           return (
             <div className="row page-list ">
               <div className="col-10 mx-auto mb-5"></div>

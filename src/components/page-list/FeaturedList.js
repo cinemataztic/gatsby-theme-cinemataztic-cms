@@ -105,7 +105,7 @@ const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
               <div
                 className={`w-100 h-100 position-absolute ${
                   imgUrl ? colorOverlayClass : ""
-                }`}
+                  }`}
                 style={{
                   top: 0,
                   left: 0,
@@ -135,10 +135,7 @@ const FeaturedList = props => {
   const nextBtn = useRef();
   const backBtn = useRef();
   const { breakpoints, currentBreakpoint } = props;
-
   const data = props.data;
-  console.log("data", data);
-
   const { listContent } = data;
   const visibleElements = getAmount(breakpoints, currentBreakpoint);
 
@@ -180,7 +177,7 @@ const FeaturedList = props => {
     const xOffset =
       itemContainerRef.current.clientLeft +
       Math.round(itemContainerRef.current.clientWidth / visibleElements) *
-        activeIndex;
+      activeIndex;
     const containerWidth = itemContainerRef.current
       ? Math.round(itemContainerRef.current.clientWidth / visibleElements)
       : 0;
@@ -232,7 +229,7 @@ const FeaturedList = props => {
     const xOffset =
       itemContainerRef.current.clientLeft +
       Math.round(itemContainerRef.current.clientWidth / visibleElements) *
-        activeIndex;
+      activeIndex;
     const containerWidth = itemContainerRef.current
       ? Math.round(itemContainerRef.current.clientWidth / visibleElements)
       : 0;

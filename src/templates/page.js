@@ -1,16 +1,17 @@
 import React, { useRef } from "react";
 import { graphql } from "gatsby";
+import get from "lodash.get";
+import Img from "gatsby-image";
 
 import componentFactory from "../utils/components-types";
 import Layout from "../components/Layout";
 import HeaderAnimation from "../components/animation/HeaderAnimation";
-import get from "lodash.get";
 import "./page.scss";
-import Img from "gatsby-image";
 import {
   getBackgroundImage,
   getVideoOverlay
 } from "../utils/getBackgroundImage";
+import NextPrevLink from "../components/next-prev-link/NextPrevLink";
 
 const Page = React.memo(props => {
   const featuredImageRef = useRef();
@@ -24,7 +25,9 @@ const Page = React.memo(props => {
     coverVideo,
     coverVideoCaptions,
     backgroundVideoCaptions,
-    title
+    title,
+    previousPage,
+    nextPage
   } = props.data.pagesYaml;
   const { header, subhead, color } = mainContent;
   const headerWithSplit = header.split("@").join("\n");
@@ -62,7 +65,7 @@ const Page = React.memo(props => {
               <track
                 default
                 kind="captions"
-                srclang="en"
+                srcLang="en"
                 src={backgroundVideoCaptions || null}
               />
               Sorry, your browser does not support video.
@@ -106,7 +109,7 @@ const Page = React.memo(props => {
                 <track
                   default
                   kind="captions"
-                  srclang="en"
+                  srcLang="en"
                   src={coverVideoCaptions}
                 />
                 Sorry, your browser does not support video.
@@ -124,6 +127,12 @@ const Page = React.memo(props => {
         </div>
 
         {components}
+
+        <NextPrevLink
+          nextPage={nextPage}
+          previousPage={previousPage}
+        />
+
       </div>
     </Layout>
   );
@@ -177,6 +186,7 @@ export const query = graphql`
           textColor
         }
       }
+      
       component {
         placement
         text
@@ -286,188 +296,24 @@ export const query = graphql`
           }
         }
       }
-    }
-  }
-`;
-
-/* export const query = graphql`
-  query PageIdQuery($pageId: String!, $allList: [String]) {
-    allPage(id: { eq: $pageId }) {
-      id
-      frontmatter {
-        urlPath
+      
+      previousPage {
+        slug
         title
-        componentType
-
-        coverImage {
-          publicURL
-
-          childImageSharp {
-            fluid(quality: 70, maxWidth: 1400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-
-            resolutions(quality: 60) {
-              aspectRatio
-              width
-              height
-              src
-            }
-          }
-        }
-
-        coverVideo {
-          publicURL
-        }
-
-        backgroundImage {
-          publicURL
-          childImageSharp {
-            resolutions(quality: 60) {
-              aspectRatio
-              width
-              height
-              src
-            }
-          }
-        }
-
-        backgroundVideo {
-          publicURL
-        }
-
         mainContent {
           header
           subhead
-          color {
-            backgroundColor
-            textColor
-          }
-        }
-
-        component {
-          placement
-          text
-          title
-          type
-          listContent
-          featured
-          size
-          textAlign
-          hideControls
-
-          fullWidthVideo {
-            publicURL
-          }
-
-          largeVideoUrl
-          autoplay
-
-          textVideoImage {
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1400) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-
-          shortTextVideo {
-            publicURL
-          }
-
-          textImage {
-            publicURL
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1400) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-
-          fullWidthImage {
-            publicURL
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1400) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-
-          fullWidthVideoImage {
-            publicURL
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1400) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-
-          images {
-            multipleItemImage {
-              publicURL
-              childImageSharp {
-                fluid(quality: 70, maxWidth: 1400) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
-
-          pageLink {
-            btnTxt
-            link
-            externalLink
-            sublink
-          }
         }
       }
-    }
-
-    allMarkdownRemark(filter: { frontmatter: { urlPath: { in: $allList } } }) {
-      edges {
-        node {
-          id
-
-          frontmatter {
-            title
-            componentType
-            urlPath
-            parentPage
-
-            featuredContent {
-              featuredDescription
-              title
-            }
-
-            listImage {
-              childImageSharp {
-                fluid(quality: 70, maxWidth: 1400) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-
-                resolutions(quality: 60) {
-                  aspectRatio
-                  width
-                  height
-                  src
-                }
-              }
-            }
-
-            component {
-              listContent
-              pageLink {
-                btnTxt
-                link
-                externalLink
-              }
-            }
-          }
-          fields {
-            slug
-          }
+      nextPage {
+        title
+        slug
+        mainContent {
+          header
+          subhead
         }
       }
+
     }
   }
-`; */
+`;

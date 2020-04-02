@@ -80,6 +80,8 @@ type PagesYaml implements Node @dontInfer {
   featuredContent: FeaturedContent
   mainContent: MainContent!
   component: [Component]
+  previousPage: PagesYaml @link(by: "uuid")
+  nextPage: PagesYaml @link(by: "uuid")
 }
 
 """
