@@ -152,7 +152,7 @@ const DesktopNavigation = ({ menuData, logo, logoSmall }) => {
                   ref={ccRef}
                   style={{ marginTop: -8, width: 40, height: 40 }}
                 >
-                  <img alt="" src={logoSmall.src} />
+                  <img style={{ maxWidth: 40, maxHeight: 40 }} alt="" src={logoSmall.src} />
                 </div>
               </AniLink>
             </div>
@@ -170,7 +170,7 @@ const DesktopNavigation = ({ menuData, logo, logoSmall }) => {
                     className="w-100 position-absolute"
                     style={{ top: 0, left: 0 }}
                   >
-                    <img alt="" src={logo.src} />
+                    <img style={{ maxHeight: 40, maxWidth: 200 }} alt="" src={logo.src} />
                   </div>
                 </div>
               </AniLink>

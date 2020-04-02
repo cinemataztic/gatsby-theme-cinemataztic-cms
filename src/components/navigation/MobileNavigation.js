@@ -228,7 +228,7 @@ const MobileNavigation = ({ menuData, meta, logo }) => {
               className="w-100 position-relative"
               style={{ zIndex: 200 }}
             >
-              <img alt="" src={logo.src} />
+              <img style={{ maxHeight: 40, maxWidth: 200 }} alt="" src={logo.src} />
             </div>
           </div>
         </div>
