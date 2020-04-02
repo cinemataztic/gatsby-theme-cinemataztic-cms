@@ -115,7 +115,7 @@ exports.createResolvers = async ({ createResolvers }, options) => {
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)+/g, "");
-    return `/ ${basePath} / ${slug}`.replace(/\/\/+/g, "/");
+    return `${basePath}${slug}`.replace(/\/\/+/g, "/");
   };
 
   const getParentPageYaml = async function (context, parentPageUuid) {

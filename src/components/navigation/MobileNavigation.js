@@ -31,12 +31,12 @@ const MobileNavItem = React.forwardRef(
     return (
       <div ref={myRef} className="cine-nav-item mobile-nav-item m-2 ">
         <AniWrapper
-          to={"/" + urlPath}
+          to={urlPath || "/"}
           menuToggle={menuToggle}
           menuStatus={menuStatus}
         >
           <div className="d-flex flex-row ">
-            <Match path={"/" + urlPath}>
+            <Match path={urlPath || "/"}>
               {routerProps => {
                 return (
                   <div>
