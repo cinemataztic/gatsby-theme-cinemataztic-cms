@@ -105,7 +105,6 @@ module.exports = ({
               contentPath = `${sitePath}/${contentPath}`;
               settingsPath = `${sitePath}/${settingsPath}`;
             }
-            console.log("settingsPath: ", settingsPath);
             config.plugins.push(
               new ReplaceInFileWebpackPlugin([
                 {
