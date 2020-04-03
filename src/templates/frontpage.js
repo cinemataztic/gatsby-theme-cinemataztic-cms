@@ -178,6 +178,18 @@ export const query = graphql`
             }
           }
         }
+
+        images {
+          multipleItemImage {
+            publicURL
+            childImageSharp {
+              fluid(quality: 70, maxWidth: 1400) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+
         pageLink {
           btnTxt
           externalLink
