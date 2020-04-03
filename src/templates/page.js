@@ -21,6 +21,7 @@ const Page = React.memo(props => {
     component,
     mainContent,
     backgroundImage,
+    logoImage,
     backgroundVideo,
     coverVideo,
     coverVideoCaptions,
@@ -29,6 +30,7 @@ const Page = React.memo(props => {
     previousPage,
     nextPage
   } = props.data.pagesYaml;
+
   const { header, subhead, color } = mainContent;
   const headerWithSplit = header.split("@").join("\n");
   const fluidCoverImage = get(coverImage, "childImageSharp.fluid", null);
@@ -37,6 +39,7 @@ const Page = React.memo(props => {
 
   // BACKGROUND IMAGE
   const backImageSrc = get(backgroundImage, "childImageSharp.fluid.src", null);
+  const logoImg = get(logoImage, 'childImageSharp.fluid', null);
   const backImg = getBackgroundImage(color.backgroundColor, backImageSrc);
   const textColor = color.textColor || "FFFFFF";
 
@@ -78,7 +81,18 @@ const Page = React.memo(props => {
         className="ani-page container-fluid h-100 position-relative overflow-hidden"
         style={{ zIndex: 2 }}
       >
+
+        {/*  <LogoHeaderAnimation
+          logoImg={logoImg}
+          overlayRef={overlayRef}
+          featuredImageRef={activeRef}
+          subhead={subhead}
+          letters={headerWithSplit}
+          textColor={textColor}
+        /> */}
+
         <HeaderAnimation
+          logoImg={logoImg}
           overlayRef={overlayRef}
           featuredImageRef={featuredImageRef}
           subhead={subhead}
@@ -169,7 +183,16 @@ export const query = graphql`
         publicURL
         childImageSharp {
           fluid(maxWidth: 1920) {
-            src
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      
+      logoImage {
+        publicURL
+        childImageSharp {
+          fluid(maxWidth: 350) {
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }

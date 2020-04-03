@@ -52,6 +52,7 @@ export default {
     getVideo("Cover video", "coverVideo"),
     getImage("Background Image", "backgroundImage"),
     getVideo("Background video", "backgroundVideo"),
+    getImage("Logo", "logoImage"),
     getMainContent(false),
     featuredContent,
     navigationContent,
