@@ -50,8 +50,8 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
   const colSize = sizeColums(size);
 
   // On mobile the image is always placed on top
-  const isMobile = breakpoints[currentBreakpoint] > breakpoints.md;
-  const orderImage = placement && isMobile ? "order-lg-1 " : "order-0 ";
+  const isMobile = breakpoints[currentBreakpoint] < breakpoints.md;
+  const orderImage = placement && !isMobile ? "order-lg-1 " : "order-0 ";
 
   const onEnter = value => {
     if (!value.previousPosition || value.previousPosition === "below") {
