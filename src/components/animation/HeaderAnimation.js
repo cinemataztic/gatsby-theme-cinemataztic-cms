@@ -56,7 +56,7 @@ const HeaderAnimation = props => {
   });
 
 
-  const animationWithLogo = (myTween, featuredImageRef) => {
+  const animationWithLogo = useCallback(() => {
     myTween.set(overlayRef.current, { y: 20 });
     myTween.set(dividerRef.current, { opacity: 0, y: 60 });
     myTween.set(logoRef.current, { scaleY: 2.5, opacity: 0, y: 100, transformOrigin: "top" });
@@ -108,9 +108,18 @@ const HeaderAnimation = props => {
       );
 
     }
-  }
+  },
+    [
+      myTween,
+      featuredImageRef,
+      dividerRef,
+      logoRef,
+      overlayRef,
+      myElements
+    ]
+  )
 
-  const animationWithoutLogo = (myTween, featuredImageRef) => {
+  const animationWithoutLogo = useCallback(() => {
     myTween.set(overlayRef.current, { y: 20 });
     myTween.set(dividerRef.current, { opacity: 0, y: 60 });
 
@@ -158,14 +167,23 @@ const HeaderAnimation = props => {
         "-=.2"
       );
     }
-  }
+  },
+    [
+      myTween,
+      featuredImageRef,
+      dividerRef,
+      logoRef,
+      overlayRef,
+      myElements
+    ]
+  )
 
   const headerEntryAnimation = useCallback(() => {
     if (!animationHasRun) {
 
-      !logoRef && animationWithoutLogo(myTween, featuredImageRef);
+      !logoRef && animationWithoutLogo();
 
-      logoRef && animationWithLogo(myTween, featuredImageRef);
+      logoRef && animationWithLogo();
 
       TweenMax.set(arrowRef.current, { autoAlpha: 0, y: 0 });
 
@@ -189,13 +207,8 @@ const HeaderAnimation = props => {
     setAnimationHasRun,
     animationWithLogo,
     animationWithoutLogo,
-    logoRef,
     arrowRef,
-    dividerRef,
-    featuredImageRef,
-    myElements,
-    myTween,
-    overlayRef
+    myTween
   ]);
 
   useEffect(() => headerEntryAnimation(), [headerEntryAnimation]);
