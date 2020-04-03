@@ -205,14 +205,14 @@ const navigationContent = {
       default: "",
       required: false
     },
-
     {
       label: "view priority",
       name: "priority",
       widget: "number",
-      hint: "High priority means first in the stack - only numbers",
-      required: false,
-      default: 1
+      hint: "Higher means more to the left - 0 means not shown",
+      required: true,
+      default: 0,
+      min: 0
     }
   ]
 };
