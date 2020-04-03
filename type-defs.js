@@ -76,6 +76,7 @@ type PagesYaml implements Node @dontInfer {
   coverVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   backgroundVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   backgroundImage: File @fileByAbsolutePath(path: "${contentPath}/media")
+  logoImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   navigation: Navigation
   featuredContent: FeaturedContent
   mainContent: MainContent!

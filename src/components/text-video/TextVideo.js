@@ -58,9 +58,9 @@ const TextVideo = ({ data, breakpoints, currentBreakpoint }) => {
     pageLink && pageLink.externalLink && pageLink.externalLink !== ""
       ? true
       : false;
-  const isMobile = breakpoints[currentBreakpoint] > breakpoints.md;
+  const isMobile = breakpoints[currentBreakpoint] < breakpoints.md;
 
-  const orderImage = placement && isMobile ? "order-lg-1 " : "order-0 ";
+  const orderImage = placement && !isMobile ? "order-lg-1 " : "order-0 ";
   const colSize = sizeColums(size);
 
   //https://storage.googleapis.com/groupm_videos/ARP-HANSEN%20HOTEL%20GROUP_INDENLANDSK%20FERIE_INDENLANDSK%20FERIE_83820.mp4

@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { TimelineMax, TweenMax, Back, Expo } from "gsap";
+import Img from "gatsby-image";
 import Divider from "../Divider";
 import DownArrow from "../display/DownArrow";
 import ScrollListener from "react-scroll-listen";
@@ -14,6 +15,7 @@ const HeaderAnimation = props => {
   const {
     letters,
     subhead,
+    logoImg,
     overlayRef,
     featuredImageRef,
     textColor = "",
@@ -25,6 +27,7 @@ const HeaderAnimation = props => {
   let hasScrolled = false;
 
   const dividerRef = React.createRef();
+  const logoRef = logoImg ? React.createRef() : null;
   const arrowRef = React.createRef();
   const subheadRef = useRef();
   const txtContainer = useRef();
@@ -52,56 +55,134 @@ const HeaderAnimation = props => {
     );
   });
 
-  const headerEntryAnimation = useCallback(() => {
-    if (!animationHasRun) {
-      myTween.set(overlayRef.current, { y: 20 });
 
-      myTween.set(dividerRef.current, { opacity: 0, y: 60 });
+  const animationWithLogo = useCallback(() => {
+    myTween.set(overlayRef.current, { y: 20 });
+    myTween.set(dividerRef.current, { opacity: 0, y: 60 });
+    myTween.set(logoRef.current, { scaleY: 2.5, opacity: 0, y: 100, transformOrigin: "top" });
 
-      if (featuredImageRef.current) {
-        myTween.set(featuredImageRef.current, { opacity: 0, y: 60 });
-      }
+    if (featuredImageRef.current) {
+      myTween.set(featuredImageRef.current, { opacity: 0, y: 60 });
+    }
 
-      myTween.set(subheadRef.current, { opacity: 0, skewX: 10, y: 30 });
+    myTween.set(subheadRef.current, { opacity: 0, skewX: 10, y: 30 });
 
+    myTween.to(
+      overlayRef.current,
+      1,
+      { y: 0, opacity: 1, ease: Expo.easeOut },
+      "+=.2"
+    );
+
+    myTween.to(logoRef.current, 1, { y: 0, scaleY: 1, opacity: 1, ease: Expo.easeOut })
+
+    myTween.to(
+      dividerRef.current,
+      0.8,
+      { opacity: 1, y: 0, ease: Back.easeOut.config(2) },
+      "-=.6"
+    );
+
+    myTween.staggerFromTo(
+      myElements,
+      0.6,
+      { y: 60, x: 0, scaleY: 2, opacity: 0, ease: "Expo.easeOut" },
+      { scaleY: 1, y: 0, x: 0, opacity: 1, ease: "Power3.easeInOut" },
+      0.03,
+      "-=.4"
+    );
+
+    myTween.to(
+      subheadRef.current,
+      0.4,
+      { y: 0, opacity: 1, skewX: 0, ease: Expo.easeOut },
+      "-=.2"
+    );
+
+    if (featuredImageRef.current) {
       myTween.to(
-        overlayRef.current,
-        1,
+        featuredImageRef.current,
+        0.,
         { y: 0, opacity: 1, ease: Expo.easeOut },
-        "+=.2"
-      );
-
-      myTween.staggerFromTo(
-        myElements,
-        0.6,
-        { y: 60, x: 0, scaleY: 2, opacity: 0, ease: "Expo.easeOut" },
-        { scaleY: 1, y: 0, x: 0, opacity: 1, ease: "Power3.easeInOut" },
-        0.03,
-        "-=.8"
-      );
-
-      myTween.to(
-        dividerRef.current,
-        0.5,
-        { opacity: 1, y: 0, ease: Back.easeOut.config(2) },
-        "-=.3"
-      );
-
-      myTween.to(
-        subheadRef.current,
-        0.6,
-        { y: 0, opacity: 1, skewX: 0, ease: Expo.easeOut },
         "-=.2"
       );
 
-      if (featuredImageRef.current) {
-        myTween.to(
-          featuredImageRef.current,
-          0.6,
-          { y: 0, opacity: 1, ease: Expo.easeOut },
-          "-=.2"
-        );
-      }
+    }
+  },
+    [
+      myTween,
+      featuredImageRef,
+      dividerRef,
+      logoRef,
+      overlayRef,
+      myElements
+    ]
+  )
+
+  const animationWithoutLogo = useCallback(() => {
+    myTween.set(overlayRef.current, { y: 20 });
+    myTween.set(dividerRef.current, { opacity: 0, y: 60 });
+
+    if (featuredImageRef.current) {
+      myTween.set(featuredImageRef.current, { opacity: 0, y: 60 });
+    }
+
+    myTween.set(subheadRef.current, { opacity: 0, skewX: 10, y: 30 });
+
+    myTween.to(
+      overlayRef.current,
+      1,
+      { y: 0, opacity: 1, ease: Expo.easeOut },
+      "+=.2"
+    );
+
+    myTween.staggerFromTo(
+      myElements,
+      0.6,
+      { y: 60, x: 0, scaleY: 2, opacity: 0, ease: "Expo.easeOut" },
+      { scaleY: 1, y: 0, x: 0, opacity: 1, ease: "Power3.easeInOut" },
+      0.03,
+      "-=.8"
+    );
+
+    myTween.to(
+      dividerRef.current,
+      0.5,
+      { opacity: 1, y: 0, ease: Back.easeOut.config(2) },
+      "-=.3"
+    );
+
+    myTween.to(
+      subheadRef.current,
+      0.6,
+      { y: 0, opacity: 1, skewX: 0, ease: Expo.easeOut },
+      "-=.2"
+    );
+
+    if (featuredImageRef.current) {
+      myTween.to(
+        featuredImageRef.current,
+        0.6,
+        { y: 0, opacity: 1, ease: Expo.easeOut },
+        "-=.2"
+      );
+    }
+  },
+    [
+      myTween,
+      featuredImageRef,
+      dividerRef,
+      overlayRef,
+      myElements
+    ]
+  )
+
+  const headerEntryAnimation = useCallback(() => {
+    if (!animationHasRun) {
+
+      !logoRef && animationWithoutLogo();
+
+      logoRef && animationWithLogo();
 
       TweenMax.set(arrowRef.current, { autoAlpha: 0, y: 0 });
 
@@ -123,12 +204,11 @@ const HeaderAnimation = props => {
   }, [
     animationHasRun,
     setAnimationHasRun,
+    animationWithLogo,
+    animationWithoutLogo,
     arrowRef,
-    dividerRef,
-    featuredImageRef,
-    myElements,
     myTween,
-    overlayRef
+    logoRef
   ]);
 
   useEffect(() => headerEntryAnimation(), [headerEntryAnimation]);
@@ -155,6 +235,16 @@ const HeaderAnimation = props => {
         ref={txtContainer}
         className="txt-container col-12 d-flex flex-column justify-content-center h-100 "
       >
+
+        {
+          logoRef &&
+          <div ref={logoRef} className="pb-3 " style={{ maxWidth: 320 }}>
+            <Img className="img-fluid" durationFadeIn={500} fluid={logoImg} />
+          </div>
+        }
+
+        {logoRef && <Divider ref={dividerRef} opacity={0} color={validTextColor} width={"10rem"} height={3}></Divider>}
+
         <h1
           className="display-txt font-weight-bold text-uppercase head-txt "
           style={{}}
@@ -162,13 +252,14 @@ const HeaderAnimation = props => {
           {letterViews}
         </h1>
 
-        <Divider
+
+        {!logoRef && <Divider
           ref={dividerRef}
           opacity={0}
           color={validTextColor}
           width={"10rem"}
           height={3}
-        ></Divider>
+        />}
 
         <div className="subhead">
           <h4
