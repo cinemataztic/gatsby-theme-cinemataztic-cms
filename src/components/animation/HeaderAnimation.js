@@ -172,7 +172,6 @@ const HeaderAnimation = props => {
       myTween,
       featuredImageRef,
       dividerRef,
-      logoRef,
       overlayRef,
       myElements
     ]
@@ -208,7 +207,8 @@ const HeaderAnimation = props => {
     animationWithLogo,
     animationWithoutLogo,
     arrowRef,
-    myTween
+    myTween,
+    logoRef
   ]);
 
   useEffect(() => headerEntryAnimation(), [headerEntryAnimation]);
