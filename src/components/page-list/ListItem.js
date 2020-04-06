@@ -8,47 +8,17 @@ import { useHover } from "react-use-gesture";
 import get from "lodash.get";
 import AniWrapper from "../buttons/AniWrapper";
 import { Waypoint } from "react-waypoint";
+import { getPagePreviewData } from "../../utils/helpers";
+
 
 const ListItem = ({ item, index, breakpoints, currentBreakpoint }) => {
   const containerRef = useRef(null);
   const textRef = useRef(null);
-  let {
-    featuredContent,
-    mainContent,
-    slug,
-    title,
-    coverImage,
-    backgroundImage
-  } = item;
-  let description = "";
-  let image = coverImage;
 
-  if (backgroundImage) {
-    image = backgroundImage;
-  }
-
-  if (mainContent) {
-    if (mainContent.header) {
-      title = mainContent.header;
-    }
-    if (mainContent.subhead) {
-      description = mainContent.subhead;
-    }
-  }
-
-  if (featuredContent) {
-    if (featuredContent.title) {
-      title = featuredContent.title;
-    }
-    if (featuredContent.image) {
-      image = featuredContent.image;
-    }
-    if (featuredContent.description) {
-      description = featuredContent.description;
-    }
-  }
-
-  const imgUrl = get(image, "childImageSharp.fluid.src", null);
+  const pagePreviewData = getPagePreviewData(item);
+  const { description, slug } = pagePreviewData;
+  const title = pagePreviewData.title.split("@").join("\n");
+  const imgUrl = get(pagePreviewData.image, "childImageSharp.fluid.src", null);
 
   useEffect(() => {
     TweenMax.set(containerRef.current, { alpha: 0, y: 100 });

@@ -322,6 +322,10 @@ export const query = graphql`
           header
           subhead
         }
+        featuredContent {
+          title
+          description
+        }
       }
       nextPage {
         title
@@ -329,6 +333,10 @@ export const query = graphql`
         mainContent {
           header
           subhead
+        }
+        featuredContent {
+          title
+          description
         }
       }
 

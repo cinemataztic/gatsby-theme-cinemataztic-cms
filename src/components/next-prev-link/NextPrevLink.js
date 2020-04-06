@@ -5,19 +5,22 @@ import React, { useRef } from "react";
 import { useHover } from "react-use-gesture";
 import TweenMax from "gsap";
 import AniWrapper from "../buttons/AniWrapper";
+import { getPagePreviewData } from '../../utils/helpers';
 
 import './nextPrevLink.scss'
 
 const NextPrevLink = ({ previousPage, nextPage }) => {
 
 	let isFullWidth = true;
-	
+
 	const leftArrow = useRef();
 	const rightArrow = useRef();
 
 
 	const itemLeft = previousPage;
+	const previewDataLeft = itemLeft ? getPagePreviewData(itemLeft) : null;
 	const itemRight = nextPage;
+	const previewDataRight = itemRight ? getPagePreviewData(itemRight) : null;
 
 	if (itemRight && itemLeft) {
 		isFullWidth = false;
@@ -49,8 +52,8 @@ const NextPrevLink = ({ previousPage, nextPage }) => {
 								</div>
 
 								<div className="d-flex flex-column text-right text-uppercase title-txt">
-									<h3 className="pr-3"><b>{itemLeft.mainContent.header}</b></h3>
-									<p className="pr-3 d-none d-md-block">{itemLeft.mainContent.subhead}</p>
+									<h3 className="pr-3"><b>{previewDataLeft.title}</b></h3>
+									<p className="pr-3 d-none d-md-block">{previewDataLeft.description}</p>
 								</div>
 							</AniWrapper>
 						</div>
@@ -66,8 +69,8 @@ const NextPrevLink = ({ previousPage, nextPage }) => {
 							>
 
 								<div className="d-flex flex-column text-uppercase ">
-									<h3 className="pl-3"><b>{itemRight.mainContent.header}</b></h3>
-									<p className="pl-3 d-none d-md-block">{itemRight.mainContent.subhead}</p>
+									<h3 className="pl-3"><b>{previewDataRight.title}</b></h3>
+									<p className="pl-3 d-none d-md-block">{previewDataRight.description}</p>
 								</div>
 
 								<div ref={rightArrow} className="pl-3 position-relative" style={{ marginTop: 0, top: 3 }}>
