@@ -115,6 +115,9 @@ const Footer = () => {
             instagramLink
             facebookLink
           }
+          generalYaml {
+            companyName
+          }
         }
       `}
       render={data => {
@@ -125,10 +128,15 @@ const Footer = () => {
           footerColumn
         } = data.footerYaml;
 
-        const { facebookLink,
+        const {
+          facebookLink,
           instagramLink,
           linkedinLink
         } = data.metaYaml
+
+        const {
+          companyName
+        } = data.generalYaml
 
         const content = footerColumn;
 
@@ -220,8 +228,7 @@ const Footer = () => {
                         className="mb-0 font-weight-light"
                         style={{ fontSize: ".8rem", opacity: 0.5 }}
                       >
-                        All rights reserved {new Date().getFullYear()} ©
-                        Cinematatic{" "}
+                        All rights reserved {new Date().getFullYear()} © {companyName}
                       </p>
                     </div>
                   </div>

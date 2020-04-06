@@ -10,6 +10,7 @@ import get from "lodash.get";
 import { ReactComponent as Forward } from "../../assets/forward.svg";
 import { ReactComponent as Back } from "../../assets/back.svg";
 import AniWrapper from "../buttons/AniWrapper";
+import { getPagePreviewData } from "../../utils/helpers";
 
 const getPos = index => {
   if (index === 0) {
@@ -47,29 +48,11 @@ const getAmount = (breakpoints, currentBreakpoint) => {
 };
 
 const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
-  let { featuredContent, slug, title, coverImage, backgroundImage } = item;
-  let description = "";
-  let image = coverImage;
 
-  if (backgroundImage) {
-    image = backgroundImage;
-  }
-
-  if (featuredContent) {
-    if (featuredContent.title) {
-      title = featuredContent.title;
-    }
-    if (featuredContent.description) {
-      description = featuredContent.description;
-    }
-    if (featuredContent.image) {
-      image = featuredContent.image;
-    }
-  }
-  title = title.split("@").join("\n");
-
-  const imgUrl = get(image, "childImageSharp.fluid.src", null);
-
+  const pagePreviewData = getPagePreviewData(item);
+  const { description, slug } = pagePreviewData;
+  const title = pagePreviewData.title.split("@").join("\n");
+  const imgUrl = get(pagePreviewData.image, "childImageSharp.fluid.src", null);
   const txtPos = getPos(index % 2);
   const colorOverlayClass = "image-overlay-" + (index % 2);
 

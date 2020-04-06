@@ -118,6 +118,10 @@ export const query = graphql`
           id
           title
           slug
+          mainContent {
+            header
+            subhead
+          }
           backgroundImage {
             publicURL
             childImageSharp {

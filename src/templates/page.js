@@ -82,15 +82,6 @@ const Page = React.memo(props => {
         style={{ zIndex: 2 }}
       >
 
-        {/*  <LogoHeaderAnimation
-          logoImg={logoImg}
-          overlayRef={overlayRef}
-          featuredImageRef={activeRef}
-          subhead={subhead}
-          letters={headerWithSplit}
-          textColor={textColor}
-        /> */}
-
         <HeaderAnimation
           logoImg={logoImg}
           overlayRef={overlayRef}
@@ -235,6 +226,10 @@ export const query = graphql`
               }
             }
           }
+          mainContent {
+            header
+            subhead
+          }
           featuredContent {
             title
             description
@@ -327,6 +322,10 @@ export const query = graphql`
           header
           subhead
         }
+        featuredContent {
+          title
+          description
+        }
       }
       nextPage {
         title
@@ -334,6 +333,10 @@ export const query = graphql`
         mainContent {
           header
           subhead
+        }
+        featuredContent {
+          title
+          description
         }
       }
 
