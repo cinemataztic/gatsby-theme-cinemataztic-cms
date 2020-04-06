@@ -47,7 +47,15 @@ const getAmount = (breakpoints, currentBreakpoint) => {
 };
 
 const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
-  let { featuredContent, slug, title, coverImage, backgroundImage } = item;
+  let {
+    featuredContent,
+    mainContent,
+    slug,
+    title,
+    coverImage,
+    backgroundImage
+  } = item;
+
   let description = "";
   let image = coverImage;
 
@@ -55,21 +63,30 @@ const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
     image = backgroundImage;
   }
 
+  if (mainContent) {
+    if (mainContent.header) {
+      title = mainContent.header;
+    }
+    if (mainContent.subhead) {
+      description = mainContent.subhead;
+    }
+  }
+
   if (featuredContent) {
     if (featuredContent.title) {
       title = featuredContent.title;
     }
-    if (featuredContent.description) {
-      description = featuredContent.description;
-    }
     if (featuredContent.image) {
       image = featuredContent.image;
     }
+    if (featuredContent.description) {
+      description = featuredContent.description;
+    }
   }
+
   title = title.split("@").join("\n");
 
   const imgUrl = get(image, "childImageSharp.fluid.src", null);
-
   const txtPos = getPos(index % 2);
   const colorOverlayClass = "image-overlay-" + (index % 2);
 
