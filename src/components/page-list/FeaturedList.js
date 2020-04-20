@@ -249,7 +249,7 @@ const FeaturedList = props => {
   return (
     <div
       className="row mb-5 mt-5 featured-list position-relative "
-      style={{ minHeight: "75vh", zIndex: 300 }}
+      style={{ minHeight: "575px", zIndex: 300 }}
     >
       <div className="col-12 position-relative">
         <div
