@@ -59,20 +59,20 @@ const Layout = ({ meta, children }) => {
                 }
                 meta={[
                   {
-                    name: "description",
+                    property: "description",
                     content: description || og_description
                   },
-                  { name: "og:image", content: ogImgSrc },
+                  { property: "og:image", content: ogImgSrc },
                   {
-                    name: "og:title",
-                    content: title || og_title
+                    property: "og:title",
+                    content: `${title || og_title || pageTitle} ${companyName ? `| ${companyName}` : ''}`
                   },
                   {
-                    name: "og:description",
+                    property: "og:description",
                     content: description || og_description
                   },
                   {
-                    name: "og:type",
+                    property: "og:type",
                     content: type || og_type
                   }
                 ]}
