@@ -98,6 +98,12 @@ export default {
           widget: "string",
           required: true
         },
+        {
+          label: "Company Name",
+          name: "companyName",
+          widget: "string",
+          required: true
+        },
         getImage("Logo", "logo"),
         getImage("Small Logo", "logoSmall"),
         getImage("Favicon", "favicon"),
