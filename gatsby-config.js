@@ -8,10 +8,15 @@ console.log(`Using environment config: '${activeEnv}'`);
 module.exports = ({
   contentPath = "content",
   sitePath = null,
-  settingsPath = "settings"
+  settingsPath = "settings",
+  siteUrl = "https://cms-demo.cinemataztic.com"
 }) => {
   return {
+    siteMetadata: {
+      siteUrl,
+    },
     plugins: [
+      `gatsby-plugin-sitemap`,
       {
         resolve: "gatsby-source-filesystem",
         options: {
@@ -91,6 +96,22 @@ module.exports = ({
             }
           ]
         }
+      },
+      {
+        resolve: 'gatsby-plugin-robots-txt',
+        options: {
+          host: siteUrl,
+          sitemap: `${siteUrl}/sitemap.xml`,
+          resolveEnv: () => process.env.GATSBY_ENV,
+          env: {
+            development: {
+              policy: [{ userAgent: '*', disallow: ['/'] }]
+            },
+            production: {
+              policy: [{ userAgent: '*', allow: '/' }]
+            }
+          }
+        },
       },
       {
         resolve: "gatsby-plugin-netlify-cms",

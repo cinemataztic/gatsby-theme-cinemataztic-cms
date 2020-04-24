@@ -40,9 +40,7 @@ const Layout = ({ meta, children }) => {
         data => {
           const { title } = meta;
           const { pageTitle, favicon } = data.generalYaml;
-          console.log("Layout -> favicon", favicon);
           const faviconSrc = get(favicon, "childImageSharp.fluid.src", null);
-          console.log("Layout -> faviconSrc", faviconSrc);
           return (
             <div>
               <Helmet
