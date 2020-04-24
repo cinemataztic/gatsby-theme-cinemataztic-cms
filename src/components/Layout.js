@@ -48,7 +48,7 @@ const Layout = ({ meta, children }) => {
         data => {
           const { title, description, type } = meta;
           const { pageTitle, favicon, companyName } = data.generalYaml;
-          const { og_image, og_title, og_description, og_type, keywords } = data.metaYaml;
+          const { og_image, og_title, og_description, og_type } = data.metaYaml;
           const ogImgSrc = get(og_image, "childImageSharp.fluid.src", null);
           const faviconSrc = get(favicon, "childImageSharp.fluid.src", null);
           return (
@@ -62,17 +62,10 @@ const Layout = ({ meta, children }) => {
                     name: "description",
                     content: description || og_description
                   },
-                  {
-                    name: "keywords",
-                    content: keywords
-                  },
                   { name: "og:image", content: ogImgSrc },
                   {
                     name: "og:title",
-                    content:
-                      meta && meta.title
-                        ? `${meta.title} | CinemaTaztic`
-                        : data.metaYaml.og_title
+                    content: title || og_title
                   },
                   {
                     name: "og:description",
