@@ -30,7 +30,6 @@ const Layout = ({ meta, children }) => {
           og_title
           og_description
           og_type
-          keywords
         }
         generalYaml {
           pageTitle
