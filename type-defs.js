@@ -16,7 +16,7 @@ type MetaYaml implements Node @dontInfer {
   og_title: String!
   og_description: String!
   og_type: String!
-  og_image: String!
+  og_image: File @fileByAbsolutePath(path: "${contentPath}/media")
   facebookLink: String
   instagramLink: String
   linkedinLink: String

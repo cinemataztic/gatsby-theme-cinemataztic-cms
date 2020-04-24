@@ -18,7 +18,7 @@ export default {
   create: false,
   identifier_field: "urlPath",
   slug: "{{slug}}",
-    editor: {
+  editor: {
     preview: false
   },
   files: [
@@ -128,8 +128,7 @@ export default {
           label: "Open Graph Type",
           name: "og_:type",
           widget: "string",
-          required: true,
-          hint: "A one to two sentence description of your object"
+          required: true
         },
 
         getImage("Open Graph Image", "og_image"),
