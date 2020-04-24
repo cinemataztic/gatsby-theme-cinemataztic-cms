@@ -20,12 +20,21 @@ const Layout = ({ meta, children }) => {
       query={graphql`
       {
         metaYaml {
-          og_image
+          og_image {
+            childImageSharp {
+              fluid(quality: 70, maxWidth: 1200) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
           og_title
           og_description
+          og_type
+          keywords
         }
         generalYaml {
           pageTitle
+          companyName
           favicon {
             childImageSharp {
               fluid(quality: 70, maxWidth: 32) {
@@ -38,26 +47,27 @@ const Layout = ({ meta, children }) => {
     `}
       render={
         data => {
-          const { title } = meta;
-          const { pageTitle, favicon } = data.generalYaml;
+          const { title, description, type } = meta;
+          const { pageTitle, favicon, companyName } = data.generalYaml;
+          const { og_image, og_title, og_description, og_type, keywords } = data.metaYaml;
+          const ogImgSrc = get(og_image, "childImageSharp.fluid.src", null);
           const faviconSrc = get(favicon, "childImageSharp.fluid.src", null);
           return (
             <div>
               <Helmet
                 title={
-                  title ? `${title} | ${pageTitle || "CinemaTaztic"}` : pageTitle || "CinemaTaztic"
+                  `${title ? title : pageTitle} ${companyName ? `| ${companyName}` : ''}`
                 }
                 meta={[
                   {
                     name: "description",
-                    content:
-                      "We work with ambitious brands to create high-impact 2nd screen games, platforms and systems that the audience love. Because what people love, matters..."
+                    content: description || og_description
                   },
                   {
                     name: "keywords",
-                    content: "cinemataztic cinema games 2nd screen"
+                    content: keywords
                   },
-                  { name: "og:image", content: data.metaYaml.og_image },
+                  { name: "og:image", content: ogImgSrc },
                   {
                     name: "og:title",
                     content:
@@ -67,14 +77,11 @@ const Layout = ({ meta, children }) => {
                   },
                   {
                     name: "og:description",
-                    content:
-                      meta && meta.description
-                        ? `${meta.description} | CinemaTaztic`
-                        : data.metaYaml.og_description
+                    content: description || og_description
                   },
                   {
                     name: "og:type",
-                    content: meta && meta.type ? meta.type : data.metaYaml.og_type
+                    content: type || og_type
                   }
                 ]}
                 link={[
