@@ -13,45 +13,41 @@ const FullWidthVideo = (props) => {
 	const containerRef = useRef(null);
 
 	const shortVideoUrl = get(props.data.fullWidthVideo, "publicURL", null)
-	const largeVideoUrl = get(props.data , "largeVideoUrl", null)
+	const largeVideoUrl = get(props.data, "largeVideoUrl", null)
 	const showControls = props.data.showControls //&& !shortVideoUrl ? false : true
-	const fluidCoverImage = get(props.data , "fullWidthVideoImage.childImageSharp.fluid", null)
+	const fluidCoverImage = get(props.data, "fullWidthVideoImage.childImageSharp.fluid", null)
 	const autoPlay = props.data.autoplay //&& shortVideoUrl ? false : true;
 
 	const videoUrl = shortVideoUrl ? shortVideoUrl : largeVideoUrl
 
 
 	const onEnter = (value) => {
-		//console.log(" TextImage > enter = ");
-		if (value.previousPosition === "below" || value.previousPosition === undefined){
-			TweenMax.to(containerRef.current, 1.2, {y:0, alpha:1, ease:"Expo.easeOut"});
-			//TweenMax.to(txtRef.current, 1.2, {x:0, alpha:1,delay:.2, ease:"Expo.easeOut"});
+		if (value.previousPosition === "below" || value.previousPosition === undefined) {
+			TweenMax.to(containerRef.current, 1.2, { y: 0, alpha: 1, ease: "Expo.easeOut" });
 		}
 	};
 
 	const onLeave = (value) => {
-		//console.log (" TextImage > LEAVE = ", value);
-		if(value.currentPosition === "below" ){
-			TweenMax.to(containerRef.current , 1, {y:200, alpha:0, ease:"Expo.easeOut"});
-			//TweenMax.to(txtRef.current, 1.2, {x:-10, alpha:0, ease:"Expo.easeOut"});
+		if (value.currentPosition === "below") {
+			TweenMax.to(containerRef.current, 1, { y: 200, alpha: 0, ease: "Expo.easeOut" });
 		}
 	}
 
 
 	return (
 
-	   <Waypoint bottomOffset='10%' onEnter={onEnter} onLeave={onLeave} scrollableAncestor={win} >
-		   <div ref={containerRef} className="row mt-5 mb-5" style={{opacity:0}}>
-			<div className="col-12 col-md-10 mx-auto">
-				<div className="row" style={{}}>
-					<div className="col-12 " style={{minHeight:"25vh", }}>
+		<Waypoint bottomOffset='10%' onEnter={onEnter} onLeave={onLeave} scrollableAncestor={win} >
+			<div ref={containerRef} className="row mt-5 mb-5" style={{ opacity: 0 }}>
+				<div className="col-12 col-md-10 mx-auto">
+					<div className="row" style={{}}>
+						<div className="col-12 " style={{ minHeight: "25vh", }}>
 
-						<Player url={videoUrl} showControls={showControls} fluidCoverImage={fluidCoverImage} autoPlay={autoPlay}></Player>
+							<Player url={videoUrl} showControls={showControls} fluidCoverImage={fluidCoverImage} autoPlay={autoPlay}></Player>
+						</div>
 					</div>
 				</div>
 			</div>
-		   </div>
-	   </Waypoint>
+		</Waypoint>
 	)
 
 }

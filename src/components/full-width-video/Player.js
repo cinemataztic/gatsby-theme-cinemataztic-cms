@@ -30,7 +30,6 @@ export default class Player extends PureComponent {
   };
 
   togglePlaying = () => {
-    console.log(" Player > play = ", this.state.playing);
     if (!this.state.playing) {
       this.setState({ playing: !this.state.playing });
     }

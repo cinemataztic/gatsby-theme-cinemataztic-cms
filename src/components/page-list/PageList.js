@@ -22,7 +22,6 @@ const PageList = React.memo(props => {
 
   // basic Error handling - so it does not blow up
   if (!listContent || listContent.length === 0) {
-    console.log(" PageList > COULD NOT FIND LIST = ", props);
     return <div>Error list could not be found</div>;
   }
 
