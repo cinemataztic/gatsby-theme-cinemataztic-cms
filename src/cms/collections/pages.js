@@ -12,8 +12,6 @@ import {
   textVideo
 } from "../cmsComponents";
 
-console.log(`*** pages contentPath: @contentPath ***`);
-
 export default {
   name: "pages",
   label: "Pages",

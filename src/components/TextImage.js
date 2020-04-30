@@ -45,7 +45,7 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
 
   const hasExternalLink =
     pageLink && pageLink.externalLink !== "" ? true : false;
-  const fluidImage = get(textImage, "childImageSharp.fluid", null); //imageContent && imageContent.publicURL ? imageContent.publicURL : "" ;
+  const fluidImage = get(textImage, "childImageSharp.fluid", null);
   const originalImage = get(textImage, "publicURL");
 
   const colSize = sizeColums(size);

@@ -121,7 +121,6 @@ const TextVideo = ({ data, breakpoints, currentBreakpoint }) => {
   };
 
   const onLeave = value => {
-    //console.log (" TextVideo > LEAVE = ", value);
     if (value.currentPosition === "below") {
       TweenMax.to(containerRef.current, 1, {
         y: 200,

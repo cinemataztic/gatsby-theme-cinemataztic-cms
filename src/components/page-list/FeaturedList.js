@@ -173,13 +173,7 @@ const FeaturedList = props => {
       });
     }
 
-    console.log(
-      " FeaturedList > activeIndex + visibleElements  = ",
-      activeIndex + visibleElements,
-      myElements.length
-    );
     if (activeIndex + visibleElements <= myElements.length - 1) {
-      console.log(" FeaturedList > show new = ");
       TweenMax.to(nextBtn.current, 0.5, {
         alpha: 1,
         x: 0,

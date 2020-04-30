@@ -9,7 +9,6 @@ import Img from "gatsby-image";
 import Divider from "../Divider";
 
 const MultipleImages = props => {
-console.log("props", props)
   const myElement = useRef();
   const { title, text, images } = props.data;
   const showDivider = !text ? false : true;
