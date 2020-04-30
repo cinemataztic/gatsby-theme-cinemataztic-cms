@@ -9,14 +9,18 @@ module.exports = ({
   contentPath = "content",
   sitePath = null,
   settingsPath = "settings",
-  siteUrl = "https://cms-demo.cinemataztic.com"
+  siteUrl = "https://cms-demo.cinemataztic.com",
+  sitemap = {}
 }) => {
   return {
     siteMetadata: {
       siteUrl,
     },
     plugins: [
-      `gatsby-plugin-sitemap`,
+      {
+        resolve: `gatsby-plugin-sitemap`,
+        options: sitemap
+      },
       {
         resolve: "gatsby-source-filesystem",
         options: {
