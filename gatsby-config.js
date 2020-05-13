@@ -10,7 +10,8 @@ module.exports = ({
   sitePath = null,
   settingsPath = "settings",
   siteUrl = "https://cms-demo.cinemataztic.com",
-  sitemap = {}
+  sitemap = {},
+  robotsPolicy = [{ userAgent: '*', allow: '/' }]
 }) => {
   return {
     siteMetadata: {
@@ -112,7 +113,7 @@ module.exports = ({
               policy: [{ userAgent: '*', disallow: ['/'] }]
             },
             production: {
-              policy: [{ userAgent: '*', allow: '/' }]
+              policy: robotsPolicy
             }
           }
         },
