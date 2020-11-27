@@ -1,11 +1,11 @@
 {
-    "name": "gatsby-theme-cinemataztic-cms",
+    "name": "@cinemataztic/gatsby-theme-cinemataztic-cms",
     "version": "0.8.2",
     "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://bitbucket.org:cinemataztic/gatsby-theme-cinemataztic-cms.git"
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
     },
+    "repository": "git@github.com:cinemataztic/gatsby-theme-cinemataztic-cms.git",
     "scripts": {
         "build": "gatsby build",
         "develop": "gatsby develop",
