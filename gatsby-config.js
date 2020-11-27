@@ -92,15 +92,17 @@ module.exports = ({
         }
       },
       {
-        resolve: `gatsby-plugin-prefetch-google-fonts`,
+        resolve: `gatsby-plugin-webfonts`,
         options: {
-          fonts: [
-            {
-              family: `Lato`,
-              variants: ["400", "700", "900"]
-            }
-          ]
-        }
+          fonts: {
+            google: [
+              {
+                family: "Lato",
+                variants: ['400', '700', '900'],
+              },
+            ],
+          },
+        },
       },
       {
         resolve: 'gatsby-plugin-robots-txt',
