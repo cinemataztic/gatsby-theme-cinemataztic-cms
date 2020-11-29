@@ -11,11 +11,6 @@
         "develop": "gatsby develop",
         "clean": "gatsby clean"
     },
-    "peerDependencies": {
-        "gatsby": "^2.23.19",
-        "react": "^16.13.0",
-        "react-dom": "^16.13.0"
-    },
     "dependencies": {
         "@emotion/core": "^10.0.10",
         "@emotion/styled": "^10.0.12",
