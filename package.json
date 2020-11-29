@@ -43,7 +43,7 @@
         "hex-to-rgba": "^2.0.1",
         "lodash.get": "^4.4.2",
         "mkdirp": "^1.0.3",
-        "netlify-cms-app": "^2.11.32",
+        "netlify-cms-app": "^2.14.1",
         "netlify-cms-backend-fs": "^0.4.4",
         "node-sass": "^4.13.1",
         "nothing-mock": "^1.0.2",
@@ -56,5 +56,10 @@
         "react-use-gesture": "^7.0.5",
         "react-waypoint": "^9.0.2",
         "replace-in-file-webpack-plugin": "^1.0.6"
+    },
+    "peerDependencies": {
+        "gatsby": "^2.23.19",
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0"
     }
 }
