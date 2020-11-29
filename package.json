@@ -1,6 +1,6 @@
 {
     "name": "@cinemataztic/gatsby-theme-cinemataztic-cms",
-    "version": "0.8.7",
+    "version": "0.8.8",
     "main": "index.js",
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/"
