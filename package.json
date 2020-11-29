@@ -16,11 +16,6 @@
         "react": "^16.13.0",
         "react-dom": "^16.13.0"
     },
-    "devDependencies": {
-        "gatsby": "^2.23.19",
-        "react": "^16.13.0",
-        "react-dom": "^16.13.0"
-    },
     "dependencies": {
         "@emotion/core": "^10.0.10",
         "@emotion/styled": "^10.0.12",
@@ -30,7 +25,7 @@
         "dotenv": "^8.2.0",
         "fs": "^0.0.1-security",
         "fs-extra": "^9.0.0",
-        "gatsby": "^2.23.19",
+        "gatsby": "^2.27.4",
         "gatsby-image": "^2.3.0",
         "gatsby-plugin-netlify": "^2.1.35",
         "gatsby-plugin-netlify-cms": "^4.5.0",
@@ -56,7 +51,9 @@
         "netlify-cms-backend-fs": "^0.4.4",
         "node-sass": "^4.13.1",
         "nothing-mock": "^1.0.2",
+        "react": "^17.0.1",
         "react-breakpoints": "^3.0.3",
+        "react-dom": "^17.0.1",
         "react-helmet": "^5.2.1",
         "react-player": "^1.15.2",
         "react-scroll-listen": "^0.6.2",
