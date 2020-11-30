@@ -1,6 +1,7 @@
 // src/gatsby-theme-netlify-cms/config.js
 
 import CMS, { init } from "netlify-cms-app";
+import cloudinary from 'netlify-cms-media-library-cloudinary';
 
 // Import custom widgets
 import AutoUuidWidgetControl from "./AutoUuidWidget/AutoUuidWidgetControl";
@@ -33,7 +34,6 @@ const config = {
 };
 
 if (UPLOADCARE_PUBLIC_KEY) {
-  import cloudinary from 'netlify-cms-media-library-cloudinary';
   CMS.registerMediaLibrary(cloudinary);
   config.media_library = {
     name: uploadcare,
