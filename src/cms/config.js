@@ -36,7 +36,7 @@ let config = {
 if (UPLOADCARE_PUBLIC_KEY) {
   CMS.registerMediaLibrary(uploadcare);
   config.media_library = {
-    name: uploadcare,
+    name: "uploadcare",
     config: {
       publicKey: UPLOADCARE_PUBLIC_KEY
     }
