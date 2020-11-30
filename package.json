@@ -36,7 +36,6 @@
         "gatsby-schema-field-absolute-path": "^1.1.1",
         "gatsby-source-filesystem": "^2.0.39",
         "gatsby-theme-netlify-cms": "^1.0.3",
-        "gatsby-theme-ui": "^0.2.0",
         "gatsby-transformer-sharp": "^2.4.1",
         "gatsby-transformer-yaml": "^2.1.12",
         "gsap": "^3.2.5",
