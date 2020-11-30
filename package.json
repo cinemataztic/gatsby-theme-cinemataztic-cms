@@ -46,7 +46,7 @@
         "netlify-cms-backend-fs": "^0.4.4",
         "node-sass": "^4.13.1",
         "nothing-mock": "^1.0.2",
-        "react": "^17.0.1",
+        "react": "^16.14.0",
         "react-breakpoints": "^3.0.3",
         "react-dom": "^17.0.1",
         "react-helmet": "^5.2.1",
