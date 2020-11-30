@@ -17,18 +17,30 @@ const GATSBY_LOCAL_BACKEND = process.env.GATSBY_LOCAL_BACKEND;
 const GATSBY_BACKEND_NAME = process.env.GATSBY_BACKEND_NAME;
 const GATSBY_BACKEND_REPO = process.env.GATSBY_BACKEND_REPO;
 const GATSBY_BACKEND_BRANCH = process.env.GATSBY_BACKEND_BRANCH;
+const UPLOADCARE_PUBLIC_KEY = GATSBY_UPLOADCARE_PUBLIC_KEY;
 
-init({
-  config: {
-    local_backend: GATSBY_LOCAL_BACKEND === "true",
-    backend: {
-      name: GATSBY_LOCAL_BACKEND === "true" ? "local" : GATSBY_BACKEND_NAME,
-      repo: GATSBY_LOCAL_BACKEND === "true" ? "" : GATSBY_BACKEND_REPO,
-      branch: GATSBY_BACKEND_BRANCH
-    },
-    logo_url: cinematazticLogo,
-    media_folder: "@contentPath/media",
-    public_folder: "/",
-    collections: [pages, settings]
+const config = {
+  local_backend: GATSBY_LOCAL_BACKEND === "true",
+  backend: {
+    name: GATSBY_LOCAL_BACKEND === "true" ? "local" : GATSBY_BACKEND_NAME,
+    repo: GATSBY_LOCAL_BACKEND === "true" ? "" : GATSBY_BACKEND_REPO,
+    branch: GATSBY_BACKEND_BRANCH
+  },
+  logo_url: cinematazticLogo,
+  media_folder: "@contentPath/media",
+  public_folder: "/",
+  collections: [pages, settings]
+};
+
+if (UPLOADCARE_PUBLIC_KEY) {
+  import cloudinary from 'netlify-cms-media-library-cloudinary';
+  CMS.registerMediaLibrary(cloudinary);
+  config.media_library = {
+    name: uploadcare,
+    config: {
+      publicKey: UPLOADCARE_PUBLIC_KEY
+    }
   }
-});
+}
+
+init({ config });
