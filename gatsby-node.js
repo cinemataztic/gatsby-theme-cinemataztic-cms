@@ -23,10 +23,15 @@ exports.onPreBootstrap = ({ reporter }, options) => {
   //
 
   if (options.isYarnWorkspace && options.sitePath) {
+    let themePathPrefix = "..";
     reporter.info(`running as yarn workspace`);
-    const hoistedPath = path.resolve(__dirname, "../node_modules/bootstrap");
-    const workspacePath = path.resolve(__dirname, `../${options.sitePath}/node_modules/bootstrap`);
-    if (!fs.existsSync("node_modules/bootstrap")) {
+    let hoistedPath = path.resolve(__dirname, "../node_modules/bootstrap");
+    if (!fs.existsSync(path.resolve(__dirname, "../node_modules/bootstrap")) && fs.existsSync(path.resolve(__dirname, "../../node_modules/bootstrap"))) {
+      themePathPrefix = "../.."
+      hoistedPath = path.resolve(__dirname, `${themePathPrefix}/node_modules/bootstrap`);
+    }
+    const workspacePath = path.resolve(__dirname, `${themePathPrefix}/${options.sitePath}/node_modules/bootstrap`);
+    if (!fs.existsSync(workspacePath)) {
       reporter.info(`copying hoisted bootstrap package from ${hoistedPath} to ${workspacePath}`)
       fs.copySync(
         hoistedPath,
