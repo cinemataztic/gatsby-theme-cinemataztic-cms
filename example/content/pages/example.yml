@@ -1,0 +1,111 @@
+uuid: f7532bc3-8bfc-49af-b817-28fdb6b76b02
+title: Example Page
+coverImage: ''
+coverVideo: ''
+backgroundImage: audience.jpg
+backgroundVideo: ''
+mainContent:
+  color:
+    backgroundColor: ''
+    textColor: ''
+  header: Example page
+  subhead: It shows the default page layout and options
+featuredContent:
+  featuredDescription: This page is featured
+  title: ''
+  description: 'It defaults to use the cover image or background as featured image. '
+  image: ''
+logoImage: full_width_images.jpg
+navigation:
+  priority: 0
+  title: Example Page
+componentType: page
+component:
+  - textImage: laptop.png
+    pageLink:
+      btnTxt: ''
+      externalLink: ''
+      link: about
+    placement: true
+    size: 66%
+    text: >-
+      You can have text / image components, showing some text and an image of
+      your choice. Images can be set to left or right side (like this picture of
+      a laptop).
+
+      You can also have a Full Width Component with optional text below it as
+      shown in the next section vv
+    title: Text Image component
+    type: TextImage
+  - fullWidthImage: /audience.jpg
+    placement: true
+    text: This component is full width and has an optional image above ^^
+    title: Full Width Component
+    type: FullWidthComponent
+  - imageContent: laptop.png
+    placement: false
+    size: 66%
+    text: >-
+      You can choose to have the image on the left side too. It is also possible
+      to set the size of the image: this one is set to 66% width. 
+    title: Text Image (left)
+    type: TextImage
+    textImage: /vr-headset.png
+  - fullWidthVideo: /phonebgloop-allmarkets.mp4
+    type: FullWidthVideo
+  - type: FullWidthComponent
+    title: Full Width Video
+    text: >-
+      The component above is of type Full Width Video. It has various
+      customization options such as cover image, path to a large external video
+      (e.g. a large video hosted on CDN rather than in the underlying git repo),
+      autoplay and hide controls. 
+
+
+      This component is of type Full Width Component with text left and 83% text
+      width (you can also align center and right).
+    placement: false
+    textAlign: left
+    size: 83%
+    pageLink:
+      btnTxt: ''
+      link: ''
+      externalLink: ''
+  - type: FullWidthComponent
+    title: Child Pages
+    text: >-
+      A page can also be the child of another page. Click the button to go to
+      the Example Child Page. It is a child of this page (/example-page) and is
+      therefore located at /example-page/child-page.
+    placement: false
+    textAlign: right
+    size: 66%
+    pageLink:
+      btnTxt: Go to Child Page
+      link: da01ac19-386e-4a5a-aeae-7d9435bb9097
+      externalLink: ''
+      page: da01ac19-386e-4a5a-aeae-7d9435bb9097
+  - size: 50%
+    placement: false
+    pageLink:
+      btnTxt: External Link
+      page: ''
+      externalLink: 'https://google.com'
+    text: >-
+      This video has both image and text. Video size is set to 50% and to be on
+      the left side. 
+
+      It can contain links to internal or external pages. This one is external.
+    largeVideoUrl: ''
+    shortTextVideo: /1508_video.mp4
+    hideControls: false
+    title: Text Video Component
+    type: TextVideo
+  - type: PageList
+    title: Header text
+    featured: false
+    listContent:
+      - f7532bc3-8bfc-49af-b817-28fdb6b76b02
+      - da01ac19-386e-4a5a-aeae-7d9435bb9097
+      - 6da740d9-60cd-4637-8892-7686bf7c8cdc
+listImage: full_width_images.jpg
