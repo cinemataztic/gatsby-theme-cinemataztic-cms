@@ -1,0 +1,80 @@
+@import '../../styles/bootstrap/variables';
+@import "node_modules/bootstrap/scss/mixins";
+
+
+.cine-navigation{
+
+
+    .mobile-nav-item{
+
+        .trans-link-active{
+
+            pointer-events: none;
+            color:white;
+            opacity: 1;
+
+            h3 {
+                color:white;
+                opacity: 1;
+
+            }
+        }
+
+
+        .trans-link {
+            h3 {
+                opacity: .8;
+            }
+        }
+
+    }
+
+    .cine-nav-item{
+
+
+        .trans-link-active{
+            //text-decoration: line-through;
+            pointer-events: none;
+
+            h3 {
+                opacity: 1;
+                color:white;
+            }
+        }
+
+
+        .trans-link:hover{
+            color:none;
+            text-decoration: none;
+            h3{
+                color:white;
+                text-decoration: none;
+            }
+        }
+
+        &.logo{
+
+            width:10rem;
+            svg{
+                fill: white;
+            }
+        }
+
+    }
+
+    .social{
+        svg{
+            width:2rem;
+            fill: white;
+        }
+    }
+
+    .mobile-logo{
+
+        svg{
+            width:8rem;
+            fill: white;
+        }
+    }
+
+}

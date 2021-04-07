@@ -1,0 +1,43 @@
+title: Welcome
+urlPath: index-page
+backgroundVideo: /1508_video.mp4
+mainContent:
+  header: CinemaTaztic CMS
+  subhead: A static site built on netlifyCMS and gatsby.js
+component:
+  - pageLink:
+      btnTxt: Website
+      externalLink: 'https://www.gatsbyjs.org'
+    placement: false
+    size: 100%
+    text: >-
+      Gatsby is a free and open source framework based on React that helps
+      developers build blazing fast websites and apps.
+    textAlign: left
+    title: GatsbyJS
+    type: FullWidthComponent
+  - pageLink:
+      btnTxt: Website
+      externalLink: 'https://www.netlifycms.org'
+    placement: false
+    size: 100%
+    text: Open source content management for your Git workflow.
+    textAlign: right
+    title: NetlifyCMS
+    type: FullWidthComponent
+  - pageLink:
+      btnTxt: View
+      link: example-page
+      page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
+    placement: false
+    size: 100%
+    text: Example of how a page could look like.
+    title: Example Page
+    type: FullWidthComponent
+  - type: PageList
+    title: Featured Pages
+    featured: true
+    listContent:
+      - f7532bc3-8bfc-49af-b817-28fdb6b76b02
+      - da01ac19-386e-4a5a-aeae-7d9435bb9097
+      - 6da740d9-60cd-4637-8892-7686bf7c8cdc

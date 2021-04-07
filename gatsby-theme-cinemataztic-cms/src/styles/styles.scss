@@ -1,0 +1,127 @@
+
+@import "./bootstrap/variables.scss";
+@import "./bootstrap/components.scss";
+//@import "./bootstrap/overrides.scss";
+@import "./bootstrap/fonts.scss";
+@import "./page-component.scss";
+
+
+/*
+ * Purpose:
+ * Assign height: "100%" to
+ * html, body, #___gatsby &
+ * div with role="group"
+*/
+
+// The golden fix for scroll flicker: https://css-tricks.com/elegant-fix-jumping-scrollbar-issue/
+html {
+    //margin-left: calc(100vw - 100%);
+
+/*    width:100vw;
+    overflow-x:hidden;*/
+
+}
+
+
+
+
+// should fix the uneven margin on desktop
+@media screen and (min-width: 960px) {
+    html {
+       // margin-left: calc(100vw - 100%);
+       // margin-right: 0;
+    }
+}
+
+
+html, body, #___gatsby {
+    height: 100%;
+}
+
+.tl-edges{
+    overflow: hidden;
+}
+
+
+.tl-wrapper {
+    //background:yellow;
+    //height: 100%;
+    //overflow: hidden;
+}
+
+
+div[role="group"][tabindex] {
+    //margin-left: -20;
+    height: 100%;
+}
+
+html, body {
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+
+body{
+    overflow-x: hidden;
+}
+
+
+
+/*display: flex;
+flex-direction: column;
+flex-grow: 1;*/
+
+.w-sm-100{
+    @include media-breakpoint-down(sm) {
+        width:100%;
+    }
+}
+
+
+.pointer{
+    cursor: pointer;
+}
+
+
+.fine-shadow {
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.15);
+}
+
+.back-image-contain {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.back-image-cover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+
+.my-arrow{
+    width:50px;
+    height:50px;
+}
+
+
+.no-outline {
+    outline: none;
+}
+
+

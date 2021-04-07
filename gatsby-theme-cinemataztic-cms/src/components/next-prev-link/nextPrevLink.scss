@@ -1,0 +1,19 @@
+@import '../../styles/bootstrap/variables';
+@import "node_modules/bootstrap/scss/mixins";
+
+
+.next-prev-link{
+
+    h3{
+
+        font-size: 1.75rem;
+
+        @include media-breakpoint-down(md) {
+            font-size: 1rem;
+        }
+
+
+
+    }
+
+}
