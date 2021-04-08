@@ -68,7 +68,7 @@ const TextVideo = ({ data, breakpoints, currentBreakpoint }) => {
   const shortVideoUrl = get(shortTextVideo, "publicURL", null);
   const largeVideoUrl = get(data, "largeVideoUrl", null);
 
-  const fluidCoverImage = get(textVideoImage, "childImageSharp.fluid", null);
+  const coverImage = textVideoImage;
   const videoUrl = shortVideoUrl ? shortVideoUrl : largeVideoUrl;
 
   //
@@ -153,14 +153,12 @@ const TextVideo = ({ data, breakpoints, currentBreakpoint }) => {
               ref={imageRef}
               className={`col-12 ${colSize[0]}  mt-5 mb-5 p-md-2 text-center my-auto p-lg-5 ${orderImage}`}
             >
-              {/*<img className="p-lg-5 img-fluid" src={url} alt=""/>*/}
-              {/*{fluidImage && <Img durationFadeIn={500} fluid={fluidImage}/>}*/}
               <Player
                 url={videoUrl}
                 showControls={hideControls}
-                fluidCoverImage={fluidCoverImage}
+                coverImage={coverImage}
                 autoPlay={false}
-              ></Player>
+              />
             </div>
 
             <div
