@@ -48,7 +48,7 @@ const FullWidthComp = props => {
 
   useEffect(() => {
     TweenMax.set(myElement.current, { alpha: 0, y: 200 });
-  });
+  }, []);
 
   const onEnter = value => {
     if (value.currentPosition === "inside") {

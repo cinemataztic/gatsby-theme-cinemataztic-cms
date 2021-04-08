@@ -81,7 +81,7 @@ const DesktopNavigation = ({ menuData, logo, logoSmall }) => {
       transformOrigin: "50% 50%"
     });
     onScroll(window.scrollY);
-  });
+  }, []);
 
   const onScroll = v => {
     const value = v > 200 ? 200 : 0;
