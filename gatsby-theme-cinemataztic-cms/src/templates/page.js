@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { graphql } from "gatsby";
 import get from "lodash.get";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 import componentFactory from "../utils/components-types";
 import Layout from "../components/Layout";
@@ -33,13 +33,11 @@ const Page = React.memo(props => {
 
   const { header, subhead, color } = mainContent;
   const headerWithSplit = header.split("@").join("\n");
-  const fluidCoverImage = get(coverImage, "childImageSharp.fluid", null);
   const videoUrl = get(coverVideo, "publicURL", null);
   const backVideoUrl = get(backgroundVideo, "publicURL", null);
 
   // BACKGROUND IMAGE
-  const backImageSrc = get(backgroundImage, "childImageSharp.fluid.src", null);
-  const logoImg = get(logoImage, 'childImageSharp.fluid', null);
+  const backImageSrc = backgroundImage.publicURL;
   const backImg = getBackgroundImage(color.backgroundColor, backImageSrc);
   const textColor = color.textColor || "FFFFFF";
 
@@ -83,7 +81,7 @@ const Page = React.memo(props => {
       >
 
         <HeaderAnimation
-          logoImg={logoImg}
+          logoImg={logoImage}
           overlayRef={overlayRef}
           featuredImageRef={featuredImageRef}
           subhead={subhead}
@@ -92,13 +90,13 @@ const Page = React.memo(props => {
         />
 
         <div className="row position-relative h-100" style={{}}>
-          {fluidCoverImage && (
+          {coverImage && (
             <div
               ref={featuredImageRef}
               className="col-12 col-md-10 mx-auto "
               style={{ opacity: 0 }}
             >
-              <GatsbyImage image={fluidCoverImage} durationFadeIn={500} />
+              <GatsbyImage image={getImage(coverImage)} durationFadeIn={500} />
             </div>
           )}
 
@@ -122,7 +120,7 @@ const Page = React.memo(props => {
             </div>
           )}
 
-          {!videoUrl && !fluidCoverImage && (
+          {!videoUrl && !coverImage && (
             <div
               ref={featuredImageRef}
               className="col-10 mx-auto "
