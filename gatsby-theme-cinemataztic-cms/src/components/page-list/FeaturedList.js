@@ -149,7 +149,7 @@ const FeaturedList = props => {
         ease: "Expo.easeOut"
       });
     });
-  });
+  }, []);
 
   const gotoPrev = () => {
     if (activeIndex === 0) {
