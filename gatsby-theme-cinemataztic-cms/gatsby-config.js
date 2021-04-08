@@ -88,9 +88,6 @@ module.exports = ({
       },
       {
         resolve: `gatsby-plugin-sass`,
-        options: {
-          precision: 8
-        }
       },
       {
         resolve: `gatsby-plugin-webfonts`,

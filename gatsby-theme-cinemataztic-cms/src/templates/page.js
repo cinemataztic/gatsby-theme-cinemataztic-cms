@@ -157,12 +157,6 @@ export const query = graphql`
           fluid(quality: 70, maxWidth: 1400) {
             ...GatsbyImageSharpFluid_withWebp
           }
-          resolutions(quality: 60) {
-            aspectRatio
-            width
-            height
-            src
-          }
         }
       }
 
