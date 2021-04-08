@@ -55,10 +55,10 @@ const Navigation = React.memo(() => {
         if (
           logo.ext !== ".svg"
           && logo.childImageSharp
-          && logo.childImageSharp.fluid
-          && logo.childImageSharp.fluid.src
+          && logo.childImageSharp.gatsbyImageData
+          && logo.childImageSharp.gatsbyImageData.src
         ) {
-          logo.src = logo.childImageSharp.fluid.src
+          logo.src = logo.childImageSharp.gatsbyImageData.src
         }
         else {
           logo.src = logo.publicURL
@@ -67,10 +67,10 @@ const Navigation = React.memo(() => {
         if (
           logoSmall.ext !== ".svg"
           && logoSmall.childImageSharp
-          && logoSmall.childImageSharp.fluid
-          && logoSmall.childImageSharp.fluid.src
+          && logoSmall.childImageSharp.gatsbyImageData
+          && logoSmall.childImageSharp.gatsbyImageData.src
         ) {
-          logoSmall.src = logoSmall.childImageSharp.fluid.src
+          logoSmall.src = logoSmall.childImageSharp.gatsbyImageData.src
         }
         else {
           logoSmall.src = logoSmall.publicURL
