@@ -33,7 +33,6 @@ const FullWidthComp = props => {
   const myElement = useRef();
   const { fullWidthImage, title, text, size, pageLink, textAlign } = props.data;
   const image = fullWidthImage;
-  console.log("🚀 ~ file: FullWidthComp.js ~ line 38 ~ image", image)
 
   const hasLink = pageLink && pageLink.page ? true : false;
   const hasExternalLink =
