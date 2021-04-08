@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import get from "lodash.get";
 
 import Layout from "../components/Layout";
@@ -77,7 +77,7 @@ const FrontPage = props => {
         <div className="row position-relative h-100" style={{}}>
           {fluid && (
             <div ref={featuredImageRef} className="col-10 mx-auto ">
-              <Img durationFadeIn={500} fluid={fluid} />
+              <GatsbyImage image={fluid} durationFadeIn={500} />
             </div>
           )}
 
@@ -96,115 +96,94 @@ const FrontPage = props => {
   );
 };
 
-export const query = graphql`
-  {
-    frontpageYaml {
-      id
+export const query = graphql`{
+  frontpageYaml {
+    id
+    title
+    backgroundVideo {
+      publicURL
+    }
+    mainContent {
+      header
+      subhead
+    }
+    component {
+      size
+      placement
+      text
       title
-      backgroundVideo {
+      type
+      listContent {
+        id
+        title
+        slug
+        mainContent {
+          header
+          subhead
+        }
+        backgroundImage {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(width: 400, placeholder: BLURRED, layout: CONSTRAINED)
+          }
+        }
+        coverImage {
+          childImageSharp {
+            gatsbyImageData(width: 400, placeholder: BLURRED, layout: CONSTRAINED)
+          }
+        }
+        featuredContent {
+          title
+          description
+          image {
+            publicURL
+            childImageSharp {
+              gatsbyImageData(width: 400, placeholder: BLURRED, layout: CONSTRAINED)
+            }
+          }
+        }
+      }
+      featured
+      textAlign
+      textVideoImage {
+        childImageSharp {
+          gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+        }
+      }
+      shortTextVideo {
         publicURL
       }
-      mainContent {
-        header
-        subhead
+      textImage {
+        publicURL
+        childImageSharp {
+          gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+        }
       }
-      component {
-        size
-        placement
-        text
-        title
-        type
-        listContent {
-          id
+      fullWidthImage {
+        publicURL
+        childImageSharp {
+          gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+        }
+      }
+      images {
+        multipleItemImage {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+          }
+        }
+      }
+      pageLink {
+        btnTxt
+        externalLink
+        page {
           title
           slug
-          mainContent {
-            header
-            subhead
-          }
-          backgroundImage {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 400) {
-                src
-              }
-            }
-          }
-          coverImage {
-            childImageSharp {
-              fluid(maxWidth: 400) {
-                src
-              }
-            }
-          }
-          featuredContent {
-            title
-            description
-            image {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 400) {
-                  src
-                }
-              }
-            }
-          }
-        }
-        featured
-        textAlign
-
-        textVideoImage {
-          childImageSharp {
-            fluid(quality: 70, maxWidth: 1400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-
-        shortTextVideo {
-          publicURL
-        }
-
-        textImage {
-          publicURL
-          childImageSharp {
-            fluid(quality: 70, maxWidth: 1400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-
-        fullWidthImage {
-          publicURL
-          childImageSharp {
-            fluid(quality: 70, maxWidth: 1400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-
-        images {
-          multipleItemImage {
-            publicURL
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1400) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-
-        pageLink {
-          btnTxt
-          externalLink
-          page {
-            title
-            slug
-          }
         }
       }
     }
   }
+}
 `;
 
 export default FrontPage;

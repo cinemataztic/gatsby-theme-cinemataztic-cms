@@ -9,7 +9,7 @@ import Button from "./buttons/Button";
 import { win } from "../utils/browserMock";
 import get from "lodash.get";
 import { withBreakpoints } from "react-breakpoints";
-import Img from "gatsby-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import ExternalLink from "./buttons/ExternalLink";
 
 const sizeColums = size => {
@@ -45,8 +45,7 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
 
   const hasExternalLink =
     pageLink && pageLink.externalLink !== "" ? true : false;
-  const fluidImage = get(textImage, "childImageSharp.fluid", null);
-  const originalImage = get(textImage, "publicURL");
+  const image = textImage;
 
   const colSize = sizeColums(size);
 
@@ -103,9 +102,7 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
               ref={imageRef}
               className={`col-12 ${colSize[0]}  mt-5 mb-5 p-md-2 text-center my-auto p-lg-5 ${orderImage}`}
             >
-              {/*<img className="p-lg-5 img-fluid" src={url} alt=""/>*/}
-              {fluidImage && <Img durationFadeIn={500} fluid={fluidImage} />}
-              {!fluidImage && originalImage && <img className="img-fluid" durationFadeIn={500} src={originalImage} alt="" />}
+              {image && <GatsbyImage durationFadeIn={500} image={getImage(image)} />}
             </div>
 
             <div

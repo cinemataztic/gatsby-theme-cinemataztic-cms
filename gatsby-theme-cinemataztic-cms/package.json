@@ -22,6 +22,7 @@
         "fs-extra": "^9.0.0",
         "gatsby": "^3.2.1",
         "gatsby-image": "^3.2.0",
+        "gatsby-plugin-image": "^1.2.1",
         "gatsby-plugin-netlify": "^3.2.0",
         "gatsby-plugin-netlify-cms": "^5.2.0",
         "gatsby-plugin-react-helmet": "^4.2.0",
@@ -32,7 +33,7 @@
         "gatsby-plugin-svgr": "^3.0.0-beta.0",
         "gatsby-plugin-transition-link": "1.20.5",
         "gatsby-plugin-webfonts": "^2.1.0",
-        "gatsby-schema-field-absolute-path": "^1.1.1",
+        "gatsby-schema-field-absolute-path": "^1.3.0",
         "gatsby-source-filesystem": "^3.2.0",
         "gatsby-theme-netlify-cms": "^1.0.3",
         "gatsby-transformer-sharp": "^3.2.0",
@@ -46,9 +47,9 @@
         "netlify-cms-media-library-uploadcare": "^0.5.9",
         "node-sass": "^4.13.1",
         "nothing-mock": "^1.0.2",
-        "react": "^16.12.0",
+        "react": "^17.0.2",
         "react-breakpoints": "^3.0.3",
-        "react-dom": "^16.12.0",
+        "react-dom": "^17.0.2",
         "react-helmet": "^5.2.1",
         "react-player": "^1.15.2",
         "react-scroll-listen": "^0.6.2",
@@ -57,8 +58,8 @@
         "replace-in-file-webpack-plugin": "^1.0.6"
     },
     "peerDependencies": {
-        "gatsby": "^2.23.19",
-        "react": "^16.13.0",
-        "react-dom": "^16.13.0"
+        "gatsby": "^3.2.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
     }
 }

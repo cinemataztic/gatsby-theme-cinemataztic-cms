@@ -9,6 +9,7 @@ import get from "lodash.get";
 import AniWrapper from "../buttons/AniWrapper";
 import { Waypoint } from "react-waypoint";
 import { getPagePreviewData } from "../../utils/helpers";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 
 const ListItem = ({ item, index, breakpoints, currentBreakpoint }) => {
@@ -18,7 +19,7 @@ const ListItem = ({ item, index, breakpoints, currentBreakpoint }) => {
   const pagePreviewData = getPagePreviewData(item);
   const { description, slug } = pagePreviewData;
   const title = pagePreviewData.title.split("@").join("\n");
-  const imgUrl = get(pagePreviewData.image, "childImageSharp.fluid.src", null);
+  const previewImage = pagePreviewData.image;
 
   useEffect(() => {
     TweenMax.set(containerRef.current, { alpha: 0, y: 100 });
@@ -85,18 +86,17 @@ const ListItem = ({ item, index, breakpoints, currentBreakpoint }) => {
               </div>
 
               <div
-                className={`w-100 h-100 position-absolute ${
-                  imgUrl ? colorOverlayClass : ""
+                className={`w-100 h-100 position-absolute ${previewImage ? colorOverlayClass : ""
                   }`}
                 style={{ top: 0, left: 0, zIndex: 5 }}
               ></div>
-              <img
+              <GatsbyImage
                 className="img-fluid "
                 style={{
                   opacity: 1,
                   boxShadow: "1.878px 10px 43px 0px rgba(0, 0, 0, .5)"
                 }}
-                src={imgUrl}
+                image={getImage(previewImage)}
                 alt=""
               />
             </div>
