@@ -17,38 +17,29 @@ const breakpoints = {
 const Layout = ({ meta, children }) => {
   return (
     <StaticQuery
-      query={graphql`
-      {
-        site {
-          siteMetadata {
-            siteUrl
-          }
-        }
-        metaYaml {
-          og_image {
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1200) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-          og_title
-          og_description
-          og_type
-        }
-        generalYaml {
-          pageTitle
-          companyName
-          favicon {
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 32) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }           
-          }
-        }
-      }
-    `}
+      query={graphql`{
+  site {
+    siteMetadata {
+      siteUrl
+    }
+  }
+  metaYaml {
+    og_image {
+      publicURL
+    }
+    og_title
+    og_description
+    og_type
+  }
+  generalYaml {
+    pageTitle
+    companyName
+    favicon {
+      publicURL
+    }
+  }
+}
+`}
       render={
         data => {
           const { title, description, type } = meta;
@@ -100,7 +91,7 @@ const Layout = ({ meta, children }) => {
           )
         }}
     />
-  )
+  );
 };
 
 export default Layout;
