@@ -2,7 +2,6 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql, StaticQuery } from "gatsby";
 import ReactBreakpoints from "react-breakpoints";
-import get from "lodash.get";
 
 import Footer from "./footer/Footer";
 
