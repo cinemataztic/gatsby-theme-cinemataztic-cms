@@ -46,8 +46,8 @@ const Layout = ({ meta, children }) => {
           const { pageTitle, favicon, companyName } = data.generalYaml;
           const { og_image, og_title, og_description, og_type } = data.metaYaml;
           const { siteMetadata } = data.site;
-          const ogImgSrc = siteMetadata.siteUrl + get(og_image, "childImageSharp.fluid.src", null);
-          const faviconSrc = get(favicon, "childImageSharp.fluid.src", null);
+          const ogImgSrc = siteMetadata.siteUrl + og_image.publicURL;
+          const faviconSrc = favicon.publicURL;
           return (
             <div>
               <Helmet
