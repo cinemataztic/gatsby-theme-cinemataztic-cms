@@ -1,3 +1,4 @@
+# Theme
 ### Local git netlify cms backend
 https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
 
