@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { TimelineMax, TweenMax, Back, Expo } from "gsap";
-import Img from "gatsby-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import Divider from "../Divider";
 import DownArrow from "../display/DownArrow";
 import ScrollListener from "react-scroll-listen";
@@ -239,7 +239,7 @@ const HeaderAnimation = props => {
         {
           logoRef &&
           <div ref={logoRef} className="pb-3 " style={{ maxWidth: 320 }}>
-            <Img className="img-fluid" durationFadeIn={500} fluid={logoImg} />
+            <GatsbyImage className="img-fluid" durationFadeIn={500} image={getImage(logoImg)} />
           </div>
         }
 

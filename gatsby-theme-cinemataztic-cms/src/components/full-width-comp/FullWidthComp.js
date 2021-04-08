@@ -4,10 +4,9 @@
 
 import React, { useEffect, useRef } from "react";
 import Divider from "../Divider";
-import get from "lodash.get";
 import { Waypoint } from "react-waypoint";
 import { TweenMax } from "gsap";
-import Img from "gatsby-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import Button from "../buttons/Button";
 import ExternalLink from "../buttons/ExternalLink";
 
@@ -33,8 +32,7 @@ const sizeToColums = size => {
 const FullWidthComp = props => {
   const myElement = useRef();
   const { fullWidthImage, title, text, size, pageLink, textAlign } = props.data;
-  const url = get(fullWidthImage, "childImageSharp.fluid.src", null);
-  const fluid = get(fullWidthImage, "childImageSharp.fluid", null);
+  const image = fullWidthImage;
 
   const hasLink = pageLink && pageLink.page ? true : false;
   const hasExternalLink =
@@ -50,7 +48,7 @@ const FullWidthComp = props => {
 
   useEffect(() => {
     TweenMax.set(myElement.current, { alpha: 0, y: 200 });
-  });
+  }, []);
 
   const onEnter = value => {
     if (value.currentPosition === "inside") {
@@ -87,9 +85,9 @@ const FullWidthComp = props => {
       >
         <div className="col-12 col-md-10 mx-auto">
           <div className="row" style={{}}>
-            {url && (
+            {image && (
               <div className="col-12">
-                <Img durationFadeIn={500} fluid={fluid} />
+                <GatsbyImage durationFadeIn={500} image={getImage(image)} />
               </div>
             )}
 

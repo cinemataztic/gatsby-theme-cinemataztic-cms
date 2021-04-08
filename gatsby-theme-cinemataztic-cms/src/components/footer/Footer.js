@@ -46,7 +46,7 @@ const LinkItem = ({ link }) => {
   useEffect(() => {
     TweenMax.set(lineRef.current, { alpha: 0 });
     TweenMax.set(itemRef.current, { alpha: 1 });
-  });
+  }, []);
 
   return (
     <li
@@ -89,7 +89,7 @@ const Footer = () => {
     //TweenMax.to(item,.5, {alpha:1, ease:"Expo.easeOut"});
     TweenMax.set(maskRef.current, { scaleY: 1, transformOrigin: "100% 100%" });
     TweenMax.to(contentRef.current, { y: 200 });
-  });
+  }, []);
 
   return (
     <StaticQuery

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { graphql } from "gatsby";
 import get from "lodash.get";
-import Img from "gatsby-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 import componentFactory from "../utils/components-types";
 import Layout from "../components/Layout";
@@ -33,13 +33,11 @@ const Page = React.memo(props => {
 
   const { header, subhead, color } = mainContent;
   const headerWithSplit = header.split("@").join("\n");
-  const fluidCoverImage = get(coverImage, "childImageSharp.fluid", null);
   const videoUrl = get(coverVideo, "publicURL", null);
   const backVideoUrl = get(backgroundVideo, "publicURL", null);
 
   // BACKGROUND IMAGE
-  const backImageSrc = get(backgroundImage, "childImageSharp.fluid.src", null);
-  const logoImg = get(logoImage, 'childImageSharp.fluid', null);
+  const backImageSrc = get(backgroundImage, "publicURL", null);
   const backImg = getBackgroundImage(color.backgroundColor, backImageSrc);
   const textColor = color.textColor || "FFFFFF";
 
@@ -83,7 +81,7 @@ const Page = React.memo(props => {
       >
 
         <HeaderAnimation
-          logoImg={logoImg}
+          logoImg={logoImage}
           overlayRef={overlayRef}
           featuredImageRef={featuredImageRef}
           subhead={subhead}
@@ -92,13 +90,13 @@ const Page = React.memo(props => {
         />
 
         <div className="row position-relative h-100" style={{}}>
-          {fluidCoverImage && (
+          {coverImage && (
             <div
               ref={featuredImageRef}
               className="col-12 col-md-10 mx-auto "
               style={{ opacity: 0 }}
             >
-              <Img durationFadeIn={500} fluid={fluidCoverImage} />
+              <GatsbyImage image={getImage(coverImage)} durationFadeIn={500} />
             </div>
           )}
 
@@ -122,7 +120,7 @@ const Page = React.memo(props => {
             </div>
           )}
 
-          {!videoUrl && !fluidCoverImage && (
+          {!videoUrl && !coverImage && (
             <div
               ref={featuredImageRef}
               className="col-10 mx-auto "
@@ -145,201 +143,154 @@ const Page = React.memo(props => {
 
 export default Page;
 
-export const query = graphql`
-  query($pageID: String!) {
-    pagesYaml(id: { eq: $pageID }) {
+export const query = graphql`query ($pageID: String!) {
+  pagesYaml(id: {eq: $pageID}) {
+    title
+    slug
+    coverImage {
+      publicURL
+      childImageSharp {
+        gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+      }
+    }
+    coverVideo {
+      publicURL
+    }
+    backgroundImage {
+      publicURL
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
+      }
+    }
+    logoImage {
+      publicURL
+      childImageSharp {
+        gatsbyImageData(width: 350, placeholder: NONE, layout: CONSTRAINED)
+      }
+    }
+    backgroundVideo {
+      publicURL
+    }
+    mainContent {
+      header
+      subhead
+      color {
+        backgroundColor
+        textColor
+      }
+    }
+    component {
+      placement
+      text
       title
+      type
+      listContent {
+        id
+        title
+        slug
+        backgroundImage {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(width: 400, placeholder: BLURRED, layout: CONSTRAINED)
+          }
+        }
+        coverImage {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(width: 400, placeholder: BLURRED, layout: CONSTRAINED)
+          }
+        }
+        mainContent {
+          header
+          subhead
+        }
+        featuredContent {
+          title
+          description
+          image {
+            publicURL
+            childImageSharp {
+              gatsbyImageData(width: 400, placeholder: BLURRED, layout: CONSTRAINED)
+            }
+          }
+        }
+      }
+      featured
+      size
+      textAlign
+      hideControls
+      fullWidthVideo {
+        publicURL
+      }
+      largeVideoUrl
+      autoplay
+      textVideoImage {
+        childImageSharp {
+          gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+        }
+      }
+      shortTextVideo {
+        publicURL
+      }
+      textImage {
+        publicURL
+        childImageSharp {
+          gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+        }
+      }
+      fullWidthImage {
+        publicURL
+        childImageSharp {
+          gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+        }
+      }
+      fullWidthVideoImage {
+        publicURL
+        childImageSharp {
+          gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+        }
+      }
+      images {
+        multipleItemImage {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+          }
+        }
+      }
+      pageLink {
+        btnTxt
+        externalLink
+        page {
+          title
+          slug
+        }
+      }
+    }
+    previousPage {
       slug
-      coverImage {
-        publicURL
-
-        childImageSharp {
-          fluid(quality: 70, maxWidth: 1400) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-          resolutions(quality: 60) {
-            aspectRatio
-            width
-            height
-            src
-          }
-        }
-      }
-
-      coverVideo {
-        publicURL
-      }
-
-      backgroundImage {
-        publicURL
-        childImageSharp {
-          fluid(maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      
-      logoImage {
-        publicURL
-        childImageSharp {
-          fluid(maxWidth: 350) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-        }
-      }
-
-      backgroundVideo {
-        publicURL
-      }
-
+      title
       mainContent {
         header
         subhead
-        color {
-          backgroundColor
-          textColor
-        }
       }
-      
-      component {
-        placement
-        text
+      featuredContent {
         title
-        type
-        listContent {
-          id
-          title
-          slug
-          backgroundImage {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 400) {
-                src
-              }
-            }
-          }
-          coverImage {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 400) {
-                src
-              }
-            }
-          }
-          mainContent {
-            header
-            subhead
-          }
-          featuredContent {
-            title
-            description
-            image {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 400) {
-                  src
-                }
-              }
-            }
-          }
-        }
-        featured
-        size
-        textAlign
-        hideControls
-
-        fullWidthVideo {
-          publicURL
-        }
-
-        largeVideoUrl
-        autoplay
-
-        textVideoImage {
-          childImageSharp {
-            fluid(quality: 70, maxWidth: 1400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-
-        shortTextVideo {
-          publicURL
-        }
-
-        textImage {
-          publicURL
-          childImageSharp {
-            fluid(quality: 70, maxWidth: 1400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-
-        fullWidthImage {
-          publicURL
-          childImageSharp {
-            fluid(quality: 70, maxWidth: 1400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-
-        fullWidthVideoImage {
-          publicURL
-          childImageSharp {
-            fluid(quality: 70, maxWidth: 1400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-
-        images {
-          multipleItemImage {
-            publicURL
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1400) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-
-        pageLink {
-          btnTxt
-          externalLink
-          page {
-            title
-            slug
-          }
-        }
+        description
       }
-      
-      previousPage {
-        slug
+    }
+    nextPage {
+      title
+      slug
+      mainContent {
+        header
+        subhead
+      }
+      featuredContent {
         title
-        mainContent {
-          header
-          subhead
-        }
-        featuredContent {
-          title
-          description
-        }
+        description
       }
-      nextPage {
-        title
-        slug
-        mainContent {
-          header
-          subhead
-        }
-        featuredContent {
-          title
-          description
-        }
-      }
-
     }
   }
+}
 `;

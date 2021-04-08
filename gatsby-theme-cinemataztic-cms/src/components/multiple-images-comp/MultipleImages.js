@@ -2,10 +2,9 @@
  * Created by @author @ddennis - ddennis.dk aka fantastisk.dk/works aka meresukker.dk on 17-09-2019.
  */
 import React, { useEffect, useRef } from "react";
-import get from "lodash.get";
 import { TweenMax } from "gsap";
 import { Waypoint } from "react-waypoint";
-import Img from "gatsby-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import Divider from "../Divider";
 
 const MultipleImages = props => {
@@ -14,12 +13,12 @@ const MultipleImages = props => {
   const showDivider = !text ? false : true;
 
   const imageArr = images.map((item, index) => {
-    const fluid = get(item, "multipleItemImage.childImageSharp.fluid", null);
+    const image = item.multipleItemImage;
 
     return (
       <div key={index} className="col-12 mt-4 pl-0 pr-0">
         {fluid ? (
-          <Img durationFadeIn={500} fluid={fluid} />
+          <GatsbyImage durationFadeIn={500} image={getImage(image)} />
         ) : (
           <p>no images found</p>
         )}
@@ -29,7 +28,7 @@ const MultipleImages = props => {
 
   useEffect(() => {
     TweenMax.set(myElement.current, { alpha: 0, y: 200 });
-  });
+  }, []);
 
   const onEnter = () => {
     TweenMax.fromTo(

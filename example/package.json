@@ -10,7 +10,7 @@
         "clean": "gatsby clean"
     },
     "dependencies": {
-        "@cinemataztic/gatsby-theme-cinemataztic-cms": "*",
-        "gatsby": "^2.23.19"
+        "gatsby": "^3.2.1",
+        "gatsby-theme-cinemataztic-cms": "*"
     }
 }

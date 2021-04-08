@@ -6,11 +6,11 @@ import React, { useEffect, useRef } from "react";
 import TweenMax from "gsap";
 import "./featured-list.scss";
 import { withBreakpoints } from "react-breakpoints";
-import get from "lodash.get";
 import { ReactComponent as Forward } from "../../assets/forward.svg";
 import { ReactComponent as Back } from "../../assets/back.svg";
 import AniWrapper from "../buttons/AniWrapper";
 import { getPagePreviewData } from "../../utils/helpers";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 const getPos = index => {
   if (index === 0) {
@@ -52,7 +52,7 @@ const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
   const pagePreviewData = getPagePreviewData(item);
   const { description, slug } = pagePreviewData;
   const title = pagePreviewData.title.split("@").join("\n");
-  const imgUrl = get(pagePreviewData.image, "childImageSharp.fluid.src", null);
+  const previewImage = pagePreviewData.image;
   const txtPos = getPos(index % 2);
   const colorOverlayClass = "image-overlay-" + (index % 2);
 
@@ -86,8 +86,7 @@ const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
               </div>
 
               <div
-                className={`w-100 h-100 position-absolute ${
-                  imgUrl ? colorOverlayClass : ""
+                className={`w-100 h-100 position-absolute ${previewImage ? colorOverlayClass : ""
                   }`}
                 style={{
                   top: 0,
@@ -97,12 +96,13 @@ const FeaturedItem = React.forwardRef(({ index, item }, ref) => {
                   pointerEvents: "none"
                 }}
               ></div>
-              <img
+
+              <GatsbyImage
                 className="img-fluid position-relative"
                 style={{
                   boxShadow: "1.878px 10px 43px 0px rgba(0, 0, 0, .5)"
                 }}
-                src={imgUrl}
+                image={getImage(previewImage)}
                 alt=""
               />
             </div>
@@ -149,7 +149,7 @@ const FeaturedList = props => {
         ease: "Expo.easeOut"
       });
     });
-  });
+  }, []);
 
   const gotoPrev = () => {
     if (activeIndex === 0) {

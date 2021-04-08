@@ -33,6 +33,7 @@ module.exports = ({
       `gatsby-schema-field-absolute-path`,
       `gatsby-plugin-svgr`,
       `gatsby-transformer-sharp`,
+      `gatsby-plugin-image`,
       `gatsby-plugin-sharp`,
       {
         resolve: "gatsby-source-filesystem",
@@ -44,37 +45,29 @@ module.exports = ({
       {
         resolve: "gatsby-source-filesystem",
         options: {
+          name: "frontpage",
           path: `${settingsPath}/frontpage`,
-          options: {
-            typeName: "Frontpage"
-          }
         }
       },
       {
         resolve: "gatsby-source-filesystem",
         options: {
+          name: "general",
           path: `${settingsPath}/general`,
-          options: {
-            typeName: "General"
-          }
         }
       },
       {
         resolve: "gatsby-source-filesystem",
         options: {
+          name: "meta",
           path: `${settingsPath}/meta`,
-          options: {
-            typeName: "Meta"
-          }
         }
       },
       {
         resolve: "gatsby-source-filesystem",
         options: {
+          name: "footer",
           path: `${settingsPath}/footer`,
-          options: {
-            typeName: "Footer"
-          }
         }
       },
       {
@@ -88,9 +81,6 @@ module.exports = ({
       },
       {
         resolve: `gatsby-plugin-sass`,
-        options: {
-          precision: 8
-        }
       },
       {
         resolve: `gatsby-plugin-webfonts`,

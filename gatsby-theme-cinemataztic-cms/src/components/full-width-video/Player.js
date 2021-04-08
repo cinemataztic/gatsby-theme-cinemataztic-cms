@@ -4,7 +4,7 @@
 
 import React, { PureComponent } from "react";
 import ReactPlayer from "react-player";
-import Img from "gatsby-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 export default class Player extends PureComponent {
   state = {
@@ -53,9 +53,7 @@ export default class Player extends PureComponent {
             style={{ zIndex: 100 }}
           >
             <>
-              {this.props.fluidCoverImage && (
-                <Img durationFadeIn={500} fluid={this.props.fluidCoverImage} />
-              )}
+              {this.props.coverImage && <GatsbyImage durationFadeIn={500} image={getImage(this.props.coverImage)} />}
 
               <div
                 className="position-absolute d-flex h-100 w-100 justify-content-center align-items-center"

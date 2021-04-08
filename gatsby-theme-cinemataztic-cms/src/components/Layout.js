@@ -2,7 +2,6 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql, StaticQuery } from "gatsby";
 import ReactBreakpoints from "react-breakpoints";
-import get from "lodash.get";
 
 import Footer from "./footer/Footer";
 
@@ -17,46 +16,37 @@ const breakpoints = {
 const Layout = ({ meta, children }) => {
   return (
     <StaticQuery
-      query={graphql`
-      {
-        site {
-          siteMetadata {
-            siteUrl
-          }
-        }
-        metaYaml {
-          og_image {
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 1200) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-          og_title
-          og_description
-          og_type
-        }
-        generalYaml {
-          pageTitle
-          companyName
-          favicon {
-            childImageSharp {
-              fluid(quality: 70, maxWidth: 32) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }           
-          }
-        }
-      }
-    `}
+      query={graphql`{
+  site {
+    siteMetadata {
+      siteUrl
+    }
+  }
+  metaYaml {
+    og_image {
+      publicURL
+    }
+    og_title
+    og_description
+    og_type
+  }
+  generalYaml {
+    pageTitle
+    companyName
+    favicon {
+      publicURL
+    }
+  }
+}
+`}
       render={
         data => {
           const { title, description, type } = meta;
           const { pageTitle, favicon, companyName } = data.generalYaml;
           const { og_image, og_title, og_description, og_type } = data.metaYaml;
           const { siteMetadata } = data.site;
-          const ogImgSrc = siteMetadata.siteUrl + get(og_image, "childImageSharp.fluid.src", null);
-          const faviconSrc = get(favicon, "childImageSharp.fluid.src", null);
+          const ogImgSrc = siteMetadata.siteUrl + og_image.publicURL;
+          const faviconSrc = favicon.publicURL;
           return (
             <div>
               <Helmet
@@ -100,7 +90,7 @@ const Layout = ({ meta, children }) => {
           )
         }}
     />
-  )
+  );
 };
 
 export default Layout;
