@@ -10,7 +10,7 @@ on: push
     
 defaults:
   run: 
-    working-directory: gatsby-theme-cinemataztic-cms
+    working-directory: packages/@cinemataztic/gatsby-theme-cinemataztic-cms
 
 jobs:
   build:
