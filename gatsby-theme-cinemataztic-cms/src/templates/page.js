@@ -37,7 +37,7 @@ const Page = React.memo(props => {
   const backVideoUrl = get(backgroundVideo, "publicURL", null);
 
   // BACKGROUND IMAGE
-  const backImageSrc = backgroundImage.publicURL;
+  const backImageSrc = get(backgroundImage, "publicURL", null);
   const backImg = getBackgroundImage(color.backgroundColor, backImageSrc);
   const textColor = color.textColor || "FFFFFF";
 
