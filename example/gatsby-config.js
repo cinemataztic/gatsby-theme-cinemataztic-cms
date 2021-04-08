@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
     {
-      resolve: "gatsby-theme-cinemataztic-cms",
+      resolve: "@cinemataztic/gatsby-theme-cinemataztic-cms",
       options: {
         contentPath: "content",
         settingsPath: "settings",

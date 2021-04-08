@@ -7,7 +7,7 @@
         "build": "yarn workspace example dev"
     },
     "workspaces": [
-        "gatsby-theme-cinemataztic-cms",
-        "example"
+        "example",
+        "packages/**"
     ]
 }

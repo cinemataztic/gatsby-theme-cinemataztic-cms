@@ -1,5 +1,5 @@
 {
-    "name": "gatsby-theme-cinemataztic-cms",
+    "name": "@cinemataztic/gatsby-theme-cinemataztic-cms",
     "version": "0.8.16",
     "main": "index.js",
     "publishConfig": {

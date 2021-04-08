@@ -1,5 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
+import get from "lodash.get";
 import { graphql, StaticQuery } from "gatsby";
 import ReactBreakpoints from "react-breakpoints";
 
@@ -45,8 +46,8 @@ const Layout = ({ meta, children }) => {
           const { pageTitle, favicon, companyName } = data.generalYaml;
           const { og_image, og_title, og_description, og_type } = data.metaYaml;
           const { siteMetadata } = data.site;
-          const ogImgSrc = siteMetadata.siteUrl + og_image.publicURL;
-          const faviconSrc = favicon.publicURL;
+          const ogImgSrc = get(siteMetadata, "siteUrl" + og_image.publicURL, null);
+          const faviconSrc = get(favicon, "publicURL", null);
           return (
             <div>
               <Helmet

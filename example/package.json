@@ -11,6 +11,6 @@
     },
     "dependencies": {
         "gatsby": "^3.2.1",
-        "gatsby-theme-cinemataztic-cms": "*"
+        "@cinemataztic/gatsby-theme-cinemataztic-cms": "*"
     }
 }

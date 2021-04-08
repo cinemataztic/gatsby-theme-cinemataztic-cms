@@ -8,7 +8,7 @@ exports.onPreBootstrap = ({ reporter }, options) => {
 
   // Check if this is run from a yarn workpace
   // If yes: copy hoisted bootstrap package from ../node_modules to target workspace node_modules.
-  // Assuming options.isYarnWorkspace = true and options.sitePath = site:
+  // Assuming options.isYarnWorkspace = true and options.sitePath = example:
   // - cinemataztic-gatsby-cms
   //   - gatsby-theme-cinemataztic-cms
   //     - node_modules
@@ -23,10 +23,10 @@ exports.onPreBootstrap = ({ reporter }, options) => {
   //
 
   if (options.isYarnWorkspace && options.sitePath) {
-    let themePathPrefix = "..";
+    let themePathPrefix = "../../..";
     reporter.info(`running as yarn workspace`);
-    let hoistedPath = path.resolve(__dirname, "../node_modules/bootstrap");
-    if (!fs.existsSync(path.resolve(__dirname, "../node_modules/bootstrap")) && fs.existsSync(path.resolve(__dirname, "../../node_modules/bootstrap"))) {
+    let hoistedPath = path.resolve(__dirname, "../../../node_modules/bootstrap");
+    if (!fs.existsSync(path.resolve(__dirname, "../node_modules/bootstrap")) && fs.existsSync(path.resolve(__dirname, "../../../../node_modules/bootstrap"))) {
       themePathPrefix = "../.."
       hoistedPath = path.resolve(__dirname, `${themePathPrefix}/node_modules/bootstrap`);
     }
