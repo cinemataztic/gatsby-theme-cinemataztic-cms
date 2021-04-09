@@ -27,7 +27,8 @@ const getImage = (label, name) => {
     required: false,
     media_library: {
       config: {
-        multiple: false
+        multiple: false,
+        max_file_size: process.env.GATSBY_MAX_FILE_SIZE_BYTES || 512000
       }
     }
   };
@@ -102,52 +103,52 @@ const getMainContent = (useLogo, showBackgroundColor = true) => {
   });
 
   /*if(useLogo ) {
-		obj.fields.push(
-		   {
-			   "label":        "Logo",
-			   "name":         "logoImage",
-			   "widget":       "image",
-			   "default":      "",
-			   "required":     false,
-			   "media_library":{
-				   "config":{
-					   "multiple":false
-				   }
-			   }
-		   }
-		)
-	};*/
+    obj.fields.push(
+       {
+         "label":        "Logo",
+         "name":         "logoImage",
+         "widget":       "image",
+         "default":      "",
+         "required":     false,
+         "media_library":{
+           "config":{
+             "multiple":false
+           }
+         }
+       }
+    )
+  };*/
 
   /*obj.fields.push(
-	   {
-		   "label":        "Cover Image",
-		   "name":         "coverImage",
-		   "widget":       "image",
-		   "default":      "",
-		   "required":     false,
-		   "media_library":{
-			   "config":{
-				   "multiple":false
-			   }
-		   }
-	   }
-	)*/
+     {
+       "label":        "Cover Image",
+       "name":         "coverImage",
+       "widget":       "image",
+       "default":      "",
+       "required":     false,
+       "media_library":{
+         "config":{
+           "multiple":false
+         }
+       }
+     }
+  )*/
 
   /*
-		obj.fields.push(
-			{
-				"label":   "Cover Video",
-			   "name":    "coverVideo",
-			   "widget":  "file",
-			   "required":false,
-			   "default": "",
-			   "pattern": ["(.mp4)", "Must be an .mp4 format"],
-			}
-		);*/
+    obj.fields.push(
+      {
+        "label":   "Cover Video",
+         "name":    "coverVideo",
+         "widget":  "file",
+         "required":false,
+         "default": "",
+         "pattern": ["(.mp4)", "Must be an .mp4 format"],
+      }
+    );*/
 
   /*obj.fields.push(
-	  background
-	);*/
+    background
+  );*/
 
   if (showBackgroundColor) {
     obj.fields.push(color);
@@ -186,7 +187,8 @@ const featuredContent = {
       required: false,
       media_library: {
         config: {
-          multiple: false
+          multiple: false,
+          max_file_size: process.env.GATSBY_MAX_FILE_SIZE_BYTES || 512000
         }
       }
     }
@@ -393,13 +395,13 @@ const textVideo = {
     },
 
     /*{
-			"label":  "Should video Autoplay",
-			"name":   "autoplay",
-			"widget": "boolean",
-			"required":false,
-			"default":false,
-			"hint": "Autoplaying videos is only allowed if video is muted"
-		},*/
+      "label":  "Should video Autoplay",
+      "name":   "autoplay",
+      "widget": "boolean",
+      "required":false,
+      "default":false,
+      "hint": "Autoplaying videos is only allowed if video is muted"
+    },*/
 
     {
       label: "video on right-side",
