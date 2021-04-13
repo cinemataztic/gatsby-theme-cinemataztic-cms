@@ -121,9 +121,14 @@ module.exports = ({
           customizeWebpackConfig: (config, { }) => {
             const ReplaceInFileWebpackPlugin = require("replace-in-file-webpack-plugin");
             if (sitePath) {
-              console.info(`Updating sitePaths: \n${contentPath} -> ${sitePath}/${contentPath}\n${settingsPath} -> ${sitePath}/${settingsPath}\n`)
-              contentPath = `${sitePath}/${contentPath}`;
-              settingsPath = `${sitePath}/${settingsPath}`;
+              if (!contentPath.startsWith(`${sitePath}/`)) {
+                console.info(`Updating contentPath: \n${contentPath} -> ${sitePath}/${contentPath}`);
+                contentPath = `${sitePath}/${contentPath}`;
+              }
+              if (!settingsPath.startsWith(`${sitePath}/`)) {
+                console.info(`Updating settingsPath: \n${settingsPath} -> ${sitePath}/${settingsPath}`);
+                settingsPath = `${sitePath}/${settingsPath}`;
+              }
             }
             config.plugins.push(
               new ReplaceInFileWebpackPlugin([
