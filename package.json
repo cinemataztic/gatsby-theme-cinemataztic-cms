@@ -1,6 +1,6 @@
 {
     "name": "@cinemataztic/gatsby-theme-cinemataztic-cms",
-    "private": false,
+    "private": true,
     "version": "0.11.0",
     "main": "index.js",
     "scripts": {
