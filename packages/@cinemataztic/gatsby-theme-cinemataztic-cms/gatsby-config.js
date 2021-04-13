@@ -121,6 +121,7 @@ module.exports = ({
           customizeWebpackConfig: (config, { }) => {
             const ReplaceInFileWebpackPlugin = require("replace-in-file-webpack-plugin");
             if (sitePath) {
+              console.info(`Updating sitePaths: \n${contentPath} -> ${sitePath}/${contentPath}\n${settingsPath} -> ${sitePath}/${settingsPath}\n`)
               contentPath = `${sitePath}/${contentPath}`;
               settingsPath = `${sitePath}/${settingsPath}`;
             }
