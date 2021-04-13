@@ -14,14 +14,12 @@ import pages from "./collections/pages";
 // Register preview templates
 CMS.registerWidget("uuid", AutoUuidWidgetControl);
 
-const {
-  GATSBY_LOCAL_BACKEND,
-  GATSBY_NETLIFY_SITE_DOMAIN,
-  GATSBY_BACKEND_NAME,
-  GATSBY_BACKEND_REPO,
-  GATSBY_BACKEND_BRANCH,
-  UPLOADCARE_PUBLIC_KEY
-} = process.env;
+const GATSBY_LOCAL_BACKEND = process.env.GATSBY_LOCAL_BACKEND;
+const GATSBY_BACKEND_NAME = process.env.GATSBY_BACKEND_NAME;
+const GATSBY_BACKEND_REPO = process.env.GATSBY_BACKEND_REPO;
+const GATSBY_BACKEND_BRANCH = process.env.GATSBY_BACKEND_BRANCH;
+const GATSBY_NETLIFY_SITE_DOMAIN = process.env.GATSBY_NETLIFY_SITE_DOMAIN;
+const UPLOADCARE_PUBLIC_KEY = process.env.UPLOADCARE_PUBLIC_KEY;
 
 let config = {
   local_backend: GATSBY_LOCAL_BACKEND === "true",
