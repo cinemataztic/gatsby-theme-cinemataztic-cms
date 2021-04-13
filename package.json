@@ -1,7 +1,7 @@
 {
     "name": "@cinemataztic/gatsby-theme-cinemataztic-cms",
     "private": false,
-    "version": "0.10.3",
+    "version": "0.11.0",
     "main": "index.js",
     "scripts": {
         "build": "yarn workspace example dev"
