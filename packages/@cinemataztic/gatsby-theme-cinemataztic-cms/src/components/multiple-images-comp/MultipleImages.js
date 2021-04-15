@@ -9,7 +9,7 @@ import Divider from "../Divider";
 
 const MultipleImages = props => {
   const myElement = useRef();
-  const { title, text, images } = props.data;
+  const { title, text, images, } = props.data;
   const showDivider = !text ? false : true;
 
   const imageArr = images.map((item, index) => {
@@ -17,11 +17,12 @@ const MultipleImages = props => {
 
     return (
       <div key={index} className="col-12 mt-4 pl-0 pr-0">
-        {fluid ? (
-          <GatsbyImage durationFadeIn={500} image={getImage(image)} />
-        ) : (
-          <p>no images found</p>
-        )}
+        {
+          image ? (
+            <GatsbyImage durationFadeIn={500} image={getImage(image)} />
+          ) : (
+            <p>no images found</p>
+          )}
       </div>
     );
   });
