@@ -102,7 +102,12 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
               ref={imageRef}
               className={`col-12 ${colSize[0]}  mt-5 mb-5 p-md-2 text-center my-auto p-lg-5 ${orderImage}`}
             >
-              {image && <GatsbyImage durationFadeIn={500} image={getImage(image)} />}
+              {
+                image && image.childImageSharp && <GatsbyImage durationFadeIn={500} image={getImage(image)} />
+              }
+              {
+                image && !image.childImageSharp && image.publicURL && <img style={{ width: '100%' }} src={image.publicURL} />
+              }
             </div>
 
             <div

@@ -1,21 +1,21 @@
 uuid: f7532bc3-8bfc-49af-b817-28fdb6b76b02
 title: Example Page
-coverImage: ''
-coverVideo: ''
+coverImage: ""
+coverVideo: ""
 backgroundImage: audience.jpg
-backgroundVideo: ''
+backgroundVideo: ""
+logoImage: full_width_images.jpg
 mainContent:
   color:
-    backgroundColor: ''
-    textColor: ''
+    backgroundColor: ""
+    textColor: ""
   header: Example page
   subhead: It shows the default page layout and options
 featuredContent:
   featuredDescription: This page is featured
-  title: ''
-  description: 'It defaults to use the cover image or background as featured image. '
-  image: ''
-logoImage: full_width_images.jpg
+  title: ""
+  description: "It defaults to use the cover image or background as featured image. "
+  image: ""
 navigation:
   priority: 0
   title: Example Page
@@ -23,8 +23,8 @@ componentType: page
 component:
   - textImage: laptop.png
     pageLink:
-      btnTxt: ''
-      externalLink: ''
+      btnTxt: ""
+      externalLink: ""
       link: about
     placement: true
     size: 66%
@@ -33,8 +33,7 @@ component:
       your choice. Images can be set to left or right side (like this picture of
       a laptop).
 
-      You can also have a Full Width Component with optional text below it as
-      shown in the next section vv
+      You can also have a Full Width Component with optional text below it as shown in the next section vv
     title: Text Image component
     type: TextImage
   - fullWidthImage: /audience.jpg
@@ -45,9 +44,8 @@ component:
   - imageContent: laptop.png
     placement: false
     size: 66%
-    text: >-
-      You can choose to have the image on the left side too. It is also possible
-      to set the size of the image: this one is set to 66% width. 
+    text: "You can choose to have the image on the left side too. It is also
+      possible to set the size of the image: this one is set to 66% width. "
     title: Text Image (left)
     type: TextImage
     textImage: /vr-headset.png
@@ -62,19 +60,17 @@ component:
       autoplay and hide controls. 
 
 
-      This component is of type Full Width Component with text left and 83% text
-      width (you can also align center and right).
+      This component is of type Full Width Component with text left and 83% text width (you can also align center and right).
     placement: false
     textAlign: left
     size: 83%
     pageLink:
-      btnTxt: ''
-      link: ''
-      externalLink: ''
+      btnTxt: ""
+      link: ""
+      externalLink: ""
   - type: FullWidthComponent
     title: Child Pages
-    text: >-
-      A page can also be the child of another page. Click the button to go to
+    text: A page can also be the child of another page. Click the button to go to
       the Example Child Page. It is a child of this page (/example-page) and is
       therefore located at /example-page/child-page.
     placement: false
@@ -83,20 +79,20 @@ component:
     pageLink:
       btnTxt: Go to Child Page
       link: da01ac19-386e-4a5a-aeae-7d9435bb9097
-      externalLink: ''
+      externalLink: ""
       page: da01ac19-386e-4a5a-aeae-7d9435bb9097
   - size: 50%
     placement: false
     pageLink:
       btnTxt: External Link
-      page: ''
-      externalLink: 'https://google.com'
+      page: ""
+      externalLink: https://google.com
     text: >-
       This video has both image and text. Video size is set to 50% and to be on
       the left side. 
 
       It can contain links to internal or external pages. This one is external.
-    largeVideoUrl: ''
+    largeVideoUrl: ""
     shortTextVideo: /1508_video.mp4
     hideControls: false
     title: Text Video Component
@@ -108,4 +104,14 @@ component:
       - f7532bc3-8bfc-49af-b817-28fdb6b76b02
       - da01ac19-386e-4a5a-aeae-7d9435bb9097
       - 6da740d9-60cd-4637-8892-7686bf7c8cdc
+  - type: TextImage
+    title: GIFs
+    text: Support for GIFs too.
+    placement: false
+    size: 50%
+    pageLink:
+      btnTxt: ""
+      page: ""
+      externalLink: ""
+    textImage: /example.gif
 listImage: full_width_images.jpg
