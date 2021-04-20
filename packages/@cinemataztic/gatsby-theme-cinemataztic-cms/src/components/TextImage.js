@@ -37,14 +37,12 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
   const txtRef = useRef(null);
   const { textImage, placement, text, title, size, pageLink } = data;
 
-  const link =
-    pageLink && pageLink.link === "" ? null : get(pageLink, "link", null);
-  const sublink =
-    pageLink && pageLink.sublink === "" ? null : get(pageLink, "sublink", null); // sublink was added later and therefor not all pages had this availble
-  const hasLink = sublink === null && link === null ? false : true;
-
+  const hasLink = pageLink && pageLink.page ? true : false;
   const hasExternalLink =
-    pageLink && pageLink.externalLink !== "" ? true : false;
+    pageLink && pageLink.externalLink && pageLink.externalLink !== ""
+      ? true
+      : false;
+
   const image = textImage;
 
   const colSize = sizeColums(size);
@@ -121,13 +119,16 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
                 {text}
               </p>
 
-              {hasLink && <Button to={pageLink}>{pageLink.btnTxt}</Button>}
+              {hasLink && (
+                <Button to={pageLink.page}>{pageLink.btnTxt}</Button>
+              )}
 
               {hasExternalLink && (
                 <ExternalLink to={pageLink.externalLink}>
                   {pageLink.btnTxt}
                 </ExternalLink>
               )}
+
             </div>
           </div>
         </div>
