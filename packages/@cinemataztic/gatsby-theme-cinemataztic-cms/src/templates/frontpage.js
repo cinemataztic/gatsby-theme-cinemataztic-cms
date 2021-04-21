@@ -33,6 +33,7 @@ const FrontPage = props => {
   const coverVideoUrl = get(coverVideo, "publicURL", null);
 
   // BACKGROUND
+  const backgroundImageUrl = get(backgroundImage, "publicURL", null);
   const videoUrl = get(backgroundVideo, "publicURL", null);
   const videoOverlay = getVideoOverlay(null);
 
@@ -44,7 +45,7 @@ const FrontPage = props => {
       <div
         ref={overlayRef}
         className="overlay w-100 back-image-cover "
-        style={{ backgroundImage: ``, height: "100vh", opacity: 0 }}
+        style={{ backgroundImage: backgroundImage ? `url(${backgroundImageUrl})` : ``, height: "100vh", opacity: 0 }}
       >
         {videoUrl && (
           <>
