@@ -59,6 +59,9 @@ FrontPage
 type FrontpageYaml implements Node @dontInfer {
   id: ID!
   title: String
+  coverImage: File @fileByAbsolutePath(path: "${contentPath}/media")
+  coverVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
+  backgroundImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   backgroundVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   mainContent: MainContent!
   component: [Component]

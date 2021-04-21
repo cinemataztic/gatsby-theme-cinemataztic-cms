@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import get from "lodash.get";
 
 import Layout from "../components/Layout";
@@ -8,7 +8,6 @@ import "../components/frontpage/frontpage.scss";
 import HeaderAnimation from "../components/animation/HeaderAnimation";
 import componentFactory from "../utils/components-types";
 import {
-  getBackgroundImage,
   getVideoOverlay
 } from "../utils/getBackgroundImage";
 
@@ -19,18 +18,22 @@ const FrontPage = props => {
   const {
     mainContent,
     component,
+    coverVideo,
+    coverVideoCaptions,
+    coverImage,
     backgroundVideo,
+    backgroundImage,
     backgroundVideoCaptions,
     title
   } = props.data.frontpageYaml;
-  const { header, subhead, backgroundColor } = mainContent;
+  const { header, subhead } = mainContent;
   const headerWithSplit = header.split("@").join("\n");
 
-  const fluid = get(mainContent, "coverImage.childImageSharp.fluid", null);
-  const videoUrl = get(backgroundVideo, "publicURL", null);
+  // COVER
+  const coverVideoUrl = get(coverVideo, "publicURL", null);
 
-  const backImg = get(fluid, "src", null);
-  const mainImage = getBackgroundImage(backgroundColor, backImg);
+  // BACKGROUND
+  const videoUrl = get(backgroundVideo, "publicURL", null);
   const videoOverlay = getVideoOverlay(null);
 
   // Get all components on page
@@ -41,7 +44,7 @@ const FrontPage = props => {
       <div
         ref={overlayRef}
         className="overlay w-100 back-image-cover "
-        style={{ backgroundImage: mainImage, height: "100vh", opacity: 0 }}
+        style={{ backgroundImage: ``, height: "100vh", opacity: 0 }}
       >
         {videoUrl && (
           <>
@@ -67,7 +70,7 @@ const FrontPage = props => {
         style={{ zIndex: 2 }}
       >
         <HeaderAnimation
-          height={"100vh"}
+          height={coverImage || coverVideoUrl ? "85vh" : "100vh"}
           overlayRef={overlayRef}
           featuredImageRef={featuredImageRef}
           subhead={subhead}
@@ -75,13 +78,37 @@ const FrontPage = props => {
         />
 
         <div className="row position-relative h-100" style={{}}>
-          {fluid && (
-            <div ref={featuredImageRef} className="col-10 mx-auto ">
-              <GatsbyImage image={fluid} durationFadeIn={500} />
+          {coverImage && (
+            <div
+              ref={featuredImageRef}
+              className="col-12 col-md-10 mx-auto "
+              style={{ opacity: 0 }}
+            >
+              <GatsbyImage image={getImage(coverImage)} durationFadeIn={500} />
             </div>
           )}
 
-          {!videoUrl && !fluid && (
+          {coverVideoUrl && (
+            <div ref={featuredImageRef} className="col-12 col-md-10 mx-auto ">
+              <video
+                style={{ maxWidth: "100%", height: "auto" }}
+                autoPlay="autoplay"
+                muted="muted"
+                loop="loop"
+              >
+                <source src={coverVideoUrl} type="video/mp4" />
+                <track
+                  default
+                  kind="captions"
+                  srcLang="en"
+                  src={coverVideoCaptions}
+                />
+                Sorry, your browser does not support video.
+              </video>
+            </div>
+          )}
+
+          {!videoUrl && !coverImage && (
             <div
               ref={featuredImageRef}
               className="col-10 mx-auto "
@@ -89,7 +116,6 @@ const FrontPage = props => {
             ></div>
           )}
         </div>
-
         {components}
       </div>
     </Layout>
@@ -100,6 +126,21 @@ export const query = graphql`{
   frontpageYaml {
     id
     title
+    coverImage {
+      publicURL
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
+      }
+    }
+    coverVideo {
+      publicURL
+    }    
+    backgroundImage {
+      publicURL
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
+      }
+    }
     backgroundVideo {
       publicURL
     }

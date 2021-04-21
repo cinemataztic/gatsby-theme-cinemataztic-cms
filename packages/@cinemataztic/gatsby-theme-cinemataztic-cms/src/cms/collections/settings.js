@@ -42,7 +42,8 @@ export default {
           pattern: whiteSpacePattern,
           hint: "Must be unique, used for direct links"
         },
-
+        getImage("Cover Image", "coverImage"),
+        getVideo("Cover video", "coverVideo"),
         getImage("Background Image", "backgroundImage"),
         getVideo("Background video", "backgroundVideo"),
         getMainContent(false, false),

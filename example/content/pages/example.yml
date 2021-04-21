@@ -2,7 +2,7 @@ uuid: f7532bc3-8bfc-49af-b817-28fdb6b76b02
 title: Example Page
 coverImage: ""
 coverVideo: ""
-backgroundImage: audience.jpg
+backgroundImage: /audience.jpg
 backgroundVideo: ""
 logoImage: /logo_cinemataztic_2048w-white-rgb.png
 mainContent:
