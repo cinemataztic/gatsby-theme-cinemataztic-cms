@@ -31,7 +31,7 @@ The theme itself is located in the packages/@cinemataztic/gatsby-theme-cinemataz
 ## yarn workspaces:
 Work on the example site: 
 ```
-% yarn workspace example site develop
+% yarn workspace example develop
 ```
 Add packages to the theme: 
 ```
