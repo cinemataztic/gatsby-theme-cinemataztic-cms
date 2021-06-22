@@ -33,6 +33,14 @@ Work on the example site:
 ```
 % yarn workspace example site develop
 ```
+
+On Windows - which will run the development server using evn vars from **.env.development** 
+Since this is a gatsby project the site will be avilable on **http://localhost:8000**
+
+```
+% yarn workspace example staging
+```
+
 Add packages to the theme: 
 ```
 % yarn workspace @cinemataztic/gatsby-theme-cinemataztic-cms add package-name
