@@ -5,8 +5,9 @@ coverVideo: ""
 backgroundImage: ""
 backgroundVideo: /1508_video.mp4
 mainContent:
-  header: CinemaTaztic CMS
+  header: CinemaTaztic CMS - very long header tetststskajsd asdaskjashd
   subhead: A static site built on netlifyCMS and gatsby.js
+  arrowColor: "#00ff1d"
 component:
   - pageLink:
       btnTxt: Website

@@ -113,8 +113,10 @@ Main Content
 """
 type MainContent implements Node @dontInfer {
   header: String!
-  subhead: String
-  color: color!
+  subhead: String  
+  arrowColor: String
+  
+  color: color!  
 }
 
 """

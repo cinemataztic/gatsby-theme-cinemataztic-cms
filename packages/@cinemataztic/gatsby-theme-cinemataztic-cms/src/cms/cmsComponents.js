@@ -102,6 +102,35 @@ const getMainContent = (useLogo, showBackgroundColor = true) => {
     required: false
   });
 
+
+    obj.fields.push({
+		label: "Arrow color",
+		name: "arrowColor",
+		widget: "string",
+		default: "#ff0000",
+		required: false,
+      hint: "Express color like #D40000",
+      pattern: [
+        "^[^\\s]+$",
+        " - Should not have spaces, #, / - or other wierd stuff "
+      ]
+
+	 });
+
+
+  if (showBackgroundColor) {
+    obj.fields.push(color);
+  }
+
+
+  /*  obj.fields.push({
+		label: "Color",
+		name: "color",
+		widget: "string",
+		default: "#ff0000"
+		required: false
+	 });*/
+
   /*if(useLogo ) {
     obj.fields.push(
        {
@@ -150,9 +179,6 @@ const getMainContent = (useLogo, showBackgroundColor = true) => {
     background
   );*/
 
-  if (showBackgroundColor) {
-    obj.fields.push(color);
-  }
 
   return obj;
 };
