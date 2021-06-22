@@ -24,10 +24,13 @@ const FrontPage = props => {
     backgroundVideo,
     backgroundImage,
     backgroundVideoCaptions,
-    title
+    title,
   } = props.data.frontpageYaml;
   const { header, subhead } = mainContent;
   const headerWithSplit = header.split("@").join("\n");
+
+
+
 
   // COVER
   const coverVideoUrl = get(coverVideo, "publicURL", null);
@@ -76,6 +79,7 @@ const FrontPage = props => {
           featuredImageRef={featuredImageRef}
           subhead={subhead}
           letters={headerWithSplit}
+          arrowColor={mainContent.arrowColor || null}
         />
 
         <div className="row position-relative h-100" style={{}}>
@@ -85,7 +89,7 @@ const FrontPage = props => {
               className="col-12 col-md-10 mx-auto "
               style={{ opacity: 0 }}
             >
-              <GatsbyImage image={getImage(coverImage)} durationFadeIn={500} />
+              <GatsbyImage image={getImage(coverImage)} durationFadeIn={500} alt="hero image" />
             </div>
           )}
 
@@ -148,6 +152,7 @@ export const query = graphql`{
     mainContent {
       header
       subhead
+      arrowColor      
     }
     component {
       size

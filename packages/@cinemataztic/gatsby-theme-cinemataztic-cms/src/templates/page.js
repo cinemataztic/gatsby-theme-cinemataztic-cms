@@ -96,7 +96,7 @@ const Page = React.memo(props => {
               className="col-12 col-md-10 mx-auto "
               style={{ opacity: 0 }}
             >
-              <GatsbyImage image={getImage(coverImage)} durationFadeIn={500} />
+              <GatsbyImage image={getImage(coverImage)} durationFadeIn={500} alt="page hero image"/>
             </div>
           )}
 
