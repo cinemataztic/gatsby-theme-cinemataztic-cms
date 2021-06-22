@@ -12,7 +12,16 @@ import { win } from '../../utils/browserMock'
 import './header-animation.scss'
 
 const HeaderAnimation = (props) => {
-  const { letters, subhead, logoImg, overlayRef, featuredImageRef, textColor = '', height = '85vh', arrowColor } = props
+  const {
+    letters,
+    subhead,
+    logoImg,
+    overlayRef,
+    featuredImageRef,
+    textColor = '',
+    height = '85vh',
+    arrowColor = 'red',
+  } = props
 
   const [animationHasRun, setAnimationHasRun] = useState(0)
 
