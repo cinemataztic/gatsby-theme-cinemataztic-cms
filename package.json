@@ -9,5 +9,8 @@
     "workspaces": [
         "example",
         "packages/**"
-    ]
+    ],
+    "dependencies": {
+        "prettier": "^2.3.1"
+    }
 }
