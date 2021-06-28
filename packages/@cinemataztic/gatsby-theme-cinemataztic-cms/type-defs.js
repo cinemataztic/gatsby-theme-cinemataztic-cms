@@ -1,4 +1,4 @@
-exports.getTypeDefs = contentPath => `
+exports.getTypeDefs = (contentPath) => `
 """
 Settings
 """
@@ -114,8 +114,7 @@ Main Content
 type MainContent implements Node @dontInfer {
   header: String!
   subhead: String  
-  arrowColor: String
-  
+  arrowColor: String  
   color: color!  
 }
 
@@ -145,6 +144,7 @@ type Component implements Node @dontInfer {
   fullWidthVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   largeVideoUrl: String
   autoplay: Boolean
+  contentBackgroundColor: String
   textVideoImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   shortTextVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   textImage: File @fileByAbsolutePath(path: "${contentPath}/media")
@@ -158,7 +158,9 @@ PageLink
 type PageLink implements Node @dontInfer {
   btnTxt: String
   externalLink: String
-  page: PagesYaml @link(by: "uuid")
+  btnColor: String
+  textColor: String
+  page: PagesYaml @link(by: "uuid")  
 }
 
 """
@@ -168,4 +170,4 @@ type MultipleItemImage implements Node @dontInfer {
   multipleItemImage: File @fileByAbsolutePath(path: "${contentPath}/media")
 }
 
-`;
+`
