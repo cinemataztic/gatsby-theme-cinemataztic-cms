@@ -34,7 +34,7 @@ Work on the example site:
 % yarn workspace example site develop
 ```
 
-On Windows - which will run the development server using evn vars from **.env.development** 
+On Windows - which will run the development server using env vars from **.env.development** 
 Since this is a gatsby project the site will be avilable on **http://localhost:8000**
 
 ```
@@ -66,6 +66,29 @@ Error loading the CMS configuration
 Check your config.yml file.
 ```
 Did you forget to run `npx netlify-cms-proxy-server`?
+
+## Changes
+Need:
+- [X] Scrolle ned skal ikke være røde
+- [ ] tekst links  
+- [ ] Call to action på cover video - Afspil film / går til link
+- [X] Vælg mellem en af de 5 brandfaver når man laver en knap
+- [ ] Billeder ved siden af hinanden
+- [ ] Flere typer knapper. Med fyld, uden fyld, farver
+- [ ] Små billeder / ikoner
+- [ ] Flere knapper på en post
+- [ ] Max width på container / Content kort
+- [X] Headet tekst må ikke ligge på logo
+- [X] Skift farve på content box
+- [ ] Størrelse på content box
+- [ ] pile ved  feature list i center
+- [ ] man skal kunne se overskrift på Page list
+- [ ] Tænd eller sluk fade på cover video / foto
+
+Nice:
+- [ ] Mellemrum mellem billeder på feature list mindre
+- [ ] Mikkel`s element
+
 
 # Resources
  - https://egghead.io/lessons/gatsby-set-up-yarn-workspaces-for-gatsby-theme-development
