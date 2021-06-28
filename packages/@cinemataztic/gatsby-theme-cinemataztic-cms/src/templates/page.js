@@ -76,7 +76,7 @@ const Page = React.memo((props) => {
         <div className="row position-relative h-100" style={{}}>
           {coverImage && (
             <div ref={featuredImageRef} className="col-12 col-md-10 mx-auto " style={{ opacity: 0 }}>
-              <GatsbyImage image={getImage(coverImage)} durationFadeIn={500} alt="page hero image" />
+              <GatsbyImage image={getImage(coverImage)} alt="page hero image" />
             </div>
           )}
 
@@ -147,6 +147,7 @@ export const query = graphql`
         text
         title
         type
+        contentBackgroundColor
         listContent {
           id
           title
@@ -224,6 +225,8 @@ export const query = graphql`
         pageLink {
           btnTxt
           externalLink
+          btnColor
+          textColor
           page {
             title
             slug

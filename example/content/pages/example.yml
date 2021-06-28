@@ -36,6 +36,7 @@ component:
       You can also have a Full Width Component with optional text below it as shown in the next section vv
     title: Text Image component
     type: TextImage
+    contentBackgroundColor: "#6b2737"
   - fullWidthImage: /audience.jpg
     placement: true
     text: This component is full width and has an optional image above ^^
@@ -81,6 +82,8 @@ component:
       link: da01ac19-386e-4a5a-aeae-7d9435bb9097
       externalLink: ""
       page: da01ac19-386e-4a5a-aeae-7d9435bb9097
+      btnColor: "#5d0d0d"
+      textColor: "#e5dbdb"
   - size: 50%
     placement: false
     pageLink:

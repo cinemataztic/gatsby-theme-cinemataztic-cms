@@ -7,11 +7,13 @@ backgroundVideo: /1508_video.mp4
 mainContent:
   header: CinemaTaztic CMS - very long header tetststskajsd asdaskjashd
   subhead: A static site built on netlifyCMS and gatsby.js
-  arrowColor: "#00ff1d"
+  arrowColor: "#fe10d5"
 component:
   - pageLink:
       btnTxt: Website
       externalLink: https://www.gatsbyjs.org
+      btnColor: "#e08e45"
+      textColor: "#633915"
     placement: false
     size: 100%
     text: Gatsby is a free and open source framework based on React that helps
