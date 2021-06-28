@@ -164,7 +164,7 @@ const HeaderAnimation = (props) => {
       <div ref={txtContainer} className="txt-container col-12 d-flex flex-column justify-content-center h-100 ">
         {logoRef && (
           <div ref={logoRef} className="pb-3 " style={{ maxWidth: 320 }}>
-            <GatsbyImage className="img-fluid" durationFadeIn={500} image={getImage(logoImg)} alt="logo" />
+            <GatsbyImage className="img-fluid" image={getImage(logoImg)} alt="logo" />
           </div>
         )}
 
