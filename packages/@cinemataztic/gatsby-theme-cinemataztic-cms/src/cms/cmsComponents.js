@@ -277,6 +277,42 @@ export const fullWidthText = {
   ],
 }
 
+const multipleButtons = {
+  label: 'Buttons',
+  name: 'buttonList',
+  widget: 'list',
+  allow_add: true,
+  fields: [
+    {
+      label: 'Button text',
+      name: 'btnTxt',
+      widget: 'string',
+      required: false,
+      default: '',
+    },
+    {
+      label: 'Select Page',
+      name: 'page',
+      widget: 'relation',
+      collection: 'pages',
+      default: '',
+      required: false,
+      searchFields: ['title', 'slug', 'uuid'],
+      valueField: 'uuid',
+      displayFields: ['title', 'slug'],
+    },
+    {
+      label: 'External link',
+      name: 'externalLink',
+      widget: 'string',
+      required: false,
+      default: '',
+    },
+    getColorPicker('Button background color', 'btnColor'),
+    getColorPicker('Button text color', 'textColor'),
+  ],
+}
+
 export const textImage = {
   label: 'Text Image',
   name: 'TextImage',

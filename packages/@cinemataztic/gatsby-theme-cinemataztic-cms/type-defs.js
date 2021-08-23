@@ -65,6 +65,7 @@ type FrontpageYaml implements Node @dontInfer {
   backgroundVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   mainContent: MainContent!
   component: [Component]
+  pageLink: PageLink
 }
 
 """
@@ -140,6 +141,7 @@ type Component implements Node @dontInfer {
   hideControls: Boolean
   listContent: [PagesYaml] @link(by: "uuid")
   pageLink: PageLink
+  buttonList: [ButtonList]
   images: [MultipleItemImage]
   fullWidthVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   largeVideoUrl: String
@@ -153,6 +155,20 @@ type Component implements Node @dontInfer {
   fullWidthImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   fullWidthVideoImage: File @fileByAbsolutePath(path: "${contentPath}/media")
 }
+
+
+"""
+ButtonList
+"""
+
+type ButtonList implements Node @dontInfer {
+  btnTxt: String
+  externalLink: String
+  btnColor: String
+  textColor: String
+  page: PagesYaml @link(by: "uuid")    
+}
+
 
 """
 PageLink
