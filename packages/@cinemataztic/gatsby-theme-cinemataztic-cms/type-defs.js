@@ -148,6 +148,8 @@ type Component implements Node @dontInfer {
   textVideoImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   shortTextVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   textImage: File @fileByAbsolutePath(path: "${contentPath}/media")
+  firstImage: File @fileByAbsolutePath(path: "${contentPath}/media")
+  secondImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   fullWidthImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   fullWidthVideoImage: File @fileByAbsolutePath(path: "${contentPath}/media")
 }

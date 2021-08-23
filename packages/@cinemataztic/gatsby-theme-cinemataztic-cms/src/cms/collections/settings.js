@@ -55,6 +55,7 @@ export default {
 
           types: [
             textImage,
+            imageImage,
             fullWidthText,
             fullWidthVideo,
             multipleImages,

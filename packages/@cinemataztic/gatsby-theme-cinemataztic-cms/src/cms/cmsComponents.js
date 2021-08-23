@@ -313,6 +313,35 @@ export const textImage = {
       options: ['33%', '50%', '66%', '83%'],
       default: '50%',
     },
+    //multipleImages,
+
+    multipleButtons,
+
+    linkBtn,
+  ],
+}
+
+export const imageImage = {
+  label: 'Image Image',
+  name: 'ImageImage',
+  widget: 'object',
+  fields: [
+    {
+      label: 'Title',
+      name: 'title',
+      widget: 'string',
+      default: 'Headline',
+    },
+    {
+      label: 'Text',
+      name: 'text',
+      widget: 'text',
+      default: 'Lorem ipsum dolor sit amet...',
+    },
+    getColorPicker('Contentbox background color', 'contentBackgroundColor'),
+
+    getImage('Image', 'firstImage'),
+    getImage('Image', 'secondImage'),
 
     linkBtn,
   ],
@@ -456,21 +485,6 @@ export const pageList = {
   valueField: 'uuid',
   displayFields: ['title'],
 }
-
-/*
-
-export const imageCarousel = {
-  "label": "Image-Carousel",
-  "name": "ImageCarousel",
-  "widget": "list",
-  "field": {
-    "label": "Image",
-    "name": "image",
-    "widget": "image",
-    "default":      ""
-  }
-}
-*/
 
 export const multipleImages = {
   label: 'Multiple Images',

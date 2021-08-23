@@ -9,13 +9,18 @@ import FullWidthComp from '../components/full-width-comp/FullWidthComp'
 import FullWidthVideo from '../components/full-width-video/FullWidthVideo'
 import MultipleImages from '../components/multiple-images-comp/MultipleImages'
 import TextVideo from '../components/text-video/TextVideo'
+import ImageImage from '../components/ImageImage'
 
 const componentFromString = (componentData, index) => {
   const type = componentData.type
+  console.log(' components-types > type = ', type)
 
   switch (type) {
     case 'TextImage':
       return <TextImage key={index} data={componentData} />
+
+    case 'ImageImage':
+      return <ImageImage key={index} data={componentData} />
 
     case 'FullWidthComponent':
       return <FullWidthComp key={index} data={componentData} />
