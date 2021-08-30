@@ -21,8 +21,6 @@ const PageList = React.memo((props) => {
   const { listContent, featured, title } = props.data
   const showAsFeatured = featured
 
-  console.log(' PageList > props.data   = ', props.data)
-
   // basic Error handling - so it does not blow up
   if (!listContent || listContent.length === 0) {
     return <div>Error list could not be found</div>

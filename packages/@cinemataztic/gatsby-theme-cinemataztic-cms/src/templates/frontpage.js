@@ -23,12 +23,12 @@ const FrontPage = (props) => {
     backgroundImage,
     backgroundVideoCaptions,
     title,
-    pageLink,
   } = props.data.frontpageYaml
-  const { header, subhead } = mainContent
+
+  const { header, subhead, buttonList } = mainContent
   const headerWithSplit = header.split('@').join('\n')
 
-  console.log(' frontpage > pageLink = ', pageLink)
+  console.log(' frontpage > props.data = ', props.data)
 
   // COVER
   const coverVideoUrl = get(coverVideo, 'publicURL', null)
@@ -59,7 +59,10 @@ const FrontPage = (props) => {
         )}
       </div>
 
-      <div className="ani-page container-fluid h-100 position-relative overflow-hidden" style={{ zIndex: 2 }}>
+      <div
+        className="ani-page container-fluid h-100 position-relative overflow-hidden"
+        style={{ maxWidth: 2000, zIndex: 2 }}
+      >
         <HeaderAnimation
           height={coverImage || coverVideoUrl ? '85vh' : '100vh'}
           overlayRef={overlayRef}
@@ -67,7 +70,7 @@ const FrontPage = (props) => {
           subhead={subhead}
           letters={headerWithSplit}
           arrowColor={mainContent.arrowColor || null}
-          pageLink={pageLink}
+          buttonList={buttonList}
         />
 
         <div className="row position-relative h-100" style={{}}>
@@ -121,20 +124,20 @@ export const query = graphql`
         publicURL
       }
 
-      pageLink {
-        btnTxt
-        externalLink
-        btnColor
-        textColor
-        page {
-          title
-          slug
-        }
-      }
       mainContent {
         header
         subhead
         arrowColor
+        buttonList {
+          btnColor
+          btnTxt
+          externalLink
+          textColor
+          page {
+            title
+            slug
+          }
+        }
       }
       component {
         size

@@ -7,10 +7,15 @@ backgroundVideo: ""
 logoImage: /logo_cinemataztic_2048w-white-rgb.png
 mainContent:
   color:
-    backgroundColor: "#CCFF00"
+    backgroundColor: ""
     textColor: ""
   header: Example page
   subhead: It shows the default page layout and options
+  buttonList:
+    - btnTxt: How does it work
+      buttonType: filled
+      page: 6da740d9-60cd-4637-8892-7686bf7c8cdc
+      externalLink: ""
 featuredContent:
   featuredDescription: This page is featured
   title: ""

@@ -71,19 +71,20 @@ Did you forget to run `npx netlify-cms-proxy-server`?
 Need:
 - [X] Scrolle ned skal ikke være røde
 - [ ] tekst links  
-- [ ] Call to action på cover video - Afspil film / går til link
+- [X] Call to action på cover video - Afspil film / går til link - ingen links i test
 - [X] Vælg mellem en af de 5 brandfaver når man laver en knap
-- [ ] Billeder ved siden af hinanden
-- [ ] Flere typer knapper. Med fyld, uden fyld, farver
-- [ ] Små billeder / ikoner
-- [ ] Flere knapper på en post
-- [ ] Max width på container / Content kort
+- [X] Billeder ved siden af hinanden
+- [X] Flere typer knapper. Med fyld, uden fyld, farver
+- [ ] Små billeder / ikoner ---- undersøg om fullwidth billedet skal ikke altid fylde det hele - eller kan vi lave max størrelse
+- [X] Flere knapper på en post - lav knap component som kan tilføj X antal knapper
+- [X] Max width på container / Content kort 
 - [X] Headet tekst må ikke ligge på logo
 - [X] Skift farve på content box
-- [ ] Størrelse på content box
-- [ ] pile ved  feature list i center
-- [ ] man skal kunne se overskrift på Page list
-- [ ] Tænd eller sluk fade på cover video / foto
+- [X] Størrelse på content box
+- [ ] pile ved feature list i center ? 
+- [X] man skal kunne se overskrift på Page list- vises overhovedet ikke - den lille grå pil  
+- [X] Tænd eller sluk fade på cover video / foto - billedet vises med fade - video vises med fade - boolean tillad knap
+- [ ] Tekster på top video - anders skriver manuel break  
 
 Nice:
 - [ ] Mellemrum mellem billeder på feature list mindre
@@ -93,3 +94,11 @@ Nice:
 # Resources
  - https://egghead.io/lessons/gatsby-set-up-yarn-workspaces-for-gatsby-theme-development
  - https://github.com/jlengstorf/authoring-gatsby-themes
+
+
+
+config must have required property 'media_folder'
+config must have required property 'media_library'
+config must match a schema in anyOf
+config must have required property 'backend'
+config must have required property 'collections'

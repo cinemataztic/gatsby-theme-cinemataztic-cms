@@ -28,7 +28,8 @@ const Page = React.memo((props) => {
     nextPage,
   } = props.data.pagesYaml
 
-  const { header, subhead, color } = mainContent
+  const { header, subhead, color, buttonList } = mainContent
+  console.log(' page > buttonList = ', buttonList)
   const headerWithSplit = header.split('@').join('\n')
   const videoUrl = get(coverVideo, 'publicURL', null)
   const backVideoUrl = get(backgroundVideo, 'publicURL', null)
@@ -62,7 +63,10 @@ const Page = React.memo((props) => {
         )}
       </div>
 
-      <div className="ani-page container-fluid h-100 position-relative overflow-hidden" style={{ zIndex: 2 }}>
+      <div
+        className="ani-page container-fluid h-100 position-relative overflow-hidden"
+        style={{ zIndex: 2, maxWidth: 2000 }}
+      >
         <HeaderAnimation
           logoImg={logoImage}
           overlayRef={overlayRef}
@@ -71,6 +75,7 @@ const Page = React.memo((props) => {
           letters={headerWithSplit}
           textColor={textColor}
           arrowColor={mainContent.arrowColor}
+          buttonList={buttonList}
         />
 
         <div className="row position-relative h-100" style={{}}>
@@ -140,6 +145,16 @@ export const query = graphql`
         color {
           backgroundColor
           textColor
+        }
+        buttonList {
+          btnColor
+          btnTxt
+          externalLink
+          textColor
+          page {
+            title
+            slug
+          }
         }
       }
       component {
@@ -251,6 +266,17 @@ export const query = graphql`
           externalLink
           btnColor
           textColor
+          page {
+            title
+            slug
+          }
+        }
+        buttonList {
+          btnColor
+          btnTxt
+          externalLink
+          textColor
+          buttonType
           page {
             title
             slug
