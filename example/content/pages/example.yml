@@ -7,7 +7,7 @@ backgroundVideo: ""
 logoImage: /logo_cinemataztic_2048w-white-rgb.png
 mainContent:
   color:
-    backgroundColor: ""
+    backgroundColor: "#CCFF00"
     textColor: ""
   header: Example page
   subhead: It shows the default page layout and options
@@ -31,12 +31,12 @@ component:
     secondImage: /audience.jpg
     firstImage: /laptop.png
     buttonList:
-      - btnTxt: Button 1
-        page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
-        externalLink: ""
-      - btnTxt: Button 2 external
+      - outlineBtn: true
+        btnTxt: test outline
         page: ""
         externalLink: http://google.com
+        buttonType: outline
+        textColor: "#f0f0f0"
   - size: 66%
     placement: true
     pageLink:
@@ -54,16 +54,18 @@ component:
       - btnTxt: link to google
         page: ""
         externalLink: http://google.com
-        btnColor: "#f00909"
+        btnColor: "#ffffff"
         textColor: "#ffffff"
+        buttonType: outline
       - btnTxt: Internal link to how does it work
         page: 6da740d9-60cd-4637-8892-7686bf7c8cdc
         externalLink: ""
         btnColor: "#bdf7b7"
-        textColor: "#000000"
+        textColor: "#bdf7b7"
+        buttonType: outline
     title: Text Image component
     type: TextImage
-    contentBackgroundColor: "#6b2737"
+    contentBackgroundColor: ""
   - fullWidthImage: /audience.jpg
     placement: true
     text: This component is full width and has an optional image above ^^
@@ -144,4 +146,9 @@ component:
       page: ""
       externalLink: ""
     textImage: /example.gif
+    buttonList:
+      - outlineBtn: true
+        btnTxt: Outline button
+        page: ""
+        externalLink: http://google.com
 listImage: full_width_images.jpg

@@ -3,14 +3,20 @@ urlPath: index-page
 coverImage: ""
 coverVideo: ""
 backgroundImage: ""
+backgroundVideo: /1508_video.mp4
 mainContent:
   header: CinemaTaztic CMS - very long header tetststskajsd asdaskjashd
   subhead: A static site built on netlifyCMS and gatsby.js
   arrowColor: "#fe10d5"
-pageLink:
-  btnTxt: Se mere på google
-  externalLink: http://google.com
-backgroundVideo: /1508_video.mp4
+  buttonList:
+    - buttonType: filled
+      btnTxt: See the world
+      page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
+      externalLink: ""
+    - btnTxt: Stay home
+      buttonType: filled
+      page: ""
+      externalLink: http://www.google.com
 component:
   - pageLink:
       btnTxt: Website
