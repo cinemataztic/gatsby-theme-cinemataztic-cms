@@ -2,31 +2,47 @@
  * Created by @author @ddennis - ddennis.dk aka fantastisk.dk/works aka meresukker.dk on 25-07-2019.
  */
 
-import React from "react";
-import FeaturedList from "./FeaturedList";
-import ListItem from "./ListItem";
-import "./page-list.scss";
-import ReactBreakpoints, { Media } from "react-breakpoints";
+import React from 'react'
+import FeaturedList from './FeaturedList'
+import ListItem from './ListItem'
+import './page-list.scss'
+import ReactBreakpoints, { Media } from 'react-breakpoints'
+import Divider from '../Divider'
 
 const breakpoints = {
   xs: 0,
   sm: 576,
   md: 768,
   lg: 992,
-  xl: 1200
-};
+  xl: 1200,
+}
 
-const PageList = React.memo(props => {
-  const { listContent, featured } = props.data;
-  const showAsFeatured = featured;
+const PageList = React.memo((props) => {
+  const { listContent, featured, title } = props.data
+  const showAsFeatured = featured
+
+  console.log(' PageList > props.data   = ', props.data)
 
   // basic Error handling - so it does not blow up
   if (!listContent || listContent.length === 0) {
-    return <div>Error list could not be found</div>;
+    return <div>Error list could not be found</div>
   }
 
   if (showAsFeatured) {
-    return <FeaturedList data={props.data}></FeaturedList>;
+    return (
+      <>
+        <div className="container-fluid " style={{ maxWidth: 2000 }}>
+          <div className="row" style={{}}>
+            <div className="col-11 mt-5 mx-auto d-flex align-items-center">
+              <Divider></Divider>
+
+              <p className="mb-0 ml-3">{title}</p>
+            </div>
+          </div>
+        </div>
+        <FeaturedList data={props.data}></FeaturedList>
+      </>
+    )
   }
 
   return (
@@ -35,8 +51,6 @@ const PageList = React.memo(props => {
         {({ breakpoints, currentBreakpoint }) => {
           return (
             <div className="row page-list ">
-              <div className="col-10 mx-auto mb-5"></div>
-
               <div className="col-12 col-lg-10 mx-auto">
                 <div className="row" style={{}}>
                   {listContent.map((item, index) => {
@@ -48,16 +62,16 @@ const PageList = React.memo(props => {
                         index={index}
                         item={item}
                       ></ListItem>
-                    );
+                    )
                   })}
                 </div>
               </div>
             </div>
-          );
+          )
         }}
       </Media>
     </ReactBreakpoints>
-  );
-});
+  )
+})
 
-export default PageList;
+export default PageList
