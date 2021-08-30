@@ -21,19 +21,46 @@ navigation:
   title: Example Page
 componentType: page
 component:
-  - textImage: laptop.png
+  - type: ImageImage
+    title: IMAg asdasdsad
+    text: Lorem ipsum dolor sit amet...asdsa d dsaddasd
+    pageLink:
+      btnTxt: ""
+      page: ""
+      externalLink: ""
+    secondImage: /audience.jpg
+    firstImage: /laptop.png
+    buttonList:
+      - btnTxt: Button 1
+        page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
+        externalLink: ""
+      - btnTxt: Button 2 external
+        page: ""
+        externalLink: http://google.com
+  - size: 66%
+    placement: true
     pageLink:
       btnTxt: ""
       externalLink: ""
       link: about
-    placement: true
-    size: 66%
     text: >-
       You can have text / image components, showing some text and an image of
       your choice. Images can be set to left or right side (like this picture of
       a laptop).
 
       You can also have a Full Width Component with optional text below it as shown in the next section vv
+    textImage: laptop.png
+    buttonList:
+      - btnTxt: link to google
+        page: ""
+        externalLink: http://google.com
+        btnColor: "#f00909"
+        textColor: "#ffffff"
+      - btnTxt: Internal link to how does it work
+        page: 6da740d9-60cd-4637-8892-7686bf7c8cdc
+        externalLink: ""
+        btnColor: "#bdf7b7"
+        textColor: "#000000"
     title: Text Image component
     type: TextImage
     contentBackgroundColor: "#6b2737"

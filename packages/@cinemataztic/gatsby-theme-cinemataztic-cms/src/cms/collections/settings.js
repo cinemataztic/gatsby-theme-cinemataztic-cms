@@ -1,5 +1,6 @@
 import {
   textImage,
+  imageImage,
   fullWidthText,
   pageList,
   fullWidthVideo,
@@ -8,6 +9,7 @@ import {
   getImage,
   getVideo,
   multipleImages,
+  linkBtn,
 } from '../cmsComponents'
 import { BRAND_COLORS } from '../colors'
 
@@ -32,6 +34,7 @@ export default {
           name: 'title',
           widget: 'string',
           hint: 'Only shown in the cms',
+          hint: 'Only shown in the cms',
         },
 
         {
@@ -46,6 +49,7 @@ export default {
         getVideo('Cover video', 'coverVideo'),
         getImage('Background Image', 'backgroundImage'),
         getVideo('Background video', 'backgroundVideo'),
+
         getMainContent(false, false),
 
         {

@@ -9,62 +9,64 @@ import {
   getVideo,
   multipleImages,
   navigationContent,
-  textVideo
-} from "../cmsComponents";
+  textVideo,
+  imageImage,
+} from '../cmsComponents'
 
 export default {
-  name: "pages",
-  label: "Pages",
-  format: "yaml",
+  name: 'pages',
+  label: 'Pages',
+  format: 'yaml',
   create: true,
-  folder: "@contentPath/pages",
+  folder: '@contentPath/pages',
   editor: {
-    preview: false
+    preview: false,
   },
-  summary: "{{title}} / {{mainContent.subhead}}",
+  summary: '{{title}} / {{mainContent.subhead}}',
   fields: [
     {
-      name: "uuid",
-      widget: "uuid"
+      name: 'uuid',
+      widget: 'uuid',
     },
 
     {
-      label: "Parent Page",
-      name: "parentPage",
-      widget: "relation",
-      collection: "pages",
+      label: 'Parent Page',
+      name: 'parentPage',
+      widget: 'relation',
+      collection: 'pages',
       default: null,
       required: false,
-      searchFields: ["title", "slug"],
-      valueField: "uuid",
-      displayFields: ["title"]
+      searchFields: ['title', 'slug'],
+      valueField: 'uuid',
+      displayFields: ['title'],
     },
 
     {
-      label: "Title",
-      name: "title",
-      widget: "string"
+      label: 'Title',
+      name: 'title',
+      widget: 'string',
     },
 
-    getImage("Cover Image", "coverImage"),
-    getVideo("Cover video", "coverVideo"),
-    getImage("Background Image", "backgroundImage"),
-    getVideo("Background video", "backgroundVideo"),
-    getImage("Logo", "logoImage"),
+    getImage('Cover Image', 'coverImage'),
+    getVideo('Cover video', 'coverVideo'),
+    getImage('Background Image', 'backgroundImage'),
+    getVideo('Background video', 'backgroundVideo'),
+    getImage('Logo', 'logoImage'),
     getMainContent(false),
     featuredContent,
     navigationContent,
     {
-      label: "component-type",
-      name: "componentType",
-      widget: "hidden",
-      default: "page"
+      label: 'component-type',
+      name: 'componentType',
+      widget: 'hidden',
+      default: 'page',
     },
     {
-      label: "Component",
-      name: "component",
-      widget: "list",
+      label: 'Component',
+      name: 'component',
+      widget: 'list',
       types: [
+        imageImage,
         textImage,
         fullWidthVideo,
         fullWidthText,
@@ -72,47 +74,49 @@ export default {
         textVideo,
 
         {
-          label: "List Of Subpages",
-          name: "PageList",
-          widget: "object",
-          hint: "This is the list you would like to show on the page",
+          label: 'List Of Subpages',
+          name: 'PageList',
+          widget: 'object',
+          hint: 'This is the list you would like to show on the page',
           fields: [
             {
-              label: "Title",
-              name: "title",
-              widget: "string",
-              default: "Header text"
+              label: 'Title',
+              name: 'title',
+              widget: 'string',
+              default: 'Header text',
             },
             {
-              label: "Show as Featured",
-              name: "featured",
-              widget: "boolean",
+              label: 'Show as Featured',
+              name: 'featured',
+              widget: 'boolean',
               default: false,
-              required: false
+              required: false,
             },
 
-            pageList
-          ]
-        }
-      ]
-    }, {
-      label: "Next Page",
-      name: "nextPage",
+            pageList,
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Next Page',
+      name: 'nextPage',
       required: false,
-      widget: "relation",
-      collection: "pages",
-      searchFields: ["title", "slug", "uuid"],
-      valueField: "uuid",
-      displayFields: ["title", "slug"]
-    }, {
-      label: "Previous Page",
-      name: "previousPage",
+      widget: 'relation',
+      collection: 'pages',
+      searchFields: ['title', 'slug', 'uuid'],
+      valueField: 'uuid',
+      displayFields: ['title', 'slug'],
+    },
+    {
+      label: 'Previous Page',
+      name: 'previousPage',
       required: false,
-      widget: "relation",
-      collection: "pages",
-      searchFields: ["title", "slug", "uuid"],
-      valueField: "uuid",
-      displayFields: ["title", "slug"]
-    }
-  ]
-};
+      widget: 'relation',
+      collection: 'pages',
+      searchFields: ['title', 'slug', 'uuid'],
+      valueField: 'uuid',
+      displayFields: ['title', 'slug'],
+    },
+  ],
+}
