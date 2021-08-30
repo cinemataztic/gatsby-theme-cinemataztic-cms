@@ -12,6 +12,7 @@ import { win } from '../../utils/browserMock'
 import './header-animation.scss'
 import Button from '../buttons/Button'
 import ExternalLink from '../buttons/ExternalLink'
+import ButtonList from '../buttons/ButtonList'
 
 const HeaderAnimation = (props) => {
   const {
@@ -23,7 +24,7 @@ const HeaderAnimation = (props) => {
     textColor = '',
     height = '85vh',
     arrowColor = 'red',
-    pageLink,
+    buttonList,
   } = props
 
   const [animationHasRun, setAnimationHasRun] = useState(0)
@@ -35,9 +36,6 @@ const HeaderAnimation = (props) => {
   const arrowRef = React.createRef()
   const subheadRef = useRef()
   const txtContainer = useRef()
-
-  const hasLink = pageLink && pageLink.page ? true : false
-  const hasExternalLink = pageLink && pageLink.externalLink && pageLink.externalLink !== '' ? true : false
 
   const myElements = []
   const myTween = new TimelineMax({ paused: false })
@@ -167,7 +165,7 @@ const HeaderAnimation = (props) => {
     <div className="row page-component header-animation pl-0 pl-md-5" style={{ minHeight: 530, height: height }}>
       <ScrollListener onScroll={onScrolling} container={win} />
 
-      <div ref={txtContainer} className="txt-container col-12 d-flex flex-column justify-content-center h-100 ">
+      <div ref={txtContainer} className="txt-container col-12 mt-4 d-flex flex-column justify-content-center h-100 ">
         {logoRef && (
           <div ref={logoRef} className="pb-3 " style={{ maxWidth: 320 }}>
             <GatsbyImage className="img-fluid" image={getImage(logoImg)} alt="logo" />
@@ -194,14 +192,8 @@ const HeaderAnimation = (props) => {
           >
             {subhead}
           </h4>
-          <div className="mt-5">
-            {hasLink && <Button to={pageLink.page}>{pageLink.btnTxt}</Button>}
-
-            {hasExternalLink && (
-              <ExternalLink className="btb btn-primary btn-lg px-4 py-3" to={pageLink.externalLink}>
-                {pageLink.btnTxt}
-              </ExternalLink>
-            )}
+          <div className="mt-4">
+            <ButtonList data={buttonList} align={''}></ButtonList>
           </div>
         </div>
       </div>

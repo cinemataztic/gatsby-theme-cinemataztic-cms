@@ -103,6 +103,15 @@ const multipleButtons = {
       default: '',
     },
     {
+      label: 'Button types',
+      name: 'buttonType',
+      widget: 'select',
+      required: false,
+      multiple: false,
+      options: ['filled', 'outline'],
+      default: 'filled',
+    },
+    {
       label: 'Select Page',
       name: 'page',
       widget: 'relation',
@@ -123,6 +132,11 @@ const multipleButtons = {
     getColorPicker('Button background color', 'btnColor'),
     getColorPicker('Button text color', 'textColor'),
   ],
+}
+
+export const getMultipleButtons = (name) => {
+  const btns = { ...multipleButtons, name: name }
+  return btns
 }
 
 const getMainContent = (useLogo, showBackgroundColor = true) => {
@@ -159,6 +173,8 @@ const getMainContent = (useLogo, showBackgroundColor = true) => {
     hint: 'Express color like #D40000',
     pattern: ['^[^\\s]+$', ' - Should not have spaces, #, / - or other wierd stuff '],
   })
+
+  obj.fields.push(multipleButtons)
 
   if (showBackgroundColor) {
     obj.fields.push(color)
@@ -355,10 +371,7 @@ export const textImage = {
       options: ['33%', '50%', '66%', '83%'],
       default: '50%',
     },
-    //multipleImages,
-
     multipleButtons,
-
     linkBtn,
   ],
 }

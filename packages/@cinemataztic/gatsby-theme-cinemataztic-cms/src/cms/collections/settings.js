@@ -10,6 +10,7 @@ import {
   getVideo,
   multipleImages,
   linkBtn,
+  getMultipleButtons,
 } from '../cmsComponents'
 import { BRAND_COLORS } from '../colors'
 
@@ -33,7 +34,6 @@ export default {
           label: 'Title',
           name: 'title',
           widget: 'string',
-          hint: 'Only shown in the cms',
           hint: 'Only shown in the cms',
         },
 
