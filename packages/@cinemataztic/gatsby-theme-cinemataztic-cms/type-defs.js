@@ -64,8 +64,7 @@ type FrontpageYaml implements Node @dontInfer {
   backgroundImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   backgroundVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   mainContent: MainContent!
-  component: [Component]
-  pageLink: PageLink
+  component: [Component] 
 }
 
 """
@@ -117,6 +116,7 @@ type MainContent implements Node @dontInfer {
   subhead: String  
   arrowColor: String  
   color: color!  
+  buttonList: [ButtonList]  
 }
 
 """
@@ -165,7 +165,8 @@ type ButtonList implements Node @dontInfer {
   btnTxt: String
   externalLink: String
   btnColor: String
-  textColor: String
+  textColor: String  
+  buttonType: String
   page: PagesYaml @link(by: "uuid")    
 }
 
