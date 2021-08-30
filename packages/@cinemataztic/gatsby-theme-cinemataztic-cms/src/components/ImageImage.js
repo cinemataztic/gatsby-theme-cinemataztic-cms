@@ -130,9 +130,6 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
                 {text}
               </p>
 
-              {/*              {hasLink && <Button to={pageLink.page}>{pageLink.btnTxt}</Button>}
-
-              {hasExternalLink && <ExternalLink to={pageLink.externalLink}>{pageLink.btnTxt}</ExternalLink>}*/}
               <ButtonList data={buttonList} align={''} pageLink={pageLink}></ButtonList>
             </div>
           </div>
