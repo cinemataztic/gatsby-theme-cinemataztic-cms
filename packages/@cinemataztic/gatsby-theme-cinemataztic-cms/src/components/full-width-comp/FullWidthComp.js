@@ -9,6 +9,7 @@ import { TweenMax } from 'gsap'
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import Button from '../buttons/Button'
 import ExternalLink from '../buttons/ExternalLink'
+import ButtonList from '../buttons/ButtonList'
 
 const sizeToColums = (size) => {
   // handle revers when image is switched
@@ -31,10 +32,8 @@ const sizeToColums = (size) => {
 
 const FullWidthComp = (props) => {
   const myElement = useRef()
-  const { fullWidthImage, title, text, size, pageLink, textAlign } = props.data
+  const { fullWidthImage, title, text, size, pageLink, textAlign, buttonList } = props.data
   const image = fullWidthImage
-
-  console.log(' FullWidthComp > props = ', props)
 
   const hasLink = pageLink && pageLink.page ? true : false
   const hasExternalLink = pageLink && pageLink.externalLink && pageLink.externalLink !== '' ? true : false
@@ -103,21 +102,24 @@ const FullWidthComp = (props) => {
                   </div>
                 )}
 
-                {hasLink && (
-                  <div className={`w-100 ${hasTextAlign}`}>
-                    <Button to={pageLink.page} pageLink={pageLink}>
-                      {pageLink.btnTxt}
-                    </Button>
-                  </div>
-                )}
+                <div className="d-flex">
+                  {/*{hasLink && (
+                    <div className={`w-100 ${hasTextAlign}`}>
+                      <Button to={pageLink.page} pageLink={pageLink}>
+                        {pageLink.btnTxt}
+                      </Button>
+                    </div>
+                  )}
 
-                {hasExternalLink && (
-                  <div className={`w-100  ${hasTextAlign}`}>
-                    <ExternalLink to={pageLink.externalLink} pageLink={pageLink}>
-                      {pageLink.btnTxt}
-                    </ExternalLink>
-                  </div>
-                )}
+                  {hasExternalLink && (
+                    <div className={`w-100  ${hasTextAlign}`}>
+                      <ExternalLink to={pageLink.externalLink} pageLink={pageLink}>
+                        {pageLink.btnTxt}
+                      </ExternalLink>
+                    </div>
+                  )}*/}
+                  <ButtonList align={textAlign} data={buttonList} pageLink={pageLink}></ButtonList>
+                </div>
               </div>
             </div>
           </div>

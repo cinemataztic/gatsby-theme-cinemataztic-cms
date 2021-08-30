@@ -12,6 +12,7 @@ import { withBreakpoints } from 'react-breakpoints'
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import ExternalLink from './buttons/ExternalLink'
 import { DEFAULT_CONTENT_BACKGROUND_COLOR } from '../constants'
+import ButtonList from './buttons/ButtonList'
 
 const sizeColums = (size) => {
   // handle revers when image is switched
@@ -36,9 +37,7 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
   const containerRef = useRef(null)
   const imageRef = useRef(null)
   const txtRef = useRef(null)
-  const { textImage, placement, text, title, size, pageLink, contentBackgroundColor } = data
-
-  console.log(' TextImage > contentBackgroundColor = ', contentBackgroundColor)
+  const { textImage, placement, text, title, size, pageLink, contentBackgroundColor, buttonList } = data
 
   const hasLink = pageLink && pageLink.page ? true : false
   const hasExternalLink = pageLink && pageLink.externalLink && pageLink.externalLink !== '' ? true : false
@@ -112,10 +111,25 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
               <p className="body-text" style={{ whiteSpace: 'pre-wrap' }}>
                 {text}
               </p>
+              <ButtonList align={''} pageLink={pageLink} data={buttonList}></ButtonList>
+              {/*<div className="d-flex flex-wrap">
+                {hasLink && <Button to={pageLink.page}>{pageLink.btnTxt}</Button>}
+                {hasExternalLink && <ExternalLink to={pageLink.externalLink}>{pageLink.btnTxt}</ExternalLink>}
+                {buttonList.map((btn, index) => {
+                  const external = btn.externalLink
+                  const typeExternal = external ? true : false
 
-              {hasLink && <Button to={pageLink.page}>{pageLink.btnTxt}</Button>}
-
-              {hasExternalLink && <ExternalLink to={pageLink.externalLink}>{pageLink.btnTxt}</ExternalLink>}
+                  return typeExternal ? (
+                    <ExternalLink key={index} to={btn.externalLink} pageLink={btn}>
+                      {btn.btnTxt}
+                    </ExternalLink>
+                  ) : (
+                    <Button key={index} to={btn.page} pageLink={btn}>
+                      {btn.btnTxt}
+                    </Button>
+                  )
+                })}
+              </div>*/}
             </div>
           </div>
         </div>

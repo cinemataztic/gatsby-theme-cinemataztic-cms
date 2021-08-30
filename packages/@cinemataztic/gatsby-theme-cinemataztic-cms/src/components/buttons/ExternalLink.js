@@ -3,13 +3,13 @@
  */
 import React from 'react'
 
-const ExternalLink = ({ to, children, pageLink = {} }) => {
+const ExternalLink = ({ to, children, pageLink = {}, className = 'btn btn-primary py-2 mr-1 mb-1' }) => {
   const { btnColor = '#3a7bad', textColor = '#212529' } = pageLink
 
   return (
     <div>
       <a
-        className="btn btn-primary  "
+        className={className}
         href={to}
         style={{ background: btnColor, color: textColor, border: 'none' }}
         target="_blank"

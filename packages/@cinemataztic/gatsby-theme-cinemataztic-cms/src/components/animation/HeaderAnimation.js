@@ -10,6 +10,8 @@ import DownArrow from '../display/DownArrow'
 import ScrollListener from 'react-scroll-listen'
 import { win } from '../../utils/browserMock'
 import './header-animation.scss'
+import Button from '../buttons/Button'
+import ExternalLink from '../buttons/ExternalLink'
 
 const HeaderAnimation = (props) => {
   const {
@@ -21,6 +23,7 @@ const HeaderAnimation = (props) => {
     textColor = '',
     height = '85vh',
     arrowColor = 'red',
+    pageLink,
   } = props
 
   const [animationHasRun, setAnimationHasRun] = useState(0)
@@ -32,6 +35,9 @@ const HeaderAnimation = (props) => {
   const arrowRef = React.createRef()
   const subheadRef = useRef()
   const txtContainer = useRef()
+
+  const hasLink = pageLink && pageLink.page ? true : false
+  const hasExternalLink = pageLink && pageLink.externalLink && pageLink.externalLink !== '' ? true : false
 
   const myElements = []
   const myTween = new TimelineMax({ paused: false })
@@ -188,6 +194,15 @@ const HeaderAnimation = (props) => {
           >
             {subhead}
           </h4>
+          <div className="mt-5">
+            {hasLink && <Button to={pageLink.page}>{pageLink.btnTxt}</Button>}
+
+            {hasExternalLink && (
+              <ExternalLink className="btb btn-primary btn-lg px-4 py-3" to={pageLink.externalLink}>
+                {pageLink.btnTxt}
+              </ExternalLink>
+            )}
+          </div>
         </div>
       </div>
 

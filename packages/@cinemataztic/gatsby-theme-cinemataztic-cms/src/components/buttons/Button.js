@@ -15,7 +15,7 @@ const Button = ({ to, children, block, type = 'primary', pageLink }) => {
     <AniLink cover to={path} direction="up" duration={0.8} bg="#323232">
       {/*<button className={`btn  btn-${type} ${asBtnBlock}`}>{children}</button>*/}
       <button
-        className={`btn py-2 btn-primary ${asBtnBlock}`}
+        className={`btn py-2 btn-primary mr-1 mb-1 ${asBtnBlock}`}
         style={{ background: btnColor, color: textColor, border: 'none' }}
       >
         {children}

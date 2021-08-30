@@ -202,6 +202,30 @@ export const query = graphql`
             gatsbyImageData(quality: 70, layout: FULL_WIDTH)
           }
         }
+        firstImage {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+          }
+        }
+        secondImage {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(quality: 70, layout: FULL_WIDTH)
+          }
+        }
+
+        buttonList {
+          btnTxt
+          externalLink
+          btnColor
+          textColor
+          page {
+            title
+            slug
+          }
+        }
+
         fullWidthImage {
           publicURL
           childImageSharp {

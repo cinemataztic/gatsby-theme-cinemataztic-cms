@@ -13,6 +13,7 @@ import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import ExternalLink from './buttons/ExternalLink'
 import { DEFAULT_CONTENT_BACKGROUND_COLOR } from '../constants'
 import { gatsbyImageOrPublicUrl } from '../utils/gatsbyImageOrPublicUrl'
+import ButtonList from './buttons/ButtonList'
 
 const sizeColums = (size) => {
   // handle revers when image is switched
@@ -37,7 +38,7 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
   const containerRef = useRef(null)
   const imageRef = useRef(null)
   const txtRef = useRef(null)
-  const { firstImage, secondImage, placement, text, title, size, pageLink, contentBackgroundColor } = data
+  const { firstImage, secondImage, placement, text, title, size, pageLink, contentBackgroundColor, buttonList } = data
 
   const hasLink = pageLink && pageLink.page ? true : false
   const hasExternalLink = pageLink && pageLink.externalLink && pageLink.externalLink !== '' ? true : false
@@ -129,9 +130,10 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
                 {text}
               </p>
 
-              {hasLink && <Button to={pageLink.page}>{pageLink.btnTxt}</Button>}
+              {/*              {hasLink && <Button to={pageLink.page}>{pageLink.btnTxt}</Button>}
 
-              {hasExternalLink && <ExternalLink to={pageLink.externalLink}>{pageLink.btnTxt}</ExternalLink>}
+              {hasExternalLink && <ExternalLink to={pageLink.externalLink}>{pageLink.btnTxt}</ExternalLink>}*/}
+              <ButtonList data={buttonList} align={''} pageLink={pageLink}></ButtonList>
             </div>
           </div>
         </div>

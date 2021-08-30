@@ -23,9 +23,12 @@ const FrontPage = (props) => {
     backgroundImage,
     backgroundVideoCaptions,
     title,
+    pageLink,
   } = props.data.frontpageYaml
   const { header, subhead } = mainContent
   const headerWithSplit = header.split('@').join('\n')
+
+  console.log(' frontpage > pageLink = ', pageLink)
 
   // COVER
   const coverVideoUrl = get(coverVideo, 'publicURL', null)
@@ -64,6 +67,7 @@ const FrontPage = (props) => {
           subhead={subhead}
           letters={headerWithSplit}
           arrowColor={mainContent.arrowColor || null}
+          pageLink={pageLink}
         />
 
         <div className="row position-relative h-100" style={{}}>
@@ -115,6 +119,17 @@ export const query = graphql`
       }
       backgroundVideo {
         publicURL
+      }
+
+      pageLink {
+        btnTxt
+        externalLink
+        btnColor
+        textColor
+        page {
+          title
+          slug
+        }
       }
       mainContent {
         header
@@ -191,6 +206,16 @@ export const query = graphql`
           btnTxt
           externalLink
           btnColor
+          textColor
+          page {
+            title
+            slug
+          }
+        }
+        buttonList {
+          btnColor
+          btnTxt
+          externalLink
           textColor
           page {
             title
