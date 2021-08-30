@@ -7,6 +7,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 const Button = ({ to, children, block, type = 'primary', pageLink }) => {
   // to is the actual pageLink node
 
+  const isOutlineType = pageLink.buttonType === 'outline'
   const { btnColor = '#bababa', textColor = '#212529' } = pageLink
 
   const asBtnBlock = block ? 'btn-block' : ''
@@ -16,7 +17,11 @@ const Button = ({ to, children, block, type = 'primary', pageLink }) => {
       {/*<button className={`btn  btn-${type} ${asBtnBlock}`}>{children}</button>*/}
       <button
         className={`btn py-2 btn-primary mr-1 mb-1 ${asBtnBlock}`}
-        style={{ background: btnColor, color: textColor, border: 'none' }}
+        style={{
+          background: isOutlineType ? 'transparent' : btnColor,
+          border: isOutlineType ? `2px solid ${btnColor}` : 'none',
+          color: textColor,
+        }}
       >
         {children}
       </button>
