@@ -246,7 +246,7 @@ const navigationContent = {
 }
 
 const linkBtn = {
-  label: 'Link to page',
+  label: 'Link to page (deprcated)',
   name: 'pageLink',
   required: false,
   widget: 'object',
