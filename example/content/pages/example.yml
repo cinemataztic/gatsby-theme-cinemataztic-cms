@@ -42,6 +42,12 @@ component:
         externalLink: http://google.com
         buttonType: outline
         textColor: "#f0f0f0"
+      - btnTxt: View how does it work
+        buttonType: outline
+        page: 6da740d9-60cd-4637-8892-7686bf7c8cdc
+        externalLink: ""
+        btnColor: "#bdf7b7"
+        textColor: "#ffffff"
   - size: 66%
     placement: true
     pageLink:

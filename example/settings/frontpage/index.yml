@@ -78,3 +78,21 @@ component:
         page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
         externalLink: ""
         btnColor: "#8de276"
+  - type: ImageImage
+    title: Headline
+    text: Lorem ipsum dolor sit amet...
+    pageLink:
+      btnTxt: ""
+      page: ""
+      externalLink: ""
+    firstImage: /audience.jpg
+    secondImage: /full_width_images.jpg
+    buttonList:
+      - btnTxt: Button one
+        buttonType: filled
+        page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
+        externalLink: ""
+      - btnTxt: Button two
+        buttonType: filled
+        page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
+        externalLink: ""
