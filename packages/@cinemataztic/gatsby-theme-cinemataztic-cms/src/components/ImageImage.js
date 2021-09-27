@@ -5,12 +5,8 @@ import React, { useRef } from 'react'
 import Divider from './Divider'
 import TweenMax from 'gsap'
 import { Waypoint } from 'react-waypoint'
-import Button from './buttons/Button'
 import { win } from '../utils/browserMock'
-import get from 'lodash.get'
 import { withBreakpoints } from 'react-breakpoints'
-import { getImage, GatsbyImage } from 'gatsby-plugin-image'
-import ExternalLink from './buttons/ExternalLink'
 import { DEFAULT_CONTENT_BACKGROUND_COLOR } from '../constants'
 import { gatsbyImageOrPublicUrl } from '../utils/gatsbyImageOrPublicUrl'
 import ButtonList from './buttons/ButtonList'
@@ -36,13 +32,9 @@ const sizeColums = (size) => {
 
 const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
   const containerRef = useRef(null)
-  const imageRef = useRef(null)
+
   const txtRef = useRef(null)
   const { firstImage, secondImage, placement, text, title, size, pageLink, contentBackgroundColor, buttonList } = data
-
-  const hasLink = pageLink && pageLink.page ? true : false
-  const hasExternalLink = pageLink && pageLink.externalLink && pageLink.externalLink !== '' ? true : false
-
   const colSize = sizeColums(size)
 
   // On mobile the image is always placed on top
@@ -89,38 +81,14 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
       >
         <div className="col-12 col-md-10 mx-auto p-0 ">
           <div className="row overflow-hidden" style={{ maxHeight: 600 }}>
-            <div className="col-6 px-0 ">
-              {/*{image && image.childImageSharp && <GatsbyImage image={getImage(image)} alt="text image component" />}
-              {image && !image.childImageSharp && image.publicURL && (
-                <img style={{ width: '100%' }} src={image.publicURL} />
-              )}*/}
-              {gatsbyImageOrPublicUrl(firstImage)}
-            </div>
-            <div className="col-6 px-0">
-              {gatsbyImageOrPublicUrl(secondImage)}
-              {/*{secondImage && secondImage.childImageSharp && (
-                <GatsbyImage image={getImage(secondImage)} alt="text image component" />
-              )}
-              {secondImage && !secondImage.childImageSharp && secondImage.publicURL && (
-                <img style={{ width: '100%' }} src={secondImage.publicURL} />
-              )}*/}
-            </div>
+            {firstImage && <div className="col-6 px-0 ">{gatsbyImageOrPublicUrl(firstImage)}</div>}
+            {secondImage && <div className="col-6 px-0">{gatsbyImageOrPublicUrl(secondImage)}</div>}
           </div>
 
           <div
             className="row pt-3 pt-md-0 "
             style={{ background: contentBackgroundColor || DEFAULT_CONTENT_BACKGROUND_COLOR }}
           >
-            {/* <div
-              ref={imageRef}
-              className={`col-12 ${colSize[0]}  mt-5 mb-5 p-md-2 text-center my-auto p-lg-5 ${orderImage}`}
-            >
-              {image && image.childImageSharp && <GatsbyImage image={getImage(image)} alt="text image component" />}
-              {image && !image.childImageSharp && image.publicURL && (
-                <img style={{ width: '100%' }} src={image.publicURL} />
-              )}
-            </div>*/}
-
             <div className={`col-12 ${colSize[1]} d-flex flex-column  justify-content-center p-4 `}>
               <h1 ref={txtRef} className="font-weight-bold text-uppercase mb-0">
                 {title}
@@ -139,7 +107,3 @@ const TextImage = ({ data, breakpoints, currentBreakpoint }) => {
   )
 }
 export default withBreakpoints(TextImage)
-
-/*
-<VisibilitySensor onChange={onChange}>
-   </VisibilitySensor>*/
