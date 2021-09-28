@@ -26,28 +26,6 @@ navigation:
   title: Example Page
 componentType: page
 component:
-  - type: ImageImage
-    title: IMAg asdasdsad
-    text: Lorem ipsum dolor sit amet...asdsa d dsaddasd
-    pageLink:
-      btnTxt: ""
-      page: ""
-      externalLink: ""
-    secondImage: /audience.jpg
-    firstImage: /laptop.png
-    buttonList:
-      - outlineBtn: true
-        btnTxt: test outline
-        page: ""
-        externalLink: http://google.com
-        buttonType: outline
-        textColor: "#f0f0f0"
-      - btnTxt: View how does it work
-        buttonType: outline
-        page: 6da740d9-60cd-4637-8892-7686bf7c8cdc
-        externalLink: ""
-        btnColor: "#bdf7b7"
-        textColor: "#ffffff"
   - size: 66%
     placement: true
     pageLink:
@@ -77,6 +55,28 @@ component:
     title: Text Image component
     type: TextImage
     contentBackgroundColor: ""
+  - type: ImageImage
+    title: Image Image Component
+    text: This component shows two images side-by-side.
+    pageLink:
+      btnTxt: ""
+      page: ""
+      externalLink: ""
+    secondImage: /example.gif
+    firstImage: /laptop.png
+    buttonList:
+      - outlineBtn: true
+        btnTxt: test outline
+        page: ""
+        externalLink: http://google.com
+        buttonType: outline
+        textColor: "#f0f0f0"
+      - btnTxt: View how does it work
+        buttonType: outline
+        page: 6da740d9-60cd-4637-8892-7686bf7c8cdc
+        externalLink: ""
+        btnColor: "#bdf7b7"
+        textColor: "#ffffff"
   - fullWidthImage: /audience.jpg
     placement: true
     text: This component is full width and has an optional image above ^^
