@@ -5,7 +5,7 @@ coverVideo: ""
 backgroundImage: ""
 backgroundVideo: /1508_video.mp4
 mainContent:
-  header: CinemaTaztic CMS - very long header tetststskajsd asdaskjashd
+  header: CinemaTaztic CMS - this title is supposed to be veeeeeeeeeeeeeery long
   subhead: A static site built on netlifyCMS and gatsby.js
   arrowColor: "#fe10d5"
   buttonList:
