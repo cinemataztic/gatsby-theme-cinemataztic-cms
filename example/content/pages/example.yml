@@ -16,6 +16,7 @@ mainContent:
       buttonType: filled
       page: 6da740d9-60cd-4637-8892-7686bf7c8cdc
       externalLink: ""
+  arrowColor: "#00fc2a"
 featuredContent:
   featuredDescription: This page is featured
   title: ""
