@@ -47,11 +47,11 @@ const ButtonList = ({ data, align, pageLink }) => {
           <ExternalLink key={index} to={btn.externalLink} pageLink={btn}>
             {btn.btnTxt}
           </ExternalLink>
-        ) : (
+        ) : btn && btn.btnTxt ? (
           <Button key={index} to={btn.page} pageLink={btn}>
             {btn.btnTxt}
           </Button>
-        )
+        ) : null
       })}
     </div>
   )
