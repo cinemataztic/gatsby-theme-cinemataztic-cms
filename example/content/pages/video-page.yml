@@ -1,0 +1,29 @@
+uuid: 8ae65a70-13d0-4a56-849a-a09649899984
+title: video-page
+coverImage: ""
+coverVideo: /pexels-pavel-danilyuk-5359634.mp4
+backgroundVideo: /pexels-pavel-danilyuk-5359634.mp4
+mainContent:
+  header: Examples of using video
+  subhead: Say what you have videos
+  buttonList:
+    - btnTxt: ""
+      buttonType: filled
+      page: ""
+      externalLink: ""
+  color:
+    backgroundColor: ""
+    textColor: ""
+featuredContent:
+  title: ""
+  description: ""
+  image: ""
+navigation:
+  title: video-examples
+  priority: 1
+componentType: page
+component:
+  - type: FullWidthVideo
+    largeVideoUrl: https://storage.googleapis.com/www.cinemataztic.com/media/video/fanta_halloween.mp4
+    autoplay: false
+    hideControls: false
