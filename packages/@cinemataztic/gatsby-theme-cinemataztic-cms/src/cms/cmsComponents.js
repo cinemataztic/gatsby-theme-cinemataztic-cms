@@ -24,6 +24,7 @@ const getImage = (label, name) => {
     widget: 'image',
     //"default":      '',
     required: false,
+    choose_url: false,
     media_library: {
       config: {
         multiple: false,
@@ -41,7 +42,13 @@ const getVideo = (label, name) => {
     required: false,
     //"default": "",
     pattern: ['(.mp4)', 'Must be an .mp4 format'],
-    hint: 'Please use an MP4 format - max size 10MB',
+    hint: 'Please use an MP4 format - max size 5MB',
+    choose_url: false,
+    media_library: {
+      config: {
+        max_file_size: 1000000000,
+      },
+    },
   }
 }
 
