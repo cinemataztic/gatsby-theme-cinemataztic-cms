@@ -1,6 +1,6 @@
 {
     "name": "@cinemataztic/gatsby-theme-cinemataztic-cms",
-    "version": "0.11.9-rc.4",
+    "version": "0.11.9-rc.5",
     "main": "index.js",
     "repository": "git@github.com:cinemataztic/gatsby-theme-cinemataztic-cms.git",
     "scripts": {
