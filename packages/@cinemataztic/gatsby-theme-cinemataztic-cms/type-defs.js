@@ -1,4 +1,4 @@
-exports.getTypeDefs = contentPath => `
+exports.getTypeDefs = (contentPath) => `
 """
 Settings
 """
@@ -64,7 +64,7 @@ type FrontpageYaml implements Node @dontInfer {
   backgroundImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   backgroundVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   mainContent: MainContent!
-  component: [Component]
+  component: [Component] 
 }
 
 """
@@ -113,8 +113,10 @@ Main Content
 """
 type MainContent implements Node @dontInfer {
   header: String!
-  subhead: String
-  color: color!
+  subhead: String  
+  arrowColor: String  
+  color: color!  
+  buttonList: [ButtonList]  
 }
 
 """
@@ -139,16 +141,35 @@ type Component implements Node @dontInfer {
   hideControls: Boolean
   listContent: [PagesYaml] @link(by: "uuid")
   pageLink: PageLink
+  buttonList: [ButtonList]
   images: [MultipleItemImage]
   fullWidthVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   largeVideoUrl: String
   autoplay: Boolean
+  contentBackgroundColor: String
   textVideoImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   shortTextVideo: File @fileByAbsolutePath(path: "${contentPath}/media")
   textImage: File @fileByAbsolutePath(path: "${contentPath}/media")
+  firstImage: File @fileByAbsolutePath(path: "${contentPath}/media")
+  secondImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   fullWidthImage: File @fileByAbsolutePath(path: "${contentPath}/media")
   fullWidthVideoImage: File @fileByAbsolutePath(path: "${contentPath}/media")
 }
+
+
+"""
+ButtonList
+"""
+
+type ButtonList implements Node @dontInfer {
+  btnTxt: String
+  externalLink: String
+  btnColor: String
+  textColor: String  
+  buttonType: String
+  page: PagesYaml @link(by: "uuid")    
+}
+
 
 """
 PageLink
@@ -156,7 +177,9 @@ PageLink
 type PageLink implements Node @dontInfer {
   btnTxt: String
   externalLink: String
-  page: PagesYaml @link(by: "uuid")
+  btnColor: String
+  textColor: String
+  page: PagesYaml @link(by: "uuid")  
 }
 
 """
@@ -166,4 +189,4 @@ type MultipleItemImage implements Node @dontInfer {
   multipleItemImage: File @fileByAbsolutePath(path: "${contentPath}/media")
 }
 
-`;
+`

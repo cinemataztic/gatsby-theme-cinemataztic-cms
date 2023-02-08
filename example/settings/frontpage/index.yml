@@ -5,19 +5,37 @@ coverVideo: ""
 backgroundImage: ""
 backgroundVideo: /1508_video.mp4
 mainContent:
-  header: CinemaTaztic CMS
+  header: CinemaTaztic CMS - this title is supposed to be veeeeeeeeeeeeeery long
   subhead: A static site built on netlifyCMS and gatsby.js
+  arrowColor: "#fe10d5"
+  buttonList:
+    - buttonType: filled
+      btnTxt: See the world
+      page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
+      externalLink: ""
+    - btnTxt: Stay home
+      buttonType: filled
+      page: ""
+      externalLink: http://www.google.com
 component:
   - pageLink:
       btnTxt: Website
       externalLink: https://www.gatsbyjs.org
+      btnColor: "#e08e45"
+      textColor: "#633915"
     placement: false
     size: 100%
     text: Gatsby is a free and open source framework based on React that helps
       developers build blazing fast websites and apps.
-    textAlign: left
+    textAlign: center
     title: GatsbyJS
     type: FullWidthComponent
+    buttonList:
+      - btnTxt: Whats up
+        page: ""
+        externalLink: http://google.com
+        textColor: "#ffffff"
+        btnColor: "#00e5ff"
   - pageLink:
       btnTxt: Website
       externalLink: https://www.netlifycms.org
@@ -43,3 +61,38 @@ component:
       - f7532bc3-8bfc-49af-b817-28fdb6b76b02
       - da01ac19-386e-4a5a-aeae-7d9435bb9097
       - 6da740d9-60cd-4637-8892-7686bf7c8cdc
+  - type: TextImage
+    title: Headline
+    text: Lorem ipsum dolor sit amet...
+    placement: false
+    size: 50%
+    pageLink:
+      btnTxt: ""
+      page: ""
+      externalLink: ""
+    buttonList:
+      - btnTxt: asdsad
+        page: ""
+        externalLink: http://google.com
+      - btnTxt: View example page
+        page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
+        externalLink: ""
+        btnColor: "#8de276"
+  - type: ImageImage
+    title: Headline
+    text: Lorem ipsum dolor sit amet...
+    pageLink:
+      btnTxt: ""
+      page: ""
+      externalLink: ""
+    firstImage: /audience.jpg
+    secondImage: /full_width_images.jpg
+    buttonList:
+      - btnTxt: Button one
+        buttonType: filled
+        page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
+        externalLink: ""
+      - btnTxt: Button two
+        buttonType: filled
+        page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
+        externalLink: ""

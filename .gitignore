@@ -3,6 +3,9 @@ node_modules
 yarn-error.log
 example/public
 
+# editor files
+.idea
+
 # Logs
 logs
 *.log

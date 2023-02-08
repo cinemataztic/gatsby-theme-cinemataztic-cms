@@ -115,7 +115,7 @@ module.exports = ({
         resolve: "gatsby-plugin-netlify-cms",
         options: {
           htmlTitle: `CMS | CinemaTaztic`,
-          manualInit: false,
+          manualInit: true,
           enableIdentityWidget: true,
           modulePath: `${__dirname}/src/cms/config.js`,
           customizeWebpackConfig: (config, { }) => {

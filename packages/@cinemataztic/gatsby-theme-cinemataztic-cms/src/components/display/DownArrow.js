@@ -4,7 +4,7 @@
 import React from "react";
 import { ReactComponent as ArrowSvg } from "../../assets/arrow.inline.svg";
 
-const DownArrow = React.forwardRef((props, ref) => {
+const DownArrow = React.forwardRef(({arrowColor}, ref) => {
   return (
     <div
       ref={ref}
@@ -14,7 +14,7 @@ const DownArrow = React.forwardRef((props, ref) => {
         marginTop: 60,
         width: 90,
         height: 90,
-        background: "red"
+        background: arrowColor
       }}
     >
       <ArrowSvg

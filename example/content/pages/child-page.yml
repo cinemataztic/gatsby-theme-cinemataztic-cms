@@ -1,19 +1,19 @@
 uuid: da01ac19-386e-4a5a-aeae-7d9435bb9097
 parentPage: f7532bc3-8bfc-49af-b817-28fdb6b76b02
 title: Example Child Page
-coverVideo: ''
+coverVideo: ""
 backgroundVideo: /bg50.mp4
 mainContent:
   header: Child Page
   subhead: This page is the child of Example Page
   color:
-    backgroundColor: ''
-    textColor: ''
+    backgroundColor: ""
+    textColor: ""
 featuredContent:
   image: /img_7080.jpg
-  description: 'Check out this page, which is a child of Example Page.'
+  description: Check out this page, which is a child of Example Page.
 navigation:
-  title: ''
+  title: ""
   priority: 1
 componentType: page
 component:
@@ -28,4 +28,21 @@ component:
     pageLink:
       btnTxt: Go to Parent Page
       page: f7532bc3-8bfc-49af-b817-28fdb6b76b02
-      externalLink: ''
+      externalLink: ""
+  - type: ImageImage
+    title: Headline
+    text: Lorem ipsum dolor sit amet...
+    pageLink:
+      btnTxt: ""
+      page: ""
+      externalLink: ""
+    contentBackgroundColor: "#f83232"
+    buttonList:
+      - btnTxt: test
+        buttonType: filled
+        page: ""
+        externalLink: ""
+      - btnTxt: test
+        buttonType: outline
+        page: ""
+        externalLink: ""

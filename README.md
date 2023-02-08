@@ -33,6 +33,14 @@ Work on the example site:
 ```
 % yarn workspace example develop
 ```
+
+On Windows - which will run the development server using env vars from **.env.development** 
+Since this is a gatsby project the site will be avilable on **http://localhost:8000**
+
+```
+% yarn workspace example staging
+```
+
 Add packages to the theme: 
 ```
 % yarn workspace @cinemataztic/gatsby-theme-cinemataztic-cms add package-name
@@ -59,6 +67,38 @@ Check your config.yml file.
 ```
 Did you forget to run `npx netlify-cms-proxy-server`?
 
+## Changes
+Need:
+- [X] Scrolle ned skal ikke være røde
+- [ ] tekst links  
+- [X] Call to action på cover video - Afspil film / går til link - ingen links i test
+- [X] Vælg mellem en af de 5 brandfaver når man laver en knap
+- [X] Billeder ved siden af hinanden
+- [X] Flere typer knapper. Med fyld, uden fyld, farver
+- [ ] Små billeder / ikoner ---- undersøg om fullwidth billedet skal ikke altid fylde det hele - eller kan vi lave max størrelse
+- [X] Flere knapper på en post - lav knap component som kan tilføj X antal knapper
+- [X] Max width på container / Content kort 
+- [X] Headet tekst må ikke ligge på logo
+- [X] Skift farve på content box
+- [X] Størrelse på content box
+- [ ] pile ved feature list i center ? 
+- [X] man skal kunne se overskrift på Page list- vises overhovedet ikke - den lille grå pil  
+- [X] Tænd eller sluk fade på cover video / foto - billedet vises med fade - video vises med fade - boolean tillad knap
+- [ ] Tekster på top video - anders skriver manuel break  
+
+Nice:
+- [ ] Mellemrum mellem billeder på feature list mindre
+- [ ] Mikkel`s element
+
+
 # Resources
  - https://egghead.io/lessons/gatsby-set-up-yarn-workspaces-for-gatsby-theme-development
  - https://github.com/jlengstorf/authoring-gatsby-themes
+
+
+
+config must have required property 'media_folder'
+config must have required property 'media_library'
+config must match a schema in anyOf
+config must have required property 'backend'
+config must have required property 'collections'

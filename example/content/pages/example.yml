@@ -11,6 +11,12 @@ mainContent:
     textColor: ""
   header: Example page
   subhead: It shows the default page layout and options
+  buttonList:
+    - btnTxt: How does it work
+      buttonType: filled
+      page: 6da740d9-60cd-4637-8892-7686bf7c8cdc
+      externalLink: ""
+  arrowColor: "#00fc2a"
 featuredContent:
   featuredDescription: This page is featured
   title: ""
@@ -21,21 +27,57 @@ navigation:
   title: Example Page
 componentType: page
 component:
-  - textImage: laptop.png
+  - size: 66%
+    placement: true
     pageLink:
       btnTxt: ""
       externalLink: ""
       link: about
-    placement: true
-    size: 66%
     text: >-
       You can have text / image components, showing some text and an image of
       your choice. Images can be set to left or right side (like this picture of
       a laptop).
 
       You can also have a Full Width Component with optional text below it as shown in the next section vv
+    textImage: laptop.png
+    buttonList:
+      - btnTxt: link to google
+        page: ""
+        externalLink: http://google.com
+        btnColor: "#ffffff"
+        textColor: "#ffffff"
+        buttonType: outline
+      - btnTxt: Internal link to how does it work
+        page: 6da740d9-60cd-4637-8892-7686bf7c8cdc
+        externalLink: ""
+        btnColor: "#bdf7b7"
+        textColor: "#bdf7b7"
+        buttonType: outline
     title: Text Image component
     type: TextImage
+    contentBackgroundColor: ""
+  - type: ImageImage
+    title: Image Image Component
+    text: This component shows two images side-by-side.
+    pageLink:
+      btnTxt: ""
+      page: ""
+      externalLink: ""
+    secondImage: /example.gif
+    firstImage: /laptop.png
+    buttonList:
+      - outlineBtn: true
+        btnTxt: test outline
+        page: ""
+        externalLink: http://google.com
+        buttonType: outline
+        textColor: "#f0f0f0"
+      - btnTxt: View how does it work
+        buttonType: outline
+        page: 6da740d9-60cd-4637-8892-7686bf7c8cdc
+        externalLink: ""
+        btnColor: "#bdf7b7"
+        textColor: "#ffffff"
   - fullWidthImage: /audience.jpg
     placement: true
     text: This component is full width and has an optional image above ^^
@@ -81,6 +123,8 @@ component:
       link: da01ac19-386e-4a5a-aeae-7d9435bb9097
       externalLink: ""
       page: da01ac19-386e-4a5a-aeae-7d9435bb9097
+      btnColor: "#5d0d0d"
+      textColor: "#e5dbdb"
   - size: 50%
     placement: false
     pageLink:
@@ -114,4 +158,9 @@ component:
       page: ""
       externalLink: ""
     textImage: /example.gif
+    buttonList:
+      - outlineBtn: true
+        btnTxt: Outline button
+        page: ""
+        externalLink: http://google.com
 listImage: full_width_images.jpg
