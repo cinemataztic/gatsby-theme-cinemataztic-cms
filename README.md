@@ -1,4 +1,8 @@
+
 # Theme
+> [!WARNING]
+> **This repository is archived and no longer maintained.**
+> This Gatsby theme was primarily built for [`cinemataztic/www.cinemataztic.com`](https://www.google.com/search?q=https://github.com/cinemataztic/www.cinemataztic.com). The site has since been replaced by the new [`cinemataztic/website`](https://www.google.com/search?q=https://github.com/cinemataztic/website), which no longer uses Gatsby. As there are no longer any active consumers, this theme is officially deprecated and archived.
 ### Local git netlify cms backend
 https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
 
